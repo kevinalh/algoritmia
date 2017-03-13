@@ -1,5 +1,5 @@
 ---
-title:  Clase 1
+title:  Algoritmia - Clase 1
 geometry: margin=3cm
 ---
 Introducción del curso
@@ -116,7 +116,37 @@ Closest pair
 * Calcular distancia entre par de puntos e ir comparando dos a dos con un doble bucle.
 
 Análisis de eficiencia
----
+===
 
 * Una solución es eficiente si logra resolver un problema dentro de limitaciones.
 * Una limitación puede ser el espacio, o el tiempo de ejecución.
+* Notación Big O.
+* $\mathcal{O}(\log n)$: Por ejemplo la búqueda binaria.
+* $\mathcal{O}(n)$: Complejidad lineal, por ejemplo una búsqueda secuencial.
+* $\mathcal{O}(n\log{}n)$
+* $\mathcal{O}(2^n)$: Exponencial.
+
+(@) Ejemplo de análisis de eficiencia.
+
+~~~c
+for(i=0; i<n; i++=) {
+    a = a + 1;
+}
+~~~
+
+Aquí, se tiene la fórmula:
+$$
+\sum_{i=0}^{n-1} 2 = 2n
+$$
+Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
+
+(@) La burbuja tiene complejidad $\mathcal{O}(n^2)$.
+
+(@) String matching tiene complejidad $\mathcal{O}(n \times m)$, donde se consideran los tamaños del texto y el patrón.
+
+(@) Closest pair: $\mathcal{O}(n^2)$.
+
+Tarea
+====
+
+* Codificar todos los ejercicios, y mandárselo al profesor.
