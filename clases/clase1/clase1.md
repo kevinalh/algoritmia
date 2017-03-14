@@ -52,8 +52,7 @@ Ordenación - Burbuja
 * Comparando adyacentes e ir cambiando el orden hasta encontrar la posición real del mayor (va subiendo hasta llegar al final).
 * Para trabajar con arreglos se empieza definiendo la longitud máxima del arreglo con define.
 
-~~~c
-
+~~~{#bubblesort .c}
 #include <stdio.h>
 
 #define MAX 10
@@ -71,9 +70,10 @@ int main(void) {
 
 void bubblesort(int array[MAX], int n) {
     // n es el número de elementos real.
-    for(int i=n-2; i>=0; i--) {
+    for(int i=0; i<=n-2; i++) {
+        print_array(array, n);
         for(int j=n-2-i; j>=0; j--) {
-            if(array[j+1] < array[j]) {
+            if(array[j+1] > array[j]) {
                 int tmp = array[j+1];
                 array[j+1]= array[j];
                 array[j] = tmp;
@@ -99,8 +99,7 @@ Búsqueda - Secuencial
 * Precondición: Arreglo A\[0,...,n-1\] y una llave de búsqueda  K.
 * Postcondición: El índice del primer elemento.
 
-~~~c
-
+~~~{#busqueda-secuencial .c}
 #include <stdio.h>
 
 #define MAX 20
@@ -130,6 +129,26 @@ String matching
 
 * Dada una cadena de tamaño n llamada *texto*, y una cadena de caracteres de tamaño m llamada *patrón* (m<n), se busca una subcadena de caracteres dentro del texto que coincida con el patrón.
 * Se verifica caracter a caracter la ocurrencia del patrón en el texto. Si todos los caracteres no coinciden, se avanza el patrón un caracter a la derecha.
+
+~~~{#busqueda-secuencial .c}
+#include <stdio.h>
+
+#define MAX 20
+
+int main() {
+    int n = 9;
+    int array[MAX] = {1, 1, 1, 5, 3, 1, 10, 3, 21};
+    int K = 3;
+    for (int i = 0; i <= n-1; i++) {
+        if(array[i] == K) {
+            printf("El índice donde está %d es: %d\n", K, i);
+            return 0;
+        }
+    }
+    printf("No se encontró el número %d\n", K);
+    return 0;
+}
+~~~
 
 Closest pair
 ---

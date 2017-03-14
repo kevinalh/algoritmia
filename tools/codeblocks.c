@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
         if(copiado == 1) {
             copiado = strstr(line, "~~~") == line ? 0 : 1;
             if (copiado == 0) fputs(line, fw);
-        } else if(strstr(line, "~~~") == line) {
+        } else if(strstr(line, "~~~{") == line) {
             fputs(line, fw);
             nombre_programa(nombre, line);
             strcat(nombre, nuevoc);

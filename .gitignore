@@ -1,4 +1,5 @@
 pasados/
 *.swp
 *.pdf
+*.bk
 build/
