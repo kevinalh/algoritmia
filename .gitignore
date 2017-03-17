@@ -2,6 +2,9 @@ pasados/
 *.swp
 *.pdf
 
+# Notas de clase
+*.bk
+
 # Netbeans
 nbproject/private/
 build/
