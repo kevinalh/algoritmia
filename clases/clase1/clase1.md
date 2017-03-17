@@ -130,24 +130,8 @@ String matching
 * Dada una cadena de tamaño n llamada *texto*, y una cadena de caracteres de tamaño m llamada *patrón* (m<n), se busca una subcadena de caracteres dentro del texto que coincida con el patrón.
 * Se verifica caracter a caracter la ocurrencia del patrón en el texto. Si todos los caracteres no coinciden, se avanza el patrón un caracter a la derecha.
 
-~~~{#busqueda-secuencial .c}
-#include <stdio.h>
+~~~{#string-matching .c}
 
-#define MAX 20
-
-int main() {
-    int n = 9;
-    int array[MAX] = {1, 1, 1, 5, 3, 1, 10, 3, 21};
-    int K = 3;
-    for (int i = 0; i <= n-1; i++) {
-        if(array[i] == K) {
-            printf("El índice donde está %d es: %d\n", K, i);
-            return 0;
-        }
-    }
-    printf("No se encontró el número %d\n", K);
-    return 0;
-}
 ~~~
 
 Closest pair
@@ -166,19 +150,19 @@ Análisis de eficiencia
 * $\mathcal{O}(n\log{}n)$
 * $\mathcal{O}(2^n)$: Exponencial.
 
-(@) Ejemplo de análisis de eficiencia.
+(@) Ejemplo de análisis de eficiencia. Para el siguiente código:
 
-~~~c
-for(i=0; i<n; i++=) {
+    ~~~c
+    for(i=0; i<n; i++=) {
     a = a + 1;
-}
-~~~
+    }
+    ~~~
 
-Aquí, se tiene la fórmula:
+    se tiene la fórmula:  
 $$
-\sum_{i=0}^{n-1} 2 = 2n
+    \sum_{i=0}^{n-1} 2 = 2n
 $$
-Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
+    Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
 
 (@) La burbuja tiene complejidad $\mathcal{O}(n^2)$.
 

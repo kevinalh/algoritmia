@@ -6,7 +6,7 @@ pasados/
 *.bk
 
 # Netbeans
-nbproject/private/
+nbproject/
 build/
 nbbuild/
 dist/
