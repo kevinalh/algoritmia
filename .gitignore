@@ -1,4 +1,11 @@
 pasados/
 *.swp
 *.pdf
+
+# Netbeans
+nbproject/private/
 build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
