@@ -296,11 +296,7 @@ Análisis de eficiencia
     ~~~
 
     se tiene la fórmula:
-
-$$
-    \sum_{i=0}^{n-1} 2 = 2n
-$$
-
+$$\sum_{i=0}^{n-1} 2 = 2n$$
     Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
 
 (@) La burbuja tiene complejidad $\mathcal{O}(n^2)$.
