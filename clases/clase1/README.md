@@ -42,6 +42,58 @@ Ordenación - Selección
     -   1 2 5 | 8 6
     -   1 2 5 6 | 8
 
+``` c
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int*, int, int);
+void imprimir_lista(int*, int);
+
+int main() {
+    int i = 0;
+    int j = 0;
+    int n = 0;
+    int* lista;
+    printf("Cantidad de datos: ");
+    scanf("%d", &n);
+    lista = malloc(n*sizeof(int));
+    for(i = 0; i < n; i++){
+        scanf("%d", &lista[i]);
+    }
+    imprimir_lista(lista, n);
+    int minimo = 0;
+    int minimovalor = 0;
+    for(i = 0; i < n; i++) {
+        minimovalor = lista[i];
+        minimo = i;
+        for(j = i; j < n; j++) {
+            if(lista[j] < minimovalor) {
+                minimovalor = lista[j];
+                minimo = j;
+            }
+        }
+        swap(lista, i, minimo);
+    }
+    imprimir_lista(lista, n);
+    return 0;
+}
+
+void swap(int* lista, int i, int j){
+    int tmp = lista[i];
+    lista[i] = lista[j];
+    lista[j] = tmp;
+    return;
+}
+
+void imprimir_lista(int* lista, int n){
+    for(int i = 0; i < n; i++) {
+        printf("%d\t", lista[i]);
+    }
+    printf("\n");
+    return;
+}
+```
+
 Ordenación - Burbuja
 --------------------
 
@@ -127,20 +179,31 @@ String matching
 
 ``` c
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define MAX 20
+#define MAX_STRING 250
 
-int main() {
-    int n = 9;
-    int array[MAX] = {1, 1, 1, 5, 3, 1, 10, 3, 21};
-    int K = 3;
-    for (int i = 0; i <= n-1; i++) {
-        if(array[i] == K) {
-            printf("El índice donde está %d es: %d\n", K, i);
-            return 0;
+int main(int argc, char* argv[]) {
+    int i, j;
+    char* S = (char*) malloc(MAX_STRING*sizeof(char));
+    char* K = (char*) malloc(MAX_STRING*sizeof(char));
+    printf("S: ");
+    fgets(S, MAX_STRING, stdin);
+    printf("K: ");
+    fgets(K, MAX_STRING, stdin);
+    int n = strlen(S);
+    int m = strlen(K);
+    for(i=0; i < n-m; i++) {
+        for(j=0; j<m; j++){
+            if(K[j] != S[i+j]) break;
+            if(j==m-2) {
+                printf("Se encontró K en el índice %d de S\n", i);
+                return 0;
+            }
         }
     }
-    printf("No se encontró el número %d\n", K);
+    printf("No se encontró la llave K en el texto S\n");
     return 0;
 }
 ```
@@ -149,6 +212,64 @@ Closest pair
 ------------
 
 -   Calcular distancia entre par de puntos e ir comparando dos a dos con un doble bucle.
+
+``` c
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define MAX_PUNTOS 100
+
+typedef struct punto{
+    double x;
+    double y;
+    double z;
+} punto;
+
+double distancia(punto, punto);
+
+int main() {
+    int i = 0, j = 0, n = 0;
+    scanf("%d", &n);
+    if(n < 2){
+        printf("Debe poner al menos dos puntos\n");
+        return 1;
+    }
+    double x, y, z;
+    punto puntos[n];
+    for(i = 0; i < n; i++){
+        scanf("%lf %lf %lf", &x, &y, &z);
+        puntos[i].x = x;
+        puntos[i].y = y;
+        puntos[i].z = z;
+    }
+    double minimo = distancia(puntos[0], puntos[1]);
+    int min1 = 0;
+    int min2 = 1;
+    double distactual = 0;
+    // Buscamos el par de puntos más cercanos
+    for(i = 0; i < n-1; i++){
+        for(j = i+1; j < n; j++){
+            distactual = distancia(puntos[i], puntos[j]);
+            if(distactual < minimo) {
+                minimo = distactual;
+                min1 = i;
+                min2 = j;
+            }
+        }
+    }
+    printf("El par de puntos más cercanos están en los índices %d y %d\n", min1, min2);
+    printf("Su distancia es %lf", minimo);
+    return 0;
+}
+
+double distancia(punto p1, punto p2){
+    double dx = pow(p1.x - p2.x, 2);
+    double dy = pow(p1.y - p2.y, 2);
+    double dz = pow(p1.z - p2.z, 2);
+    return sqrt(dx + dy + dz);
+}
+```
 
 Análisis de eficiencia
 ======================
@@ -161,28 +282,28 @@ Análisis de eficiencia
 -   𝒪(*n*log *n*)
 -   𝒪(2<sup>*n*</sup>): Exponencial.
 
-1.  Ejemplo de análisis de eficiencia.
+1.  Ejemplo de análisis de eficiencia. Para el siguiente código:
 
-``` c
-for(i=0; i<n; i++=) {
+    ``` c
+    for(i=0; i<n; i++=) {
     a = a + 1;
-}
-```
+    }
+    ```
 
-Aquí, se tiene la fórmula:
-$$
-\\sum\_{i=0}^{n-1} 2 = 2n
-$$
- Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
+    se tiene la fórmula:
+    $$
+    \\sum\_{i=0}^{n-1} 2 = 2n
+    $$
+     Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
 
-1.  La burbuja tiene complejidad 𝒪(*n*<sup>2</sup>).
+2.  La burbuja tiene complejidad 𝒪(*n*<sup>2</sup>).
 
-2.  String matching tiene complejidad 𝒪(*n* × *m*), donde se consideran los tamaños del texto y el patrón.
+3.  String matching tiene complejidad 𝒪(*n* × *m*), donde se consideran los tamaños del texto y el patrón.
 
-3.  Closest pair: 𝒪(*n*<sup>2</sup>).
+4.  Closest pair: 𝒪(*n*<sup>2</sup>).
 
 Tarea
 =====
 
--   Codificar todos los ejercicios, y mandárselo al profesor.
+-   Codificar todos lo hecho en clase.
 

@@ -59,10 +59,13 @@ int main(int argc, char **argv) {
     }
     char filenametmp[MAX_LINE];
     char originalfilebk[MAX_LINE];
+    char dot[MAX_LINE];
     strcpy(filenametmp, ".bk");
+    strcpy(dot, ".");
     strcpy(originalfilebk, originalfile);
-    strcat(originalfilebk, filenametmp);
-    rename(originalfile, originalfilebk);
+    strcat(dot, originalfilebk);
+    strcat(dot, filenametmp);
+    rename(originalfile, dot);
     rename(filename, originalfile);
     fclose(fp);
     fclose(fw);

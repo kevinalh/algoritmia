@@ -1,6 +1,8 @@
 pasados/
 *.swp
 *.pdf
+.ycm_extra_conf.py
+.color_coded
 
 # Notas de clase
 *.bk
