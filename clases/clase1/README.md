@@ -286,21 +286,23 @@ Análisis de eficiencia
 
     ``` c
     for(i=0; i<n; i++=) {
-    a = a + 1;
+        a = a + 1;
     }
     ```
 
     se tiene la fórmula:
-    $$
+
+$$
     \\sum\_{i=0}^{n-1} 2 = 2n
-    $$
-     Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
+$$
 
-2.  La burbuja tiene complejidad 𝒪(*n*<sup>2</sup>).
+    Donde se usa 2 para denotar que hay dos unidades de tiempo cada vez. Esto es porque se están usandos dos operadores: + y =.
 
-3.  String matching tiene complejidad 𝒪(*n* × *m*), donde se consideran los tamaños del texto y el patrón.
+1.  La burbuja tiene complejidad 𝒪(*n*<sup>2</sup>).
 
-4.  Closest pair: 𝒪(*n*<sup>2</sup>).
+2.  String matching tiene complejidad 𝒪(*n* × *m*), donde se consideran los tamaños del texto y el patrón.
+
+3.  Closest pair: 𝒪(*n*<sup>2</sup>).
 
 Tarea
 =====
