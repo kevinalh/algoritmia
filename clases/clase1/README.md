@@ -259,7 +259,7 @@ int main() {
         }
     }
     printf("El par de puntos más cercanos están en los índices %d y %d\n", min1, min2);
-    printf("Su distancia es %lf", minimo);
+    printf("Su distancia es %.3lf \n", minimo);
     return 0;
 }
 
@@ -303,5 +303,5 @@ Análisis de eficiencia
 Tarea
 =====
 
--   Codificar todos lo hecho en clase.
+-   Codificar todo lo hecho en clase.
 
