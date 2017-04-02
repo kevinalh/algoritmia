@@ -10,6 +10,8 @@ void pasarPalabras(int t, char* s, char[MAX_WORDS][MAX_WORD_LENGTH], int* n);
 int related(char* s, char* t);
 void ordenar(char* s, char* ordenado, int* length);
 void swap(char* word, int a, int b);
+void ordenarPalabras(int, char**);
+void swap2(char** ananagrams, int a, int b);
 
 int main() {
     int i, j, n = 0, m = 0;
@@ -20,6 +22,9 @@ int main() {
         else pasarPalabras(strlen(s), s, words, &n);
     }
     int notananagrams[n];
+    for(i = 0; i < n; i++) {
+        notananagrams[i] = 0;
+    }
     for(i = 0; i < n-1; i++) {
         if(notananagrams[i] == 1) continue;
         for(j = i+1; j < n; j++) {
@@ -31,7 +36,6 @@ int main() {
     }
     int howmany = 0;
     for(i = 0; i < n; i++) {
-
         howmany += notananagrams[i];
     }
     howmany = n - howmany;
@@ -40,10 +44,11 @@ int main() {
     for(i = 0; i < n; i++) {
         if (notananagrams[i] == 1) continue;
         else {
-            ananagrams[j] = words[j];
+            ananagrams[j] = words[i];
             j++;
         }
     }
+    ordenarPalabras(howmany, ananagrams);
     for(i = 0; i < howmany; i++) {
         printf("%s\n", ananagrams[i]);
     }
@@ -56,8 +61,8 @@ int related(char* s, char* t) {
     char ordenado[length];
     char ordenado2[length];
     ordenar(s, ordenado, &length);
-    ordenar(s, ordenado2, &length);
-    if(strcmp(ordenado, ordenado2) == 1) return 1;
+    ordenar(t, ordenado2, &length);
+    if(strcmp(ordenado, ordenado2) == 0) return 1;
     else return 0;
 }
 
@@ -77,6 +82,7 @@ void ordenar(char* s, char* ordenado, int* length) {
             swap(ordenado, i, min);
         }
     }
+    ordenado[*length] = '\0';
     return;
 }
 
@@ -84,6 +90,13 @@ void swap(char* word, int a, int b) {
     char tmp = word[a];
     word[a] = word[b];
     word[b] = tmp;
+    return;
+}
+
+void swap2(char** ananagrams, int a, int b) {
+    char* tmp = ananagrams[b];
+    ananagrams[b] = ananagrams[a];
+    ananagrams[a] = tmp;
     return;
 }
 
@@ -104,6 +117,18 @@ void pasarPalabras(int t, char* s, char words[][MAX_WORD_LENGTH], int* n) {
                 }
             }
             i = j;
+        }
+    }
+    return;
+}
+
+void ordenarPalabras(int n, char* ananagrams[n]) {
+    int i = 0, j = 0;
+    for(i = 0; i < n - 1; i++) {
+        for(j = i+1; j < n; j++) {
+            if(strcmp(ananagrams[i], ananagrams[j]) > 0) {
+                swap2(ananagrams, i, j);
+            }
         }
     }
     return;
