@@ -2,9 +2,9 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_WORDS 1000
-#define MAX_WORD_LENGTH 20
-#define MAX_LINE 80
+#define MAX_WORDS 1001
+#define MAX_WORD_LENGTH 21
+#define MAX_LINE 81
 
 void pasarPalabras(int t, char* s, char[MAX_WORDS][MAX_WORD_LENGTH], int* n);
 int related(char* s, char* t);
@@ -26,7 +26,7 @@ int main() {
         notananagrams[i] = 0;
     }
     for(i = 0; i < n-1; i++) {
-        if(notananagrams[i] == 1) continue;
+        if(notananagrams[i] == 1 || strlen(words[i]) == 1) continue;
         for(j = i+1; j < n; j++) {
             if(related(words[i], words[j])){
                 notananagrams[j] = 1;
