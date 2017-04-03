@@ -1,5 +1,5 @@
 Punteros
-========
+--------
 
 En el siguiente código se tiene un ejemplo de manejo de punteros.
 
@@ -44,7 +44,7 @@ Los valores límite de los tipos de valor están en la librería `<limits.h>`. S
 Wedding
 -------
 
-El siguiente problema es sacado de [UVa 10662]().
+El siguiente problema es sacado de [UVa 10662](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1603).
 
 ``` c
 #include <stdio.h>
@@ -109,7 +109,7 @@ int main() {
 Recursividad
 ============
 
--   El caso baso es importante para evitar los bucles infinitos.
+-   El caso base es importante para evitar los bucles infinitos.
 
 -   Recursión directa: Cuando la función se invoca a sí misma.
 -   Recursión indirecta: Función que invoca a otra función que eventualmente resulta en invocar la primera función.
@@ -148,6 +148,32 @@ int max(int a, int b){
 
 Búsqueda secuencial
 -------------------
+
+``` c
+#include <stdio.h>
+#include <stdlib.h>
+
+int busqueda(int n, int k, int* numeros);
+
+int main() {
+    int i, n, k;
+    scanf("%d", &n);
+    int* numeros = malloc(n*sizeof(int));
+    for(i = 0; i < n; i++) {
+        scanf("%d", &numeros[i]);
+    }
+    printf("Numero a buscar: ");
+    scanf(" %d", &k);
+    printf("%d", busqueda(n, k, numeros));
+    return 0;
+}
+
+int busqueda(int n, int k, int* numeros) {
+    if (numeros[n] == k) return n;
+    else if (n == 0) return -1;
+    else return busqueda(n-1, k, numeros);
+}
+```
 
 Decimal a binario
 -----------------
@@ -208,16 +234,67 @@ int esPalindromo(char cad[MAX], int i, int j){
 Torres de Hanoi
 ---------------
 
+``` c
+#include <stdio.h>
+
+void hanoi(int n, int source, int aux, int target);
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    hanoi(n, 1, 2, 3);
+    return 0;
+}
+
+void hanoi(int n, int source, int aux, int target) {
+    if(n == 1) {
+        printf("%d -> %d\n", source, target);
+        return;
+    }
+    hanoi(n-1, source, target, aux);
+    hanoi(1, source, aux, target);
+    hanoi(n-1, aux, source, target);
+    return;
+}
+```
+
 Pregunta 1 del Lab 2015-2: Triángulo
 ------------------------------------
 
-Traspuesta de la matriz
------------------------
+``` c
+#include <stdio.h>
+#include <stdlib.h>
 
-Implementar una función recursiva que teniendo como únicos parámetros un arreglo bidimensional de enteros (el cual representa una matriz cuadrada de orden N) y el orden de la misma, permita
+void triangulo(int, int);
 
-Para el Laboratorio
--------------------
+int main() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    triangulo(a, b);
+    return (EXIT_SUCCESS);
+}
+
+void triangulo(int a, int b) {
+    int i;
+    for(i = 0; i < a; i++) {
+        printf("*");
+    }
+    printf("\n");
+    if(a+1 <= b) triangulo(a+1, b);
+    for(i = 0; i < a; i++) {
+        printf("*");
+    }
+    printf("\n");
+    return;
+}
+```
+
+Transpuesta de la matriz
+------------------------
+
+Implementar una función recursiva que teniendo como únicos parámetros un arreglo bidimensional de enteros (el cual representa una matriz cuadrada de orden “N”) y el orden de la misma, permita obtener el mismo arreglo pero que contenga la transpuesta de dicha matriz. Nota: Se deberá trabajar únicamente con el arreglo bidimensional de enteros, sin utilizar ninguna estructura de datos adicional.
+
+### Para el Laboratorio
 
 -   Si se usa Netbeans: En la carpeta `/dist` está el ejecutable.
 -   Si el ejecutable es `factorial`, se pone `factorial < test.in.txt` para leer un archivo. Para leer y escribir `factorial < test.in > out.txt`.

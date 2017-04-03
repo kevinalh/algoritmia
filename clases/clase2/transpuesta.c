@@ -13,7 +13,6 @@ int main() {
             scanf("%d", &matriz[i][j]);
         }
     }
-    imprimirmatriz(N, matriz);
     printf("\n");
     for(i = 0; i < N; i++) {
         for(j = 0; j < N; j++) {
