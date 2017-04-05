@@ -1,39 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
-#define MAX_N 101
-#define MAX_M 101
+#define MAX_N 105
+#define MAX_M 105
 
 int gcd(int, int);
 
 int main() {
     int i, j, N, M, k;
-    int numeros[MAX_N][MAX_M];
-    int sizes[MAX_N];
-    scanf("%d", &N);
-    for(i = 0; i < N; i++) {
-        j = 0;
-        while(scanf("%d", &numeros[i][j])) {
-            if('\n' == getchar()) break;
-            else j++;
-        }
-        sizes[i] = j+1;
-    }
-    /*
-     * Esto no es para nada eficiente: No pasa en UVa por time limit
-     * Pero parece ser suficiente para el lab
-     */
+    int numeros[MAX_M];
     int maximo = 1;
     int aux = 0;
-    for(i = 0; i < N; i++){
+    scanf("%d", &N);
+    for(i = 0; i < N; i++) {
+        M = 0;
+        while(scanf("%d", &numeros[M])) {
+            if(getchar() != ' ') break;
+            else M++;
+        }
+        M++;
         maximo = 1;
-        for(j = 0; j < sizes[i]-1; j++) {
-            if(numeros[i][j] <= maximo) continue;
-            for(k = j + 1; k < sizes[i]; k++) {
-                if(numeros[i][k] < maximo) continue;
-                if(numeros[i][j] < maximo) break;
-                aux = gcd(numeros[i][j], numeros[i][k]);
+        for(j = 0; j < M-1; j++) {
+            for(k = j + 1; k < M; k++) {
+                aux = gcd(numeros[j], numeros[k]);
                 if(aux > maximo) maximo = aux;
             }
         }
