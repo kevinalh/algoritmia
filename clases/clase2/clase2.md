@@ -3,6 +3,17 @@ title: Algoritmia - Clase 2
 date: 27 de marzo
 ---
 
+- [Punteros](#punteros)
+- [Wedding](#wedding)
+- [Recursividad](#recursividad)
+    - [Número mayor](#nmero-mayor)
+    - [Búsqueda secuencial](#bsqueda-secuencial)
+    - [Decimal a binario](#decimal-a-binario)
+    - [Palíndromos](#palndromos)
+    - [Torres de Hanoi](#torres-de-hanoi)
+    - [Pregunta 1 del Lab 2015-2: Triángulo](#pregunta-1-del-lab-2015-2-tringulo)
+    - [Transpuesta de la matriz](#transpuesta-de-la-matriz)
+
 ## Punteros
 
 En el siguiente código se tiene un ejemplo de manejo de punteros.

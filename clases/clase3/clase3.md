@@ -188,7 +188,7 @@ int es_valido(int A[N][N], int n, int x, int y) {
 }
 ~~~
 
-Problema sencillo 
+Problema sencillo
 ---
 
 - Tenemos las edades de todas las personas del mundo. Queremos calcular la moda de las edades.
