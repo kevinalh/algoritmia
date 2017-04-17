@@ -1,5 +1,5 @@
 ---
-title: Clase 2
+title: Algoritmia - Clase 2
 date: 27 de marzo
 ---
 
