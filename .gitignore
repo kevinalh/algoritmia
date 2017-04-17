@@ -3,6 +3,7 @@ pasados/
 *.pdf
 .ycm_extra_conf.py
 .color_coded
+c_cpp_properties.json
 
 # Notas de clase
 *.bk
