@@ -3,11 +3,11 @@ title: Algoritmia - Clase 3
 geometry: margin=3cm
 date: 03 de abril
 ---
-Recursividad (parte 2)
-===
+# Algoritmia - Clase 3
 
-Patrón
----
+## Recursividad (parte 2)
+
+### Patrón
 
 Para poner varios casos, se usa `./patron < ../patron.in`, donde la primera línea da el número de casos y las siguientes dan los datos para cada una.
 
@@ -45,8 +45,7 @@ void patron(int n, int i) {
 }
 ~~~
 
-h-sequences
----
+### h-sequences
 
 ~~~{#hseqclase .c}
 #include <stdio.h>
@@ -79,8 +78,7 @@ int hseq(int ini, int fin, int seq[fin+1]) {
 }
 ~~~
 
-Backtracking
-===
+## Backtracking
 
 - Consiste en hacer prueba y error.
 - Probamos alternativas, y si no funciona alguna, retrocedemos y probamos con la siguiente inmediata en el nivel anterior.
@@ -90,8 +88,7 @@ Backtracking
 - Luego pensamos cómo representar los estados.
 - Finalmente, pensamos en cómo representar los movimientos.
 
-Knight's Tour
----
+### Knight's Tour
 
 - Dado un tablero n x n, un caballo se puede mover siguiente las reglas del ajedrez. Se empieza en la posición (x0, y0).
 - Se busca cubrir todo el tablero, si se puede.
@@ -188,15 +185,25 @@ int es_valido(int A[N][N], int n, int x, int y) {
 }
 ~~~
 
-Problema sencillo
----
+### Sudoku
+
+~~~{#sudoku .c}
+
+~~~
+
+### N-queens
+
+~~~{#nqueens .c}
+
+~~~
+
+### Problema sencillo
 
 - Tenemos las edades de todas las personas del mundo. Queremos calcular la moda de las edades.
 - Podemos tomar un arreglo de 120 entradas. Para cada persona, aumentamos uno a la casilla que contenga su edad.
 - Finalmente vamos linealmente en el arreglo para encontrar el más grande.
 
-Tarea
----
+## Tarea
 
 - Resolver el problema del ciclo Hamiltoniano con backtracking (vino en un Parcial pasado).
 - Lo que se puede llevar al laboratorio es sólo manuscrito.

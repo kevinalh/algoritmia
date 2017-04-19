@@ -4,6 +4,7 @@ pasados/
 .ycm_extra_conf.py
 .color_coded
 c_cpp_properties.json
+.vscode/
 
 # Notas de clase
 *.bk
