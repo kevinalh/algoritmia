@@ -72,3 +72,4 @@ void inicializarTablero(int tablero[N][N], int dim) {
     }
     return;
 }
+

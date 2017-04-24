@@ -1,8 +1,10 @@
-Recursividad (parte 2)
-======================
+Algoritmia - Clase 3
+====================
 
-Patrón
-------
+Recursividad (parte 2)
+----------------------
+
+### Patrón
 
 Para poner varios casos, se usa `./patron < ../patron.in`, donde la primera línea da el número de casos y las siguientes dan los datos para cada una.
 
@@ -40,8 +42,7 @@ void patron(int n, int i) {
 }
 ```
 
-h-sequences
------------
+### h-sequences
 
 ``` c
 #include <stdio.h>
@@ -75,7 +76,7 @@ int hseq(int ini, int fin, int seq[fin+1]) {
 ```
 
 Backtracking
-============
+------------
 
 -   Consiste en hacer prueba y error.
 -   Probamos alternativas, y si no funciona alguna, retrocedemos y probamos con la siguiente inmediata en el nivel anterior.
@@ -85,8 +86,7 @@ Backtracking
 -   Luego pensamos cómo representar los estados.
 -   Finalmente, pensamos en cómo representar los movimientos.
 
-Knight's Tour
--------------
+### Knight's Tour
 
 -   Dado un tablero n x n, un caballo se puede mover siguiente las reglas del ajedrez. Se empieza en la posición (x0, y0).
 -   Se busca cubrir todo el tablero, si se puede.
@@ -183,8 +183,41 @@ int es_valido(int A[N][N], int n, int x, int y) {
 }
 ```
 
-Problema sencillo
------------------
+### Sudoku
+
+<sub>~</sub>{\#sudoku .c} \#include &lt;stdio.h&gt; \#include &lt;stdlib.h&gt;
+
+define N 9
+==========
+
+int sudoku(int tabla\[N\]\[N\], int x, int y); int esValida(int tabla\[N\]\[N\], int x, int y, int n); void imprimirTabla(int tabla\[N\]\[N\]);
+
+int main() { int tabla\[N\]\[N\]; int i, j; /\* Las casillas vacias deben tener un cero \*/ for(i = 0; i &lt; N; i++) { for(j = 0; j &lt; N; j++) { scanf("%d", &tabla\[i\]\[j\]); } } if(sudoku(tabla, 0, 0)) { imprimirTabla(tabla); } else { printf("No se encontro solucion"); } return 0; }
+
+int sudoku(int tabla\[N\]\[N\], int x, int y) { if(x == N && y == N-1) { return 1; } if(x == N) { return sudoku(tabla, 0, y+1); } if(tabla\[x\]\[y\] != 0) { return sudoku(tabla, x+1, y); } int n; for(n = 1; n &lt;= N; n++) { /\* Evaluamos si la opcion es valida */ if(esValida(tabla, x, y, n)) { /* Modificamos el tablero \*/ tabla\[x\]\[y\] = n; if(sudoku(tabla, x+1, y)) { return 1; } else { tabla\[x\]\[y\] = 0; } } } return 0; }
+
+int esValida(int tabla\[N\]\[N\], int x, int y, int n) { int i, j; /\* La fila y la columna no deben contener a n */ for(i = 0; i &lt; N; i++) { if(tabla\[x\]\[i\] == n || tabla\[i\]\[y\] == n) return 0; } /* Revisamos el cuadrante 3x3 */ /* Hallamos la coordenada (x1, y1) donde empieza el cuadrado */ int x1 = (x/3)*3; int y1 = (y/3)\*3; for(i = x1; i &lt; x1 + 3; i++) { for(j = y1; j &lt; y1 + 3; j++) { if(tabla\[i\]\[j\] == n) return 0; } } return 1; }
+
+void imprimirTabla(int tabla\[N\]\[N\]) { int i, j, k; for (i = 0; i &lt; N; i++) { for (j = 0; j &lt; N; j++) { printf("%d ", tabla\[i\]\[j\]); if(j == 2 || j == 5) printf("| "); } if(i == 2 || i == 5) { printf(""); for(k = 0; k &lt; N+2; k++) { printf("--"); } } printf(""); } }
+
+<sub>~</sub>{\#nqueens .c} \#include &lt;stdio.h&gt; \#include &lt;stdlib.h&gt;
+
+define N 20
+===========
+
+int reinas(int tablero\[N\]\[N\], int n, int dim); void imprimirTablero(int tablero\[N\]\[N\], int dim); void inicializarTablero(int tablero\[N\]\[N\], int dim); int esValido(int tablero\[N\]\[N\], int fila, int columna, int dim);
+
+int main() { int n, dim; scanf("%d", &n); int tablero\[N\]\[N\]; inicializarTablero(tablero, n); if(reinas(tablero, 0, n)) { imprimirTablero(tablero, n); } else printf("No se encontro solucion"); return 0; }
+
+int reinas(int tablero\[N\]\[N\], int n, int dim) { if(n == dim) return 1; int i; /\* Basta revisar sobre cada columna \*/ for(i = 0; i &lt; dim; i++) { if (esValido(tablero, i, n, dim)) { tablero\[i\]\[n\] = 1; if(reinas(tablero, n+1, dim)) return 1; else tablero\[i\]\[n\] = 0; } } return 0; }
+
+int esValido(int tablero\[N\]\[N\], int fila, int columna, int dim) { int i, j; /\* Basta revisar a la izquierda, pues no hay piezas a la derecha */ /* Buscamos alguna reina en la fila */ for(i = 0; i &lt; columna; i++) { if(tablero\[fila\]\[i\]) return 0; } /* Diagonal  */ for(i = fila, j = columna; i &gt;= 0 && j &gt;= 0; i--, j--) { if(tablero\[i\]\[j\]) return 0; } /* Diagonal / */ for(i = fila, j = columna; i &lt; dim && j &gt;= 0; i++, j--) { if(tablero\[i\]\[j\]) return 0; } /* No es necesario revisar las columnas por construccion \*/ return 1; }
+
+void imprimirTablero(int tablero\[N\]\[N\], int dim) { int i, j; for(i = 0; i &lt; dim; i++) { for(j = 0; j &lt; dim; j++) { printf("%d ", tablero\[i\]\[j\]); } printf(""); } return; }
+
+void inicializarTablero(int tablero\[N\]\[N\], int dim) { int i, j; for(i = 0; i &lt; dim; i++) { for(j = 0; j &lt; dim; j++) { tablero\[i\]\[j\] = 0; } } return; }<sub>~</sub>
+
+### Problema sencillo
 
 -   Tenemos las edades de todas las personas del mundo. Queremos calcular la moda de las edades.
 -   Podemos tomar un arreglo de 120 entradas. Para cada persona, aumentamos uno a la casilla que contenga su edad.

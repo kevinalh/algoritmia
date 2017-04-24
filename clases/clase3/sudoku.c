@@ -84,3 +84,4 @@ void imprimirTabla(int tabla[N][N]) {
         printf("\n");
     }
 }
+
