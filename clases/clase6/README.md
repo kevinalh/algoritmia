@@ -35,7 +35,7 @@ int main() {
 ### Hangover
 
 -   En programación dinámica normalmente se usa una tabla de resultados conocidos, a partir de las cuales llenamos instancias más complejas.
--   [Hangover](poj.org/problem?id=1003) es un problema que se puede resolver siguiendo este principio
+-   [Hangover](http://poj.org/problem?id=1003) es un problema que se puede resolver siguiendo este principio
 
 ``` c
 #include <stdio.h>
@@ -100,6 +100,45 @@ int main() {
         sol[i] = max(coins[i] + sol[i-2], sol[i-1]);
     }
     printf("%d\n", sol[n-1]);
+    return 0;
+}
+```
+
+### Longest Increasing Subsequence (LIS)
+
+-   Dada una secuencia, hallar la longitud de la subsecuencia más grande de tal forma que todos los elementos estén ordenados en forma creciente.
+-   La idea es ir guardando la longitud máxima posible que contiene al i-ésimo elemento como el último de la secuencia.
+-   La complejidad es 𝒪(*n*<sup>2</sup>).
+
+``` c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXN 100
+
+int main() {
+    int seq[MAXN];
+    int n, i, j;
+    scanf("%d", &n);
+    for(i = 0; i < n; ++i) {
+        scanf("%d", &seq[i]);
+    }
+    int lis[MAXN];
+    memset(lis, 0, MAXN*sizeof(int));
+    lis[0] = 1;
+    for(i = 1; i < n; ++i) {
+        for(j = 0; j < i; ++j) {
+            if(seq[j] < seq[i] && lis[j]+1 > lis[i]) {
+                lis[i] = lis[j]+1;
+            }
+        }
+    }
+    int max = 0;
+    for(i = 0; i < n; ++i) {
+        if(lis[i] > max) max = lis[i];
+    }
+    printf("Longest Increasing Subsequence: %d\n", max);
     return 0;
 }
 ```
