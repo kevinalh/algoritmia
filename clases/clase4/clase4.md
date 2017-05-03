@@ -55,7 +55,7 @@ int busquedaBinaria(int v[NMAX], int ini, int fin, int k) {
         int medio = (ini+ fin) / 2;
         if(v[medio] == k)
             return medio;
-        if(v[medio] <  k)
+        if(v[medio] <  k) 
             return busquedaBinaria(v, medio+1, fin, k);
         else
             return busquedaBinaria(v, ini, medio-1, k);

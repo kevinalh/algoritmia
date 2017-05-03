@@ -274,6 +274,9 @@ void imprimirTabla(int tabla[N][N]) {
         printf("\n");
     }
 }
+~~~
+
+### N Queens
 
 ~~~{#nqueens .c}
 #include <stdio.h>
@@ -349,7 +352,8 @@ void inicializarTablero(int tablero[N][N], int dim) {
         }
     }
     return;
-}~~~
+}
+~~~
 
 ### Problema sencillo
 

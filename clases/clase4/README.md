@@ -23,6 +23,8 @@ Divide y vencerás
 Búsqueda binaria
 ----------------
 
+-   Se puede usar una versión iterativa, pero en nuestro caso lo hacemos recursivamente.
+
 ``` c
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,3 +72,5 @@ Mergesort
 -   A veces se prefiere usar Quicksort, pues en Mergesort cada división crea nuevos vectores paralelos, lo cual ocupa espacio.
 -   Sin embargo, Quicksort es de complejidad 𝒪(*n*<sup>2</sup>).
 
+\#\# Quicksort
+--------------
