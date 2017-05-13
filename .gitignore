@@ -5,6 +5,7 @@ pasados/
 .color_coded
 c_cpp_properties.json
 .vscode/
+*.exe
 
 # Notas de clase
 *.bk
