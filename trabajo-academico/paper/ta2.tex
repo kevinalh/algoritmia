@@ -1,14 +1,11 @@
 \RequirePackage[l2tabu, orthodox]{nag}
 % The following is to avoid the incompatibility between the nag package and babel.
 % See https://tex.stackexchange.com/questions/240868/how-to-write-cases-with-latex
-\makeatletter
-\renewcommand\thenag@c{\romannumeral\c@nag@c}
-\makeatother
 \documentclass[journal]{IEEEtran}
 
 \usepackage[utf8]{inputenc}
 \usepackage{comment}
-\usepackage[english, spanish]{babel}
+\usepackage[english, spanish, es-lcroman]{babel}
 
 \usepackage{cite}
 \usepackage[pdftex]{graphicx}
@@ -94,7 +91,7 @@ En este artículo, describimos tres métricas de centralidad: \textit{Closeness}
 
 Definimos, como es usual, un \textbf{grafo} como un par \(G = (V, E)\), donde \(V\) es el conjunto de vértices o nodos, y \(E \subset [V]^2 \) el de aristas, con \([V]^2 = \{ X \subset V : |X| = 2 \}\). Una consecuencia de esta definición es que el grafo debe ser no dirigido y las aristas están completamente determinadas por los nodos que unen \cite{diestel}. Escribimos \(uv\) en lugar de \(\{u, v\}\) por facilidad notacional (nótese que \(uv = vu\)).
 
-Consideramos una función \(w: E \rightarrow \mathbb{N} \) que asigna a cada arista un \textbf{peso}. Esto nos permite hablar de una relación múltiple entre dos nodos (e.g. múltiples colaboraciones entre dos autores) \footnote{La descripción usual para trabajar con aristas múltiples es la de multigrafo \cite{diestel}, pero preferimos emplear una función auxiliar para tener una representación más sencilla de implementar. }. 
+Consideramos una función \(w: E \rightarrow \mathbb{N} \) que asigna a cada arista un \textbf{peso}. Esto nos permite hablar de una relación múltiple entre dos nodos (e.g.\ múltiples colaboraciones entre dos autores)\footnote{La descripción usual para trabajar con aristas múltiples es la de multigrafo \cite{diestel}, pero preferimos emplear una función auxiliar para tener una representación más sencilla de implementar. }. 
 
 \subsection{Degree}
 
@@ -170,16 +167,16 @@ R.~Diestel, \emph{Graph Theory}, 3ra edición. Heidelberg, Alemania: Springer, 2
 B.~Bollobás, \emph{Modern Graph Theory}. New York City, NY: Springer, 1998.
 
 \bibitem{google}
-S.~Brin y L.~Page, ''The Anatomy of a Large-Scale Hypertextual Web Search Engine``. \emph{Computer Networks and ISDN Systems}, vol. 30, pp. 107–117, Abril 1998.
+S.~Brin y L.~Page, ``The Anatomy of a Large-Scale Hypertextual Web Search Engine''. \emph{Computer Networks and ISDN Systems}, vol. 30, pp. 107–117, Abril 1998.
 
 \bibitem{langville}
 A.~Langville, C.~Meyer, \emph{Google's PageRank and Beyond: The Science of Search Engine Rankings}. Princeton, NJ: Princeton University Press, 2012.
 
 \bibitem{newman}
-M.~Newman, ''Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality``. \emph{Physical Review}, vol. 64, Junio 2001.
+M.~Newman, ``Scientific collaboration networks. II\@. Shortest paths, weighted networks, and centrality''. \emph{Physical Review}, vol. 64, Junio 2001.
 
 \bibitem{sinha}
-R.~Sinha y R.~Mihalcea, ''Unsupervised Graph-based Word Sense Disambiguation Using Measures of Word Semantic Similarity`` en \emph{Proceedings of the International Conference on Semantic Computing}, Washington, DC, 2007, pp. 363-369.
+R.~Sinha y R.~Mihalcea, ``Unsupervised Graph-based Word Sense Disambiguation Using Measures of Word Semantic Similarity'' en \emph{Proceedings of the International Conference on Semantic Computing}, Washington, DC, 2007, pp. 363-369.
 
 \end{thebibliography}
 

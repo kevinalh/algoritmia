@@ -14,8 +14,11 @@ int main() {
     char *s, *t;
     char tmp1[MAXSTRING];
     char tmp2[MAXSTRING];
-	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria.txt", "r");
+	/*FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria.txt", "r");
 	FILE* fp2 = fopen("L:/workspace/algoritmia/trabajo-academico/data/graphoutput.txt", "w");
+    */
+    FILE* fp = stdin;
+    FILE* fp2 = stdout;
     fscanf(fp, "%d ", &cs);
     while(cs--) {
         fgets(tmp1, MAXSTRING-1, fp);
