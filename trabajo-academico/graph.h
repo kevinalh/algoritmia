@@ -1,35 +1,64 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef char* TElement;
 
 typedef struct edge {
-    TElement val;
-    int w;
+    int index;
+    int weight;
     struct edge* next;
 } TEdge;
 
 typedef struct vertex {
-    TElement val;
+    TElement value;
     TEdge* first;
     TEdge* last;
-    int deg;
-    struct vertex* next;
+    int degree;
 } TVertex;
 
+typedef struct binarySearchTreeNode {
+	int index;
+	int depth;
+    struct binarySearchTreeNode* left;
+    struct binarySearchTreeNode* right;
+} TBstNode;
+
+typedef struct binarySearchTree {
+	int depth;
+    TBstNode* root;
+} TBst;
+
 typedef struct graph {
+    int maxsize;
     int size;
-    TVertex* first;
-    TVertex* last;
+    TVertex* nodes;
+    TBst tree;
 } TGraph;
 
+/* Funciones utilitarias */
 void reportError(char*);
-int compare(TElement, TElement);
-void graphInitialize(TGraph*);
-TVertex* graphInsertVertex(TGraph*, TElement);
-TEdge* graphInsertEdge(TVertex*, TElement);
-TVertex* graphVertexSearch(TGraph*, TElement);
-TEdge* graphEdgePointOfInsertion(TGraph*, TElement, TElement);
-void graphInsertPair(TGraph*, TElement, TElement);
+int cmp(TElement, TElement);
+void graphPrint(TGraph*, FILE*);
+void graphVertexPrint(TGraph*, int, FILE*);
+void graphCleanAll(TGraph*);
+
+/* Funciones que trabajan con el grafo */
+void graphInitialize(TGraph*, int size);
 int graphIsEmpty(TGraph*);
+void graphCheckMemory(TGraph*);
+
+/* Funciones que trabajan con los vértices */
+int graphVertexIndex(TGraph*, TElement);
+int graphVertexExists(TGraph*, TElement);
+int graphInsertVertex(TGraph*, TElement);
+void graphInitializeVertex(TVertex*, TElement);
+void graphPutVertexInTree(TGraph*, int);
+TVertex* graphVertexPointer(TGraph*, int);
+
+/* Funciones para las aristas */
+void graphInsertEdge(TGraph*, TElement, TElement);
+void graphInsertEdgeToVertex(TGraph*, int, TEdge*);
+TEdge* graphSearchEdgeAroundVertex(TGraph*, int, int);
+void graphInitializeEdge(TEdge*, int);

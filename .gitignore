@@ -12,6 +12,8 @@ data/
 examples/
 IEEEtran/
 
+.vs/
+
 # Notas de clase
 *.bk
 

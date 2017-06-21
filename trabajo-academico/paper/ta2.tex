@@ -129,7 +129,7 @@ C_C (u) = \frac{1}{\sum_{v \in V} d(u, v)}
 
 Sea \(\alpha\) un número en \([0, 1]\), llamado el \textbf{factor amortiguador}.
 
-Definimos el \textbf{PageRank} de un vértice de la siguiente manera
+Definimos el \textbf{PageRank} de un vértice de manera recursiva:
 
 \begin{equation}
 	PR(u) = \frac{(1-\alpha)}{|V|} + \alpha \sum_{v \in \Gamma(u)} \frac{PR(v)}{deg(v)} w(uv)
@@ -140,8 +140,6 @@ Llamaremos a cada término de la sumatoria el \textit{aporte del vértice} \(v\)
 PageRank fue originalmente diseñado para cuantificar la importancia de un sitio web, con el fin de implementar un sistema de búsqueda. La definición se basa en la idea de una persona a la que se le asigna un sitio web aleatorio, y va moviéndose a otros sitios a través de hipervínculos. El factor amortiguador es la probabilidad de que la persona deje de hacer este procedimiento y pida otro sitio aleatorio. El PageRank de un sitio web representa la probabilidad de que la persona ingrese al mismo \cite{google}. El aporte a cada sitio a donde se apunta se distribuye equitativamente.
 
 La definición original se aplica a grafos dirigidos sin aristas múltiples. En nuestro caso, no hace falta distinguir entre hipervínculos que salen del sitio web, y los que van hacia él. Sin embargo, sí es importante tomar en cuenta los pesos asignados a cada arista. Si un autor colabora más de una vez con una persona importante, esto debe reflejarse en el PageRank asignado. Por eso, el aporte ya no es equitativo entre los vecinos de un nodo, pero sí entre sus aristas. Para considerar este efecto, se pone el factor del peso en el aporte.
-
-Nótese que la definición es recursiva
 
 \section{Resultados}
 
@@ -179,6 +177,9 @@ A.~Langville, C.~Meyer, \emph{Google's PageRank and Beyond: The Science of Searc
 
 \bibitem{newman}
 M.~Newman, ''Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality``. \emph{Physical Review}, vol. 64, Junio 2001.
+
+\bibitem{sinha}
+R.~Sinha y R.~Mihalcea, ''Unsupervised Graph-based Word Sense Disambiguation Using Measures of Word Semantic Similarity`` en \emph{Proceedings of the International Conference on Semantic Computing}, Washington, DC, 2007, pp. 363-369.
 
 \end{thebibliography}
 
