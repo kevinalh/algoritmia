@@ -6,4 +6,4 @@ set(CMAKE_BUILD_TYPE Release)
 
 include_directories("${PROJECT_BINARY_DIR}")
 
-add_executable(graph main.c graph.c)
+add_executable(graph main.c graph.c graphalgorithms.c heap.c queue.c)

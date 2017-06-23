@@ -14,7 +14,7 @@
 \interdisplaylinepenalty=2500
 \usepackage{algorithmicx}
 \usepackage{array}
-
+\usepackage{siunitx}
 
 \ifCLASSOPTIONcompsoc
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
@@ -51,8 +51,8 @@
 %
 
 \author{Kevin~Languasco,~\IEEEmembership{20132102}
-        Melany~Chávez,~\IEEEmembership{}
-        y~Jesús~Advíncula,~\IEEEmembership{}%
+        Melany~Chávez,~\IEEEmembership{20092344}
+        y~Jesús~Advíncula,~\IEEEmembership{20135452}%
 }
 
 \maketitle
@@ -138,7 +138,8 @@ PageRank fue originalmente diseñado para cuantificar la importancia de un sitio
 
 La definición original se aplica a grafos dirigidos sin aristas múltiples. En nuestro caso, no hace falta distinguir entre hipervínculos que salen del sitio web, y los que van hacia él. Sin embargo, sí es importante tomar en cuenta los pesos asignados a cada arista. Si un autor colabora más de una vez con una persona importante, esto debe reflejarse en el PageRank asignado. Por eso, el aporte ya no es equitativo entre los vecinos de un nodo, pero sí entre sus aristas. Para considerar este efecto, se pone el factor del peso en el aporte.
 
-\section{Resultados}
+\section{Experimentos y resultados}
+El grafo resultante contiene un total de \num{1411345} vértices y \num{5946615} aristas, sin contar sus pesos (contándolos, hay \num{10615809}). Este grafo es lo suficientemente esparso\footnote{Se considera esparso cuando \(|E| = o(|V|^2 / \log(|V|))\)\cite{clrs}, condición que se cumple en este caso.}, y se suelen usar colas de prioridad.
 
 \section{Discusión}
 
@@ -154,7 +155,7 @@ La definición original se aplica a grafos dirigidos sin aristas múltiples. En 
 \begin{thebibliography}{2}
 
 \bibitem{brandes}
-U.~Brandes et al., \emph{Network Analysis: Methodological Foundations}.\hskip 1em plus
+U.~Brandes \textit{et al.}, \emph{Network Analysis: Methodological Foundations}.\hskip 1em plus
 0.5em minus 0.4em\relax Saarland, Alemania: Springer, 2005, pp. 16-34.
 
 \bibitem{bondy}
@@ -177,6 +178,12 @@ M.~Newman, ``Scientific collaboration networks. II\@. Shortest paths, weighted n
 
 \bibitem{sinha}
 R.~Sinha y R.~Mihalcea, ``Unsupervised Graph-based Word Sense Disambiguation Using Measures of Word Semantic Similarity'' en \emph{Proceedings of the International Conference on Semantic Computing}, Washington, DC, 2007, pp. 363-369.
+
+\bibitem{heap}
+M.~Chen \textit{et al.}, ``Priority Queues and Dijkstra’s Algorithm,'' The University of Texas at Austin, Department of Computer Sciences, Austin, TX, Rep. TR-07-54, Oct. 2007.
+
+\bibitem{clrs}
+T.~Cormen \textit{et al.} \emph{Introduction to Algorithms}. Cambridge, MA: MIT Press, 2009.
 
 \end{thebibliography}
 

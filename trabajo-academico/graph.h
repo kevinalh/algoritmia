@@ -16,6 +16,8 @@ typedef struct vertex {
     TEdge* first;
     TEdge* last;
     int degree;
+	double pagerank;
+	double closeness;
 } TVertex;
 
 typedef struct binarySearchTreeNode {
@@ -33,32 +35,32 @@ typedef struct binarySearchTree {
 typedef struct graph {
     int maxsize;
     int size;
+	int nEdges;
     TVertex* nodes;
     TBst tree;
 } TGraph;
 
 /* Funciones utilitarias */
-void reportError(char*);
-int cmp(TElement, TElement);
-void graphPrint(TGraph*, FILE*);
-void graphVertexPrint(TGraph*, int, FILE*);
-void graphCleanAll(TGraph*);
+void reportError(char* errorMessage);
+int cmp(TElement x, TElement y);
+void graphPrint(TGraph* g, FILE* fp);
+void graphVertexPrint(TGraph* g, int vindex, FILE* fp);
+void graphCleanAll(TGraph* g);
+char* graphStringFromVertex(TGraph* g, int vindex);
 
 /* Funciones que trabajan con el grafo */
-void graphInitialize(TGraph*, int size);
-int graphIsEmpty(TGraph*);
-void graphCheckMemory(TGraph*);
+void graphInitialize(TGraph* g, int size);
 
 /* Funciones que trabajan con los vértices */
-int graphVertexIndex(TGraph*, TElement);
-int graphVertexExists(TGraph*, TElement);
-int graphInsertVertex(TGraph*, TElement);
-void graphInitializeVertex(TVertex*, TElement);
-void graphPutVertexInTree(TGraph*, int);
-TVertex* graphVertexPointer(TGraph*, int);
+int graphVertexIndex(TGraph* g, TElement s);
+int graphVertexExists(TGraph* g, TElement s);
+int graphInsertVertex(TGraph* g, TElement s);
+void graphInitializeVertex(TVertex* v, TElement s);
+void graphPutVertexInTree(TGraph* g, int pos);
+TVertex* graphVertexPointer(TGraph* g, int vindex);
 
 /* Funciones para las aristas */
-void graphInsertEdge(TGraph*, TElement, TElement);
-void graphInsertEdgeToVertex(TGraph*, int, TEdge*);
-TEdge* graphSearchEdgeAroundVertex(TGraph*, int, int);
-void graphInitializeEdge(TEdge*, int);
+void graphInsertEdge(TGraph* g, TElement s, TElement t);
+void graphInsertEdgeToVertex(TGraph* g, int vindex, TEdge* e);
+TEdge* graphSearchEdgeAroundVertex(TGraph* g, int vindex, int a);
+void graphInitializeEdge(TEdge* e, int vindex);

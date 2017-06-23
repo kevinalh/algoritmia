@@ -11,25 +11,11 @@
 void graphInitialize(TGraph* g, int size) {
     g->size = 0;
     g->maxsize = size-1;
+	g->nEdges = 0;
     g->nodes = malloc(size*sizeof(TVertex));
 	if (g->nodes == NULL) reportError("Memory");
     g->tree.root = NULL;
 	g->tree.depth = 0;
-    return;
-}
-
-/**
-* Revisa si se necesita más memoria para almacenar el grafo.
-* De ser así, almacena más (Experimental).
-*/
-void graphCheckMemory(TGraph* g) {
-    int limit = g->maxsize;
-    if(g->size >= limit - 1) {
-        int newlimit = limit*2;
-        g->nodes = realloc(g->nodes, newlimit);
-        if(g->nodes == NULL) reportError("Memory");
-        g->maxsize = newlimit;
-    }
     return;
 }
 
@@ -63,6 +49,7 @@ void graphInsertEdge(TGraph* g, TElement s, TElement t) {
     /* Aumentar una arista siempre aumentará el grado por 1 */
     g->nodes[a].degree++;
     g->nodes[b].degree++;
+	g->nEdges++;
     return;
 }
 
@@ -83,8 +70,8 @@ TEdge* graphSearchEdgeAroundVertex(TGraph* g, int vindex, int a) {
 /**
 * Inicializa una arista.
 */
-void graphInitializeEdge(TEdge* e, int i) {
-    e->index = i;
+void graphInitializeEdge(TEdge* e, int vindex) {
+    e->index = vindex;
     e->weight = 1;
     e->next = NULL;
     return;
@@ -120,8 +107,6 @@ int graphInsertVertex(TGraph* g, TElement s) {
         /* Inicializamos el vértice (que ya está reservado) */
         graphInitializeVertex(v, s);
         g->size++;
-        /* Revisamos que no se tenga desborde de memoria */
-        graphCheckMemory(g);
         graphPutVertexInTree(g, n);
         return n;
     }
@@ -138,7 +123,6 @@ void graphPutVertexInTree(TGraph* g, int pos) {
     TBstNode* node = malloc(sizeof(TBstNode));
 	if (node == NULL) reportError("Memory");
     char* s = g->nodes[pos].value;
-    if(node == NULL) reportError("Memory");
     node->index = pos;
     node->left = NULL;
     node->right = NULL;
@@ -189,6 +173,8 @@ void graphInitializeVertex(TVertex* v, TElement s) {
     v->first = NULL;
     v->last = NULL;
     v->degree = 0;
+	v->pagerank = 0;
+	v->closeness = 0;
     return;
 }
 
@@ -241,8 +227,8 @@ int cmp(TElement x, TElement y) {
 * Función que reporta errores que pueden suceder durante
 * la ejecución del programa, y termina con la ejecución.
 */
-void reportError(char* s) {
-    fprintf(stderr, "%s error.\n", s);
+void reportError(char* errorMessage) {
+    fprintf(stderr, "%s error.\n", errorMessage);
     exit(EXIT_FAILURE);
 }
 
@@ -252,14 +238,8 @@ void reportError(char* s) {
 void graphPrint(TGraph* g, FILE* fp) {
     int i;
     fprintf(fp, "Size: %d\n", g->size);
-    fprintf(fp, "Maximum size: %d\n", g->maxsize);
+    fprintf(fp, "Amount of edges: %d\n", g->nEdges);
 	fprintf(fp, "Binary Search Tree depth: %d\n", g->tree.depth);
-	TVertex* v;
-	for(i = 0; i < g->size; ++i) {
-		v = malloc(sizeof(TVertex));
-		graphVertexPrint(g, i, fp);
-		v = malloc(sizeof(TVertex));
-	}
     return;
 }
 
@@ -280,6 +260,14 @@ void graphVertexPrint(TGraph* g, int vindex, FILE* fp) {
     }
     fprintf(fp, "\n");
     return;
+}
+
+/**
+* Devuelve el string que contiene un vértice, dado su 
+* índice.
+*/
+char* graphStringFromVertex(TGraph* g, int vindex) {
+	return graphVertexPointer(g, vindex)->value;
 }
 
 /**
