@@ -15,4 +15,4 @@ void computePageRankMetricIterative(TGraph*, double, int, int);
 int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int maxIterations, double eps);
 double computePageRankMetricVertex(TGraph* g, int, double);
 void computeClosenessMetric(TGraph* g);
-double computeClosenessMetricVertex(TGraph* g, int uindex);
+double computeClosenessMetricVertex(TGraph* g, int uindex, double* dist);

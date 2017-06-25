@@ -4,9 +4,9 @@
 #include <float.h>
 
 #include "graph.h"
-#include "heap.h"
 #include "graphalgorithms.h"
 #include "queue.h"
+#include "priority_queue.h"
 
 #ifndef MAXSIZE
 
@@ -19,7 +19,7 @@
 */
 int getDegreeErdos(TGraph* g) {
 	int i, size = g->size, maxdeg = 0, currdeg = 0, k = 0;
-	/* Buscamos linealmente el índice tal que el grado sea mayor */
+	/* Buscamos linealmente el Ã­ndice tal que el grado sea mayor */
 	for (i = 0; i < size; ++i) {
 		currdeg = graphVertexPointer(g, i)->degree;
 		if (currdeg > maxdeg) {
@@ -36,7 +36,7 @@ int getDegreeErdos(TGraph* g) {
 int getPageRankErdos(TGraph* g) {
 	int i, size = g->size, k = 0;
 	double maxpr = 0, currpr = 0;
-	/* Buscamos linealmente el índice tal que el PageRank sea mayor */
+	/* Buscamos linealmente el Ã­ndice tal que el PageRank sea mayor */
 	for (i = 0; i < size; ++i) {
 		currpr = graphVertexPointer(g, i)->pagerank;
 		if (currpr > maxpr) {
@@ -48,14 +48,14 @@ int getPageRankErdos(TGraph* g) {
 }
 
 /**
-* Devuelve un entero que corresponde con el elemento con mayor cercanía.
+* Devuelve un entero que corresponde con el elemento con mayor cercanÃ­a.
 */
 int getClosenessErdos(TGraph* g) {
 	int i, size = g->size, k = 0;
 	double maxpr = 0, currpr = 0;
-	/* Buscamos linealmente el índice tal que la cercanía sea mayor */
+	/* Buscamos linealmente el Ã­ndice tal que la cercanÃ­a sea mayor */
 	for (i = 0; i < size; ++i) {
-		currpr = graphVertexPointer(g, i)->closeness;
+		currpr = graphVertexPointer(g, i)-> closeness;
 		if (currpr > maxpr) {
 			maxpr = currpr;
 			k = i;
@@ -65,11 +65,11 @@ int getClosenessErdos(TGraph* g) {
 }
 
 /**
-* Inicializa todos los vértices a un PageRank por defecto,
-* de acuerdo con la opción seleccionada.
+* Inicializa todos los vÃ©rtices a un PageRank por defecto,
+* de acuerdo con la opciÃ³n seleccionada.
 * - 1: Usando el degree.
 * - 2: Usando closeness.
-* - default: Usando la inversa de la cantidad de vértices.
+* - default: Usando la inversa de la cantidad de vÃ©rtices.
 */
 void graphInitializePageRank(TGraph* g, int option) {
 	int size = g->size;
@@ -91,7 +91,7 @@ void graphInitializePageRank(TGraph* g, int option) {
 }
 
 /**
-* Computa la métrica de PageRank para todo el grafo, iterando una dada cantidad de veces.
+* Computa la mÃ©trica de PageRank para todo el grafo, iterando una dada cantidad de veces.
 */
 void computePageRankMetricIterative(TGraph* g, double alpha, int iniOption, int iterations) {
 	graphInitializePageRank(g, iniOption);
@@ -105,7 +105,7 @@ void computePageRankMetricIterative(TGraph* g, double alpha, int iniOption, int 
 }
 
 /**
-* Computa la métrica de PageRank para todo el grafo, empleando un epsilon que da el
+* Computa la mÃ©trica de PageRank para todo el grafo, empleando un epsilon que da el
 * criterio de convergencia. Retorna la cantidad de iteraciones tomadas.
 */
 int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int maxIterations, double eps) {
@@ -119,7 +119,7 @@ int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int max
 		for (i = 0; i < size; ++i) {
 			lastPR = graphVertexPointer(g, i)->pagerank;
 			newPR = computePageRankMetricVertex(g, i, alpha);
-			/* Si la diferencia entre los PageRanks es mayor que el epsilon, no hay convergencia aún. */
+			/* Si la diferencia entre los PageRanks es mayor que el epsilon, no hay convergencia aÃºn. */
 			diff = fabs(newPR - lastPR);
 			if (diff > maxdiff) maxdiff = diff;
 		}
@@ -132,7 +132,7 @@ int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int max
 }
 
 /**
-* Computa el nuevo PageRank para un vértice.
+* Computa el nuevo PageRank para un vÃ©rtice.
 */
 double computePageRankMetricVertex(TGraph* g, int uindex, double alpha) {
 	TVertex* u = graphVertexPointer(g, uindex);
@@ -150,87 +150,71 @@ double computePageRankMetricVertex(TGraph* g, int uindex, double alpha) {
 	return pr;
 }
 
-/**
-* Aplica el algoritmo de Dijkstra para un vértice.
-*/
-void dijkstra(TGraph* g, int sourceIndex, double* dist, THeap* priorityQueue) {
-	int size = g->size, i, u, v;
-	double newDistance;
-	TEdge* e;
-	/* Solamente ponemos tamaño cero para evitar estar limpiando memoria y
-	reservando otra vez (lo cual toma mucho tiempo). Es mejor reservar una
-	vez en la función que llama a esta. */
-	priorityQueue->size = 0;
-	/* La distancia de un vértice a sí mismo es cero */
-	dist[sourceIndex] = 0;
-	heapInsertFast(priorityQueue, sourceIndex);
-	for (i = 0; i < size; ++i) {
-		if (i == sourceIndex) continue;
-		dist[i] = DBL_MAX;
-		heapInsertFast(priorityQueue, i);
-	}
-	while (!heapIsEmpty(priorityQueue)) {
-		u = heapPopMinimum(priorityQueue, dist);
-		if (dist[u] >= DBL_MAX) {
-			printf("");
-		}
+void dijkstra(TGraph* g, int root, double* dist) {
+	int size = g->size , v; 
+	for(int i = 0; i < size; ++i) dist[i] = DBL_MAX;
+	dist[root] = 0; 
+	HeapNode front;
+	front.fst = 0;
+	front.snd = root;
+	TPriorityQueue pq;
+	pqInitialize(&pq, MAXSIZE);
+	pqPush(&pq, front);
+	double d, def_weight;
+	int u;
+	TEdge* e;	
+	while(!pqEmpty(&pq)) {
+		front = pqTop(&pq); 
+		d = front.fst;
+		u = front.snd;
+		if( d > dist[u] ) continue;
 		e = graphVertexPointer(g, u)->first;
-		while (e != NULL) {
-			v = e->index;
-			/* El índice del vértice va a ser -1 si ya se sacó del heap */
-			if (heapIndexVertex(priorityQueue, v) != -1) {
-				newDistance = dist[u] + (1. / (double)(e->weight));
-				if (newDistance < dist[v]) {
-					dist[v] = newDistance;
-					heapDecreaseKey(priorityQueue, dist, v);
-				}
+		while( e != NULL) {
+			v = e -> index;
+			def_weight = (1.0/(double)(e -> weight));
+			if(dist[u] + def_weight < dist[v]) {
+				dist[v] = dist[u] + def_weight;
+				front.fst = dist[v];
+				front.snd = v; 
+				pqPush(&pq, front);
 			}
-			e = e->next;
 		}
 	}
-	return;
 }
 
+
 /**
-* Computa la métrica de cercanía para todos los vértices.
+* Computa la mÃ©trica de cercanÃ­a para todos los vÃ©rtices.
 */
 void computeClosenessMetric(TGraph* g) {
 	int i;
 	printf("Closeness:\n");
 	TVertex* v;
+	double* dist = malloc(g->size * sizeof(double));
 	for (i = 0; i < g->size; ++i) {
 		v = graphVertexPointer(g, i);
-		v->closeness = computeClosenessMetricVertex(g, i);
+		v->closeness = computeClosenessMetricVertex(g, i, dist);
 		printf("%d: %.16lf\n", i, v->closeness);
 	}
+	free(dist);
 	return;
 }
 
-/**
-* Computa la medida de cercanía para un vértice.
-*/
-double computeClosenessMetricVertex(TGraph* g, int uindex) {
+double computeClosenessMetricVertex(TGraph* g, int uindex, double* dist) {
 	double far = 0;
-	double* dist = malloc(g->size * sizeof(double));
-	THeap priorityQueue;
-	heapInitialize(&priorityQueue, g->size);
-	dijkstra(g, uindex, dist, &priorityQueue);
-	heapClean(&priorityQueue);
-	far += dist[6];
-	/*
-	int i;
-	for (i = 0; i < g->size; ++i) {
-		far += dist[i];
+	dijkstra(g, uindex, dist);
+	for(int i = 0; i < g->size; ++i){
+		far += (1.0/(double)dist[i]) ;
+		
 	}
-	*/
-	free(dist);
 	return far;
 }
+
 
 bool graphIsConnected(TGraph* g) {
 	TQueue q;
 	queueInitialize(&q);
-	bool* visited = malloc(g->size * sizeof(bool));
+	bool* visited = (bool*)(malloc(g->size * sizeof(bool)));
 	int i, j;
 	visited[0] = 1;
 	for (i = 1; i < g->size; ++i) {
@@ -252,7 +236,7 @@ bool graphIsConnected(TGraph* g) {
 	queueClean(&q);
 	bool connected = 1;
 	for (i = 0; i < g->size; ++i) {
-		if (visited[i] = 0) {
+		if (visited[i] == 0) {
 			connected = 0;
 			break;
 		}

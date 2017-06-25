@@ -4,6 +4,6 @@ project(cmetrics C)
 
 set(CMAKE_BUILD_TYPE Release)
 
-include_directories("${PROJECT_BINARY_DIR}")
+include_directories("${PROJECT_SOURCE_DIR}")
 
-add_executable(graph main.c graph.c graphalgorithms.c heap.c queue.c)
+add_executable(graph main.c graph.c graphalgorithms.c priority_queue.c queue.c)
