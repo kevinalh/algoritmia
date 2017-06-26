@@ -11,6 +11,7 @@ c_cpp_properties.json
 data/
 examples/
 IEEEtran/
+resultados/
 
 .vs/
 

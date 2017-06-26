@@ -9,6 +9,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <float.h>
+#include <limits.h>
 
 #include "graph.h"
 #include "graphalgorithms.h"
@@ -29,6 +30,26 @@ int getDegreeErdos(TGraph* g) {
 		}
 	}
 	return k;
+}
+
+/**
+* Función redundante: Usada para medir el tiempo que toma
+* evaluar la métrica de grado.
+*/
+void computeDegreeMetric(TGraph* g) {
+	TVertex* v;
+	TEdge* e;
+	int i;
+	for (i = 0; i < g->size; ++i) {
+		v = graphVertexPointer(g, i);
+		v->degree = 0;
+		e = v->first;
+		while (e != NULL) {
+			v->degree += e->weight;
+			e = e->next;
+		}
+	}
+	return;
 }
 
 /**
@@ -269,4 +290,31 @@ int graphIsDisconnected(TGraph* g, int ref) {
 	}
 	free(visited);
 	return counter;
+}
+
+/**
+* Recorre el grafo a partir de una raíz para encontrar
+* las distancias.
+*/
+void BFS(TGraph* g, int root, int* dist) {
+	int i, j;
+	for (i = 0; i < g->size; ++i) dist[i] = INT_MAX;
+	dist[root] = 0;
+	TQueue q;
+	queueInitialize(&q);
+	queueInsert(&q, root);
+	while (!queueIsEmpty(&q)) {
+		i = queuePop(&q);
+		TEdge* e = graphVertexPointer(g, i)->first;
+		while (e != NULL) {
+			j = e->index;
+			if (dist[j] == INT_MAX) {
+				dist[j] = dist[i] + 1;
+				queueInsert(&q, j);
+			}
+			e = e->next;
+		}
+	}
+	queueClean(&q);
+	return;
 }
