@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 typedef struct pair{
-	int fst; 
+	double fst; 
 	int snd;
 } TPair;
 

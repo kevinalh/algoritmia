@@ -47,6 +47,7 @@ void graphPrint(TGraph* g, FILE* fp);
 void graphVertexPrint(TGraph* g, int vindex, FILE* fp);
 void graphCleanAll(TGraph* g);
 char* graphStringFromVertex(TGraph* g, int vindex);
+void graphPrintExtra(TGraph* g, FILE* fp);
 
 /* Funciones que trabajan con el grafo */
 void graphInitialize(TGraph* g, int size);

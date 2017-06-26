@@ -21,12 +21,11 @@ int main() {
 	char *s, *t;
     char tmp1[MAXSTRING];
     char tmp2[MAXSTRING];
-	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/demo1.txt", "r");
+	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria.txt", "r");
 	FILE* fp2 = fopen("L:/workspace/algoritmia/trabajo-academico/data/graphoutput.txt", "w");
-    /*
-	FILE* fp = stdin;
-    FILE* fp2 = stdout;
-    */
+	/*FILE* fp = stdin;
+    FILE* fp2 = stdout;*/
+    
 	fscanf(fp, "%d ", &cs);
     while(cs--) {
         fgets(tmp1, MAXSTRING-1, fp);
@@ -46,33 +45,37 @@ int main() {
         graphInsertEdge(&g, s, t);
 	}
 	graphPrint(&g, fp2);
-	/*
-	if (graphIsConnected(&g)) {
-		printf("CONNECTED\n");
+	int disconnected = graphIsDisconnected(&g, 0);
+	if (disconnected == 0) {
+		fprintf(fp2, "Connected graph\n");
 	}
-	else printf("DISCONNECTED\n");
-	*/
+	else {
+		fprintf(fp2, "Disconnected graph\n");
+	}
 	graphPrintMetrics(&g, fp2);
 	return 0;
 }
 
 void graphPrintMetrics(TGraph* g, FILE* fp) {
+	fprintf(fp, "____________________________________________________\n");
+	fprintf(fp, "Degree\t\tCloseness (*10^4)\t\tPageRank (*10^4)\n");
+	fprintf(fp, "____________________________________________________\n\n");
+	int size = g->size;
+	int i;
+	TVertex* v;	
+	/* Erdos para degree */
 	int degErdos = getDegreeErdos(g);
-	fprintf(fp, "Degree: %d %s\t%d\n", degErdos,
-		graphStringFromVertex(g, degErdos),
-		graphVertexPointer(g, degErdos)->degree);
-
-	computeClosenessMetric(g);
+	/* Erdos para closeness */
+	computeClosenessMetric(g, 2);
 	int clErdos = getClosenessErdos(g);
-	fprintf(fp, "Closeness: %d %s\t%lf\n", clErdos,
-		graphStringFromVertex(g, clErdos),
-		graphVertexPointer(g, clErdos)->closeness);
-
+	/* Erdos para PageRank */
 	int it = computePageRankMetricEpsilon(g, 0.85, 1, 1000, 0.0000001);
 	int prEpsErdos = getPageRankErdos(g);
-	fprintf(fp, "PageRank (eps): %d %s\t%lf (%d it.)\n", prEpsErdos,
-		graphStringFromVertex(g, prEpsErdos),
-		graphVertexPointer(g, prEpsErdos)->pagerank, it);
+	/* Imprimimos toda la data */
+	for (i = 0; i < size; ++i) {
+		v = graphVertexPointer(g, i);
+		fprintf(fp, "%d %s%d\t\t\t\t%lf\t\t\t%lf\n", i, v->value, v->degree, v->closeness*10000.0, v->pagerank*10000.0);
+	}
 	return;
 }
 

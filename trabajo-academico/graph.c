@@ -263,6 +263,24 @@ void graphVertexPrint(TGraph* g, int vindex, FILE* fp) {
 }
 
 /**
+* Imprime el grafo de una forma diferente.
+* Usado para el debugging.
+*/
+void graphPrintExtra(TGraph* g, FILE* fp) {
+	TVertex* vert;
+	TEdge* edg;
+	for (int i = 0; i < g->size; ++i) {
+		vert = graphVertexPointer(&g, i);
+		edg = vert->first;
+		while (edg != NULL) {
+			fprintf(fp, "%d %d %d\n", i, edg->index, edg->weight);
+			edg = edg->next;
+		}
+	}
+	return;
+}
+
+/**
 * Devuelve el string que contiene un vértice, dado su 
 * índice.
 */
