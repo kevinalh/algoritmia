@@ -24,3 +24,4 @@ void pqInitialize(TPriorityQueue* pq, int sz);
 void pqPush(TPriorityQueue* pq, HeapNode node);
 HeapNode pqTop(TPriorityQueue *pq);
 int pqEmpty(TPriorityQueue *pq);
+void pqClean(TPriorityQueue* pq);

@@ -10,9 +10,9 @@ void BFS(TGraph* g, int root, int* dist);
 
 /* Algoritmos para métricas de centralidad */
 void graphInitializePageRank(TGraph* g, int option);
-int getDegreeErdos(TGraph* g);
-int getPageRankErdos(TGraph* g);
-int getClosenessErdos(TGraph* g);
+void getDegreeErdos(TGraph* g, int* top);
+void getPageRankErdos(TGraph* g, int* top);
+void getClosenessErdos(TGraph* g, int* top);
 void computeDegreeMetric(TGraph* g);
 void computePageRankMetricIterative(TGraph*, double, int, int);
 int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int maxIterations, double eps);

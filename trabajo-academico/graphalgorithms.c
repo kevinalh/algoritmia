@@ -19,17 +19,26 @@
 /**
 * Devuelve un entero que corresponde con el elemento con mayor grado.
 */
-int getDegreeErdos(TGraph* g) {
+void getDegreeErdos(TGraph* g, int* top) {
 	int i, size = g->size, maxdeg = 0, currdeg = 0, k = 0;
 	/* Buscamos linealmente el índice tal que el grado sea mayor */
+	TPriorityQueue pq;
+	pqInitialize(&pq, MAXSIZE);
+	HeapNode front;
 	for (i = 0; i < size; ++i) {
 		currdeg = graphVertexPointer(g, i)->degree;
-		if (currdeg > maxdeg) {
-			maxdeg = currdeg;
-			k = i;
-		}
+		front.fst = -currdeg;
+		front.snd = i;
+		pqPush(&pq, front);
 	}
-	return k;
+	int tmp = 0;
+	while (!pqEmpty(&pq)) {
+		front = pqTop(&pq);
+		top[tmp] = front.snd;
+		tmp++;
+	}
+	pqClean(&pq);
+	return;
 }
 
 /**
@@ -55,35 +64,53 @@ void computeDegreeMetric(TGraph* g) {
 /**
 * Devuelve un entero que corresponde con el elemento con mayor PageRank.
 */
-int getPageRankErdos(TGraph* g) {
+void getPageRankErdos(TGraph* g, int* top) {
 	int i, size = g->size, k = 0;
 	double maxpr = 0, currpr = 0;
 	/* Buscamos linealmente el índice tal que el PageRank sea mayor */
+	TPriorityQueue pq;
+	pqInitialize(&pq, MAXSIZE);
+	HeapNode front;
 	for (i = 0; i < size; ++i) {
 		currpr = graphVertexPointer(g, i)->pagerank;
-		if (currpr > maxpr) {
-			maxpr = currpr;
-			k = i;
-		}
+		front.fst = -currpr;
+		front.snd = i;
+		pqPush(&pq, front);
 	}
-	return k;
+	int tmp = 0;
+	while (!pqEmpty(&pq)) {
+		front = pqTop(&pq);
+		top[tmp] = front.snd;
+		tmp++;
+	}
+	pqClean(&pq);
+	return;
 }
 
 /**
 * Devuelve un entero que corresponde con el elemento con mayor cercanía.
 */
-int getClosenessErdos(TGraph* g) {
+void getClosenessErdos(TGraph* g, int* top) {
 	int i, size = g->size, k = 0;
 	double maxpr = 0, currpr = 0;
 	/* Buscamos linealmente el índice tal que la cercanía sea mayor */
+	TPriorityQueue pq;
+	pqInitialize(&pq, MAXEDGES);
+	HeapNode front;
 	for (i = 0; i < size; ++i) {
 		currpr = graphVertexPointer(g, i)->closeness;
-		if (currpr > maxpr) {
-			maxpr = currpr;
-			k = i;
-		}
+		front.fst = -currpr;
+		front.snd = i;
+		pqPush(&pq, front);
 	}
-	return k;
+	int tmp = 0;
+	while (!pqEmpty(&pq)) {
+		front = pqTop(&pq);
+		top[tmp] = front.snd;
+		tmp++;
+	}
+	pqClean(&pq);
+	return;
 }
 
 /**
@@ -190,6 +217,10 @@ void dijkstra(TGraph* g, int root, double* dist, TPriorityQueue* pq) {
 		if (d >= DBL_MAX || u >= g->size || u < 0 || d < 0) {
 			reportError("Logic");
 		}
+		/* En caso de ser la distancia mayor, significa
+		* que debemos descartar este nodo (hacemos esto para
+		* evitar cambiar las ubicaciones en la cola de
+		* prioridad repetidas veces) */
 		if (d > dist[u]) {
 			continue;
 		}
@@ -197,11 +228,10 @@ void dijkstra(TGraph* g, int root, double* dist, TPriorityQueue* pq) {
 		while (e != NULL) {
 			v = e->index;
 			def_weight = (1.0 / (double)(e->weight));
+			/* Si la distancia pasando por el nodo u es menor,
+			* guardamos esta nueva distancia para el vértice */
 			if (dist[u] + def_weight < dist[v]) {
 				dist[v] = dist[u] + def_weight;
-				if (dist[v] >= 100) {
-					reportError("WTF");
-				}
 				front.fst = dist[v];
 				front.snd = v;
 				pqPush(pq, front);
@@ -223,9 +253,10 @@ void computeClosenessMetric(TGraph* g, int type) {
 	for (i = 0; i < g->size; ++i) {
 		v = graphVertexPointer(g, i);
 		v->closeness = computeClosenessMetricVertex(g, i, dist, &pq, type);
-		printf("%d: %.16lf\n", i, v->closeness);
+		/*printf("%d: %.16lf\n", i, v->closeness);*/
 	}
 	free(dist);
+	pqClean(&pq);
 	return;
 }
 

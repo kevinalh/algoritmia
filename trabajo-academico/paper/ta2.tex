@@ -12,7 +12,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \interdisplaylinepenalty=2500
-\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{array}
 \usepackage[binary-units=true]{siunitx}
 
@@ -34,48 +35,39 @@
 \usepackage{url}
 \usepackage{lipsum}
 
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de \ALG@name s}
+\makeatother
+
 \renewcommand\IEEEkeywordsname{Palabras clave}
 \newcommand\mydots{\hbox to 1em{.\hss.\hss.}}
 
+\renewcommand{\algorithmicend}{\textbf{fin}}
+\renewcommand{\algorithmicif}{\textbf{si}}
+\renewcommand{\algorithmicthen}{\textbf{luego}}
+\renewcommand{\algorithmicfunction}{\textbf{función}}
+\renewcommand{\algorithmicwhile}{\textbf{mientras}}
+\renewcommand{\algorithmicrepeat}{\textbf{repetir}}
+\renewcommand{\algorithmicdo}{\textbf{hacer}}
+\renewcommand{\algorithmicfor}{\textbf{para}}
+
+\newcommand{\Continue}{\State \textbf{continuar} }
+
 \begin{document}
 \title{Una aplicación de métricas de centralidad a redes de coautoría}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
-
 \author{Kevin~Languasco,~\IEEEmembership{20132102}
         Melany~Chávez,~\IEEEmembership{20092344}
         y~Jesús~Advíncula,~\IEEEmembership{20135452}%
 }
 
 \maketitle
-
-% As a general rule, do not put math, special symbols or citations
-% in the abstract or keywords.
 \begin{abstract}
 \lipsum[1]
 \end{abstract}
-
-% Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
 PageRank, grafos, centralidad, coautoría
 \end{IEEEkeywords}
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
 \section{Introducción}
@@ -110,7 +102,7 @@ La \textbf{centralidad de grado} para un vértice es simplemente \(C_D (v) = deg
 \subsection{Closeness}
 
 Un \textbf{camino} en un grafo es una secuencia \(p = (x_1, x_2, \dots x_n)\) de vértices tales que \(x_{i}x_{i+1} \in E\) para \(1 \leq i < n\), y su longitud es \(|p| = n\). Decimos que un camino une dos vértices \(u, v\) si \(x_1 = u\) y \(x_n = v\). Denotamos por \(P(u, v)\) al conjunto de todos los caminos que unen a \(u\) con \(v\). Sea \(c(uv) = w(uv)^{-1}\) el \textbf{costo} de la arista \(uv\). La \textbf{distancia} entre dos vértices es el resultado del siguiente problema de optimización:
-\begin{equation}
+\begin{equation} \label{eq:distance}
 d(u, v) = \min \left(\sum_{i=1}^{n-1} c(x_{i}x_{i+1}) : (x_1, \mydots x_n) \in P(u, v)\right)
 \end{equation}
 Por conveniencia, definimos \(d(u, u) = 0\). Si no existe camino entre \(u\) y \(v\), i.e. \(P(u, v) = \varnothing\), se dice que \(d(u, v) = \infty\) \cite{bollobas}. La idea del costo es que, a mayor cantidad de artículos coautorados, hay más cercanía entre autores, y por ello el camino entre ellos debe ``costar menos'' \cite{newman}.
@@ -118,7 +110,7 @@ Por conveniencia, definimos \(d(u, u) = 0\). Si no existe camino entre \(u\) y \
 Un grafo es \textbf{conexo} si \(P(u, v) \neq \varnothing~\forall u, v \in V, u \neq v\).
 
 La medida de \textbf{cercanía} para un nodo es \cite{brandes}:
-\begin{equation}
+\begin{equation} \label{eq:close}
 C_C (u) = \frac{1}{\sum_{v \in V} d(u, v)}
 \end{equation}
 
@@ -144,10 +136,48 @@ PageRank fue originalmente diseñado para cuantificar la importancia de un sitio
 
 La definición original se aplica a grafos dirigidos sin aristas múltiples. En nuestro caso, no hace falta distinguir entre hipervínculos que salen del sitio web, y los que van hacia él. Sin embargo, sí es importante tomar en cuenta los pesos asignados a cada arista. Si un autor colabora más de una vez con una persona importante, esto debe reflejarse en el PageRank asignado. Por eso, el aporte ya no es equitativo entre los vecinos de un nodo, pero sí entre sus aristas. Para considerar este efecto, se pone el factor del peso en el aporte.
 
-\section{Experimentos y resultados}
-El grafo resultante contiene un total de \num{1411345} vértices y \num{5946615} aristas, sin contar sus pesos (contándolos, hay \num{10615809}). Este grafo es lo suficientemente esparso\footnote{Se considera esparso cuando \(|E| = o(|V|^2 / \log(|V|))\)\cite{clrs}, condición que se cumple en este caso.} para considerar el uso de colas de prioridad.
+\section{Algoritmos}
 
-Para los siguientes experimentos, se ha usado una computadora con procesador Intel i7-3770k, \SI{16}{\giga\byte} de memoria RAM y Windows 10. El compilador usado fue Visual C++.
+La métrica del grado se calcula de manera directa: Para cada nodo, sumamos los pesos de todas las aristas incidentes a él.
+
+La medida de cercanía involucra resolver el problema de minimización planteado en la Ecuación \ref{eq:distance}. Este es un problema conocido, y se puede resolver de varias formas.
+
+Ya que se necesita calcular el camino más corto entre todo par de nodos en el grafo, se puede aplicar el algoritmo de Floyd-Warshall, con complejidad \(\Theta(|V|^3)\) \cite{clrs}. Sin embargo, si el grafo es esparso\footnote{Se considera esparso cuando \(|E| = o(|V|^2 / \log(|V|))\)\cite{clrs}}, se puede considerar aplicar el algoritmo de Dijkstra para todo vértice, con complejidad \(\mathcal{O}(|V||E|\ln |V|)\) usando colas de prioridad. Esta alternativa es la que se usó en la presente investigación, al ser relativamente de baja complejidad y más eficiente para el caso particular de interés.
+
+La función \textproc{Dijkstra} usa un arreglo de distancias mínimas, donde todas están inicializadas a \(\infty\), con excepción del nodo raíz, que tiene distancia \(0\) hacia sí mismo. La cola de prioridad usada \(P\) está compuesta por 2-tuplas \((d, u)\), donde \(d\) es la distancia desde el nodo raíz hasta \(u\). Cada vez que saquemos el nodo con mínima distancia \(u\) de \(P\), se compara, para cada vértice adyacente \(v\), la distancia si se sigue por \(u\) hasta \(v\), y la hipotética distancia mínima actual para \(v\). Si la distancia efectivamente disminuye, actualizamos el arreglo de distancias mínimas. En este punto, una técnica usual es disminuir la prioridad de \(v\) en \(P\)\cite{heap}, pero esto implicaría reordenar la estructura. Optamos por agregar \((nuevo, v)\) a \(P\), donde \(nuevo\) es la nueva distancia mínima hallada. Nótese entonces que cada nodo \(u\) puede aparecer más de una vez, pero en este caso sólo sale de la cola, sin hacer más computación. Para hallar la métrica de cercanía, se aplica la Ecuación \ref{eq:close} sobre el arreglo resultante.
+
+\begin{algorithm}[H]
+	\caption{Algoritmo de Dijkstra} \label{alg:dijkstra}
+\begin{algorithmic}
+	\Function{Dijkstra}{$Grafo$, $fuente$}
+		\State $dist[fuente] \gets 0$
+		\State $P.agregar((0, fuente))$
+		\For{$u \in Grafo, u \neq fuente$}
+			\State $dist[u] = \infty$
+		\EndFor
+		\While {$P$ no está vacío}
+			\State $(d, u) \gets P.sacar\_min()$
+			\If{$d <= dist[u]$}
+				\For{$uv \in E(u)$}
+					\State $peso \gets 1/w(uv)$
+					\State $nuevo \gets peso + dist[u]$
+					\If{$nuevo < dist[v]$}
+						\State $dist[v] = nuevo$
+						\State $P.agregar((nuevo, v))$
+					\EndIf
+				\EndFor	
+			\EndIf
+		\EndWhile
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Experimentos y resultados}
+El grafo resultante contiene un total de \num{1411345} vértices y \num{5946615} aristas, sin contar sus pesos (contándolos, hay \num{10615809}). Este grafo es lo suficientemente esparso para considerar el uso de colas de prioridad.
+
+Para los siguientes experimentos, se ha usado una computadora con procesador Intel i7-3770k, \SI{16}{\giga\byte} de memoria RAM y Windows 10. Todas las estructuras de datos y los algoritmos fueron implementados en C. El compilador usado fue Visual C++.
 
 Hay una diferencia bastante pronunciada entre los tiempos de cálculo de las métricas de grado y PageRank, y la de cercanía, como se puede observar en el Cuadro \ref{tejecucion}.
 
@@ -165,7 +195,8 @@ Hay una diferencia bastante pronunciada entre los tiempos de cálculo de las mé
 		3 & 2.0 & 3 & 4 (3) \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table}
+
 
 \section{Discusión}
 

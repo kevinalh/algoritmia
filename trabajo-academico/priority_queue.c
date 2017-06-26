@@ -27,7 +27,6 @@ void pqInsert(HeapNode nodo, HeapNode* heap, int size) {
 }
 
 void pqRestore(HeapNode* heap, int size, int idx) {
-	int idxtmp;
 	int l = 2 * idx;
 	int r = 2 * idx + 1;
 	int largest = idx;
@@ -70,4 +69,12 @@ HeapNode pqTop(TPriorityQueue *pq) {
 int pqEmpty(TPriorityQueue *pq) {
 	if (pq->size == 0) return 1;
 	return 0;
+}
+
+void pqClean(TPriorityQueue* pq) {
+	while (!pqEmpty(pq)) {
+		pqTop(pq);
+	}
+	free(pq->heap);
+	return;
 }
