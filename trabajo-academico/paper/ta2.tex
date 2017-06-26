@@ -16,6 +16,8 @@
 \usepackage{algpseudocode}
 \usepackage{array}
 \usepackage[binary-units=true]{siunitx}
+\usepackage{mathtools}
+\usepackage{bm}
 
 \ifCLASSOPTIONcompsoc
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
@@ -53,6 +55,11 @@
 \renewcommand{\algorithmicfor}{\textbf{para}}
 
 \newcommand{\Continue}{\State \textbf{continuar} }
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+\newcommand{\matr}[1]{\mathbf{#1}} % undergraduate algebra version
+%\newcommand{\matr}[1]{#1}          % pure math version
+%\newcommand{\matr}[1]{\bm{#1}}     % ISO complying version
 
 \begin{document}
 \title{Una aplicación de métricas de centralidad a redes de coautoría}
@@ -63,7 +70,7 @@
 
 \maketitle
 \begin{abstract}
-\lipsum[1]
+Se calculan las métricas.
 \end{abstract}
 \begin{IEEEkeywords}
 PageRank, grafos, centralidad, coautoría
@@ -79,7 +86,7 @@ Las redes de coautoría son grafos donde cada nodo representa un autor, y las ar
 
 En este artículo, describimos tres métricas de centralidad: \textit{Closeness}, \textit{Degree} y \textit{PageRank}; y los algoritmos para calcularlos en cada caso. Como aplicación, empleamos cada algoritmo a una red de coautoría obtenida del DBLP.
 
-\section{Descripción de métricas}
+\section{Descripción de métricas} \label{sec:metricas}
 
 Definimos, como es usual, un \textbf{grafo} como un par \(G = (V, E)\), donde \(V\) es el conjunto de vértices o nodos, y \(E \subset [V]^2 \) el de aristas, con \([V]^2 = \{ X \subset V : |X| = 2 \}\). Una consecuencia de esta definición es que el grafo debe ser no dirigido y las aristas están completamente determinadas por los nodos que unen \cite{diestel}. Escribimos \(uv\) en lugar de \(\{u, v\}\) por facilidad notacional (nótese que \(uv = vu\)).
 
@@ -126,7 +133,7 @@ Sea \(\alpha\) un número en \([0, 1]\), llamado el \textbf{factor amortiguador}
 
 Definimos el \textbf{PageRank} de un vértice de manera recursiva:
 
-\begin{equation}
+\begin{equation} \label{eq:pagerank}
 	PR(u) = \frac{(1-\alpha)}{|V|} + \alpha \sum_{v \in \Gamma(u)} \frac{PR(v)}{deg(v)} w(uv)
 \end{equation}
 
@@ -136,6 +143,8 @@ PageRank fue originalmente diseñado para cuantificar la importancia de un sitio
 
 La definición original se aplica a grafos dirigidos sin aristas múltiples. En nuestro caso, no hace falta distinguir entre hipervínculos que salen del sitio web, y los que van hacia él. Sin embargo, sí es importante tomar en cuenta los pesos asignados a cada arista. Si un autor colabora más de una vez con una persona importante, esto debe reflejarse en el PageRank asignado. Por eso, el aporte ya no es equitativo entre los vecinos de un nodo, pero sí entre sus aristas. Para considerar este efecto, se pone el factor del peso en el aporte.
 
+El factor de amortiguamiento es importante para grafos disconexos, pues tomando \(\alpha = 1\), si se empieza en un vértice cualquiera, la probabilidad de llegar a los de una componente conexa diferente va a ser nula. Por otro lado, si \(\alpha = 0\), el viaje será completamente aleatorio. La calibración de este parámetro influenciará, entonces, en qué medida la estructura propia del grafo influenciará en la asignación de importancia. En la literatura original se trabajó con \(\alpha = 0.85\) \cite{google}, y este es el valor que consideraremos para los experimentos.
+
 \section{Algoritmos}
 
 La métrica del grado se calcula de manera directa: Para cada nodo, sumamos los pesos de todas las aristas incidentes a él.
@@ -144,8 +153,7 @@ La medida de cercanía involucra resolver el problema de minimización planteado
 
 Ya que se necesita calcular el camino más corto entre todo par de nodos en el grafo, se puede aplicar el algoritmo de Floyd-Warshall, con complejidad \(\Theta(|V|^3)\) \cite{clrs}. Sin embargo, si el grafo es esparso\footnote{Se considera esparso cuando \(|E| = o(|V|^2 / \log(|V|))\)\cite{clrs}}, se puede considerar aplicar el algoritmo de Dijkstra para todo vértice, con complejidad \(\mathcal{O}(|V||E|\ln |V|)\) usando colas de prioridad. Esta alternativa es la que se usó en la presente investigación, al ser relativamente de baja complejidad y más eficiente para el caso particular de interés.
 
-La función \textproc{Dijkstra} usa un arreglo de distancias mínimas, donde todas están inicializadas a \(\infty\), con excepción del nodo raíz, que tiene distancia \(0\) hacia sí mismo. La cola de prioridad usada \(P\) está compuesta por 2-tuplas \((d, u)\), donde \(d\) es la distancia desde el nodo raíz hasta \(u\). Cada vez que saquemos el nodo con mínima distancia \(u\) de \(P\), se compara, para cada vértice adyacente \(v\), la distancia si se sigue por \(u\) hasta \(v\), y la hipotética distancia mínima actual para \(v\). Si la distancia efectivamente disminuye, actualizamos el arreglo de distancias mínimas. En este punto, una técnica usual es disminuir la prioridad de \(v\) en \(P\)\cite{heap}, pero esto implicaría reordenar la estructura. Optamos por agregar \((nuevo, v)\) a \(P\), donde \(nuevo\) es la nueva distancia mínima hallada. Nótese entonces que cada nodo \(u\) puede aparecer más de una vez, pero en este caso sólo sale de la cola, sin hacer más computación. Para hallar la métrica de cercanía, se aplica la Ecuación \ref{eq:close} sobre el arreglo resultante.
-
+La función \textproc{Dijkstra} usa un arreglo de distancias mínimas, donde todas están inicializadas a \(\infty\), con excepción del nodo raíz, que tiene distancia \(0\) hacia sí mismo. La cola de prioridad usada \(P\) está compuesta por 2-tuplas \((d, u)\), donde \(d\) es la distancia desde el nodo raíz hasta \(u\). Cada vez que saquemos el nodo con mínima distancia \(u\) de \(P\), se compara, para cada vértice adyacente \(v\), la distancia si se sigue por \(u\) hasta \(v\), y la hipotética distancia mínima actual para \(v\). Si la distancia efectivamente disminuye, actualizamos el arreglo de distancias mínimas. En este punto, una técnica usual es disminuir la prioridad de \(v\) en \(P\)\cite{heap}, pero esto implicaría reordenar la estructura. Optamos por agregar \((nuevo, v)\) a \(P\), donde \(nuevo\) es la nueva distancia mínima hallada. Nótese entonces que cada nodo \(u\) puede aparecer más de una vez, pero en este caso sólo sale de la cola, sin hacer más computación. Para hallar la métrica de cercanía, se aplica la Ecuación \ref{eq:close} sobre el arreglo \(dist\) resultante.
 \begin{algorithm}[H]
 	\caption{Algoritmo de Dijkstra} \label{alg:dijkstra}
 \begin{algorithmic}
@@ -171,8 +179,54 @@ La función \textproc{Dijkstra} usa un arreglo de distancias mínimas, donde tod
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
+PageRank puede ser interpretado de la siguiente manera. Consideremos la matriz \(\matr{H} = [H_{ij}]\) dada por:
+\begin{equation}
+	H_{ij} =
+	\begin{dcases}
+	\frac{w(v_i v_j)}{deg(v_j)} &\text{si $v_i v_j \in E$}\\
+	0\phantom{\frac{1}{|V|}} &\text{caso contrario}
+	\end{dcases}
+\end{equation}
+Esta matriz tiene la propiedad de que la suma de sus columnas es \(1\), y ninguna entrada es negativa. En la literatura, una matriz con esta propiedad es llamada \textbf{matriz estocástica izquierda}. En los trabajos originales sobre PageRank, era de interés calcular la importancia de sitios web sin hipervínculos, en cuyo caso la matriz anterior requiere de una pequeña modificación \cite{google}. En nuestro caso, esto no es necesario ya que en las redes de coautoría sólo se trabajan con autores que han publicado conjuntamente con otros autores, haciendo que no puedan existir vértices aislados.
 
+Cada entrada se interpreta como la probabilidad de llegar al vértice \(v_i\) inmediatamente a partir del \(v_j\). Como ya se mencionó en el Capítulo \ref{sec:metricas}, es importante que se tome un valor razonable de \(\alpha\). Con este fin, introducimos una nueva matriz \(\matr{J}\) tal que todas sus entradas son la unidad.
 
+La \textbf{matriz de Google} será \cite{langville}
+\begin{equation}
+	\matr{G} = \frac{1-\alpha}{|V|} \matr{J} + \alpha \matr{H}
+\end{equation}
+Por convexidad, \(\matr{G}\) también es estocástica izquierda. El problema de resolver la Ecuación \ref{eq:pagerank} simultáneamente para todos los vértices es equivalente a encontrar algún \(\bm{\pi} \in \mathbf{R}^{|V|} \) tal que
+\begin{equation}
+	\matr{G} \bm{\pi} = \bm{\pi}
+\end{equation}
+En otras palabras, nos interesa encontrar un eigenvector asociado al eigenvalor \(\lambda = 1\). Es un resultado conocido que este eigenvector existe y es único, y que \(1\) es el máximo valor absoluto posible para eigenvalores de matrices estocásticas\cite{meyer}.
+
+El método para resolver este problema, conocido como el \textbf{método de potencias}, consiste en aplicaciones iteradas de la matriz \(\matr{G}\) a un vector \(\bm{\pi}_0\) inicial. La demostración de convergencia consiste en descomponer \(\matr{G}\) en bloques de Jordan y aplicar el resultado mencionado en el párrafo anterior\cite{langville}.
+
+La elección del vector inicial \(\bm{\pi}_0\) influye en la velocidad de convergencia del algoritmo. Es usual tomar \(\bm{\pi}_0 = \frac{1}{|V|} \bm{1} \), donde \(\bm{1}\) tiene cada componente igual a \(1\). Otra alternativa es inicializar el vector con los valores de las dos métricas anteriores, esperando que se esté más cerca al eigenvector deseado.
+
+\begin{algorithm}[H]
+	\caption{PageRank} \label{alg:pagerank}
+	\begin{algorithmic}
+		\Function{PageRank}{$Grafo$, $\epsilon$, $\alpha$}
+			\State Inicializar los vértices
+			\Do
+				\State $\Delta \gets 0$
+				\For{$u \in Grafo$}
+					\State $PR_0 \gets PR(u)$
+					\State $PR_1 \gets 0$
+					\For{$uv \in E(u)$}
+						\State $PR_1 \gets PR_1 + (PR(v) \times w(uv))/deg(v)$
+					\EndFor
+					\State $PR_1 \gets PR_1 \times \alpha$
+					\State $PR_1 \gets PR_1 + (1-\alpha)/|V|$
+					\State $PR(u) \gets PR_1$
+					\State $\Delta \gets max(\Delta, |PR_1 - PR_0|)$
+				\EndFor
+			\doWhile{$\Delta > \epsilon$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
 
 \section{Experimentos y resultados}
 El grafo resultante contiene un total de \num{1411345} vértices y \num{5946615} aristas, sin contar sus pesos (contándolos, hay \num{10615809}). Este grafo es lo suficientemente esparso para considerar el uso de colas de prioridad.
@@ -244,6 +298,10 @@ T.~Cormen \textit{et al.} \emph{Introduction to Algorithms}. Cambridge, MA: MIT 
 
 \bibitem{rochat}
 Y.~Yannick, ``Closeness Centrality Extended To Unconnected Graphs: The Harmonic Centrality Index,'' University of Lausanne, Institute of Applied Mathematics, Suiza, 2009.
+
+\bibitem{meyer}
+C.~Meyer. \emph{Matrix analysis and applied linear algebra}. Philadelphia, PA: Society for Industrial and Applied Mathematics
+, 2000.
 
 \end{thebibliography}
 
