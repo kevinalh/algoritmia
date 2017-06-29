@@ -4,7 +4,7 @@
 
 typedef int TQElement;
 
-typedef struct queueNode{
+typedef struct queueNode {
 	TQElement value;
 	struct queueNode* next;
 } TQNode;

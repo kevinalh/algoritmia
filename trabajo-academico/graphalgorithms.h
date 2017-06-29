@@ -1,7 +1,6 @@
 #include <stdbool.h>
 
 #include "graph.h"
-#include "heap.h"
 #include "priority_queue.h"
 
 int graphIsDisconnected(TGraph* g, int ref);
@@ -18,4 +17,6 @@ void computePageRankMetricIterative(TGraph*, double, int, int);
 int computePageRankMetricEpsilon(TGraph* g, double alpha, int iniOption, int maxIterations, double eps);
 double computePageRankMetricVertex(TGraph* g, int, double);
 void computeClosenessMetric(TGraph* g, int type);
+void computeClosenessMetricP(TGraph* g, int type);
 double computeClosenessMetricVertex(TGraph* g, int uindex, double* dist, TPriorityQueue* pq, int type);
+double computeClosenessMetricVertexP(TGraph* g, int uindex, double* dist, TPriorityQueue* pq, int type);

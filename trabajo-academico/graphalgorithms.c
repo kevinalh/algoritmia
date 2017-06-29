@@ -1,7 +1,8 @@
 #ifndef MAXSIZE
 
 #define MAXSIZE 1420000
-#define MAXEDGES 21231801
+/*#define MAXEDGES 21231801*/
+#define MAXEDGES 1420000
 
 #endif
 
@@ -11,10 +12,14 @@
 #include <float.h>
 #include <limits.h>
 
+#include <omp.h>
+
 #include "graph.h"
 #include "graphalgorithms.h"
 #include "queue.h"
 #include "priority_queue.h"
+
+#define NTHREADS 1
 
 /**
 * Devuelve un entero que corresponde con el elemento con mayor grado.
@@ -201,7 +206,8 @@ double computePageRankMetricVertex(TGraph* g, int uindex, double alpha) {
 
 void dijkstra(TGraph* g, int root, double* dist, TPriorityQueue* pq) {
 	int size = g->size;
-	for (int i = 0; i < size; ++i) dist[i] = DBL_MAX;
+	int i;
+	for (i = 0; i < size; ++i) dist[i] = DBL_MAX;
 	dist[root] = 0;
 	HeapNode front;
 	front.fst = 0;
@@ -253,7 +259,7 @@ void computeClosenessMetric(TGraph* g, int type) {
 	for (i = 0; i < g->size; ++i) {
 		v = graphVertexPointer(g, i);
 		v->closeness = computeClosenessMetricVertex(g, i, dist, &pq, type);
-		/*printf("%d: %.16lf\n", i, v->closeness);*/
+		printf("%d: %.16lf\n", i, v->closeness);
 	}
 	free(dist);
 	pqClean(&pq);
@@ -267,8 +273,9 @@ void computeClosenessMetric(TGraph* g, int type) {
 double computeClosenessMetricVertex(TGraph* g, int uindex, double* dist, TPriorityQueue* pq, int type) {
 	pq->size = 0;
 	double close = 0;
+	int i;
 	dijkstra(g, uindex, dist, pq);
-	for (int i = 0; i < g->size; ++i) {
+	for (i = 0; i < g->size; ++i) {
 		if (type == 1) {
 			/* Métrica de cercanía usual */
 			close += dist[i];
@@ -348,4 +355,53 @@ void BFS(TGraph* g, int root, int* dist) {
 	}
 	queueClean(&q);
 	return;
+}
+
+/**
+* Computa la métrica de cercanía usando OpenMP (en paralelo).
+*/
+void computeClosenessMetricP(TGraph* g, int type) {
+	int i;
+	TVertex* v;
+	double* dist;
+	TPriorityQueue pq;
+	#pragma omp parallel num_threads(NTHREADS) private(i, pq, dist, v)
+	{
+		dist = malloc(g->size * sizeof(double));
+		pqInitialize(&pq, MAXEDGES);
+		#pragma omp for schedule(static, 10)
+		for (i = 0; i < 1000; ++i) {
+			if (pq.heap == NULL || dist == NULL) reportError("Memory");
+			v = graphVertexPointer(g, i);
+			v->closeness = computeClosenessMetricVertex(g, i, dist, &pq, type);
+			printf("%d: %.16lf\n", i, v->closeness);
+		}
+		free(dist);
+		pqClean(&pq);
+	}
+	return;
+}
+
+/**
+* Computa la métrica de cercanía para un vértice empleando OpenMP.
+*/
+double computeClosenessMetricVertexP(TGraph* g, int uindex, double* dist, TPriorityQueue* pq, int type) {
+	pq->size = 0;
+	double close = 0;
+	dijkstra(g, uindex, dist, pq);
+	int i;
+	#pragma omp parallel for schedule(static, 5000) num_threads(NTHREADS) reduction(+ : close)
+	for (i = 0; i < g->size; ++i) {
+		if (type != 1) {
+			/* Métrica harmónica para grafos disconexos */
+			if (dist[i] >= DBL_MAX || i == uindex) continue;
+			close += 1.0 / dist[i];
+		}
+		else {
+			/* Métrica de cercanía usual */
+			close = close + dist[i];
+		}
+	}
+	if (type == 1) close = 1.0 / close;
+	return close;
 }

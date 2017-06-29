@@ -3,18 +3,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct pair{
-	double fst; 
+typedef struct pair {
+	double fst;
 	int snd;
 } TPair;
 
-typedef TPair HeapNode ;
+typedef TPair HeapNode;
 
 typedef struct PQ {
-    HeapNode* heap;
-    int size;
-} TPriorityQueue; 
-
+	HeapNode* heap;
+	int size;
+} TPriorityQueue;
 
 int pqCmp(TPair x, TPair y);
 void pqInsert(HeapNode nodo, HeapNode* heap, int size);

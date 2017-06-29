@@ -1,16 +1,19 @@
-#include <stdlib.h>  
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <float.h>
 #include <windows.h>
+#include <limits.h>
 
 #include "graph.h"
 #include "graphalgorithms.h"
 
 #define MAXSIZE 1420000
 #define MAXSTRING 60
-#define NREP 5
+#define NREP 1
 #define NERDOS 10
 
 char strings[MAXSIZE][MAXSTRING];
@@ -20,35 +23,41 @@ int erdos1[MAXSIZE], erdos2[MAXSIZE], erdos3[MAXSIZE];
 void graphPrintMetrics(TGraph*, FILE*);
 
 int main() {
-    TGraph g;
-    int cs, curr = 0;
-    graphInitialize(&g, MAXSIZE);
+	TGraph g;
+	int cs, curr = 0;
+	graphInitialize(&g, MAXSIZE);
 	char *s, *t;
-    char tmp1[MAXSTRING];
-    char tmp2[MAXSTRING];
+	char tmp1[MAXSTRING];
+	char tmp2[MAXSTRING];
 	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria.txt", "r");
 	FILE* fp2 = fopen("L:/workspace/algoritmia/trabajo-academico/data/graphoutput.txt", "w");
+	/*FILE* fp = fopen("~/autoria.txt", "r");
+	FILE* fp2 = fopen("~/graphoutput.txt", "w");
+	*/
 	/*FILE* fp = stdin;
-    FILE* fp2 = stdout;*/
-    
+	FILE* fp2 = stdout;*/
+
 	fscanf(fp, "%d ", &cs);
-    while(cs--) {
-        fgets(tmp1, MAXSTRING-1, fp);
-        if(!graphVertexExists(&g, tmp1)) {
+	while (cs--) {
+		fgets(tmp1, MAXSTRING - 1, fp);
+		if (!graphVertexExists(&g, tmp1)) {
 			s = strings[curr++];
-            strcpy(s, tmp1);
-        } else {
-            s = tmp1;
-        }
-        fgets(tmp2, MAXSTRING-1, fp);
-        if(!graphVertexExists(&g, tmp2)) {
+			strcpy(s, tmp1);
+		}
+		else {
+			s = tmp1;
+		}
+		fgets(tmp2, MAXSTRING - 1, fp);
+		if (!graphVertexExists(&g, tmp2)) {
 			t = strings[curr++];
-            strcpy(t, tmp2);
-        } else {
-            t = tmp2;
-        }
-        graphInsertEdge(&g, s, t);
+			strcpy(t, tmp2);
+		}
+		else {
+			t = tmp2;
+		}
+		graphInsertEdge(&g, s, t);
 	}
+	graphCleanTree(g.tree.root);
 	graphPrint(&g, fp2);
 	int disconnected = graphIsDisconnected(&g, 0);
 	if (disconnected == 0) {
@@ -64,7 +73,7 @@ int main() {
 void graphPrintMetrics(TGraph* g, FILE* fp) {
 	int size = g->size;
 	int i;
-	TVertex* v;	
+	TVertex* v;
 	/* Para obtener el tiempo de ejecución */
 	LARGE_INTEGER frequency;
 	LARGE_INTEGER start;
@@ -91,13 +100,13 @@ void graphPrintMetrics(TGraph* g, FILE* fp) {
 	fprintf(fp, "Time: %lf s\n", seconds);
 	fprintf(fp, "____________________________\n");
 	/* Erdos para closeness */
-	/*
+	/**/
 	seconds = 0;
 	for (i = 0; i < NREP; ++i) {
 		printf("%d\n", i);
 		QueryPerformanceCounter(&start);
 
-		computeClosenessMetric(g, 1);
+		computeClosenessMetricP(g, 2);
 
 		QueryPerformanceCounter(&end);
 		seconds += (double)(end.QuadPart - start.QuadPart) / frequency.QuadPart;
@@ -111,7 +120,7 @@ void graphPrintMetrics(TGraph* g, FILE* fp) {
 	}
 	fprintf(fp, "Time: %lf s\n", seconds);
 	fprintf(fp, "____________________________\n");
-	*/
+
 	/* Erdos para PageRank */
 	seconds = 0;
 	int it = 0;
@@ -145,17 +154,17 @@ void graphPrintMetrics(TGraph* g, FILE* fp) {
 		v = graphVertexPointer(g, i);
 		fprintf(fp, "%d %s", i, v->value);
 		fprintf(fp, "%d ", v->degree);
-		if(ans1[i] < INT_MAX) {
+		if (ans1[i] < INT_MAX) {
 			fprintf(fp, "(%d)", ans3[i]);
 		}
 		else {
 			fprintf(fp, "(inf)");
 		}
 		fprintf(fp, "\t\t\t\t");
-		/*
+		/**/
 		fprintf(fp, "%lf (%d)", v->closeness*10000.0, ans2[i]);
-		*/
-		fprintf(fp, "-\t\t\t");
+
+		/*fprintf(fp, "-\t\t\t");*/
 		fprintf(fp, "\t\t\t\t");
 		fprintf(fp, "%lf ", v->pagerank*10000.0);
 		if (ans3[i] < INT_MAX) {
