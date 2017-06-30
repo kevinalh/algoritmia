@@ -1,8 +1,14 @@
-cmake_minimum_required(VERSION 2.7)
+cmake_minimum_required(VERSION 3.4)
 
 project(cmetrics C)
 
-set(CMAKE_BUILD_TYPE Release)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_C_FLAGS "-Wall")
+set(CMAKE_C_FLAGS_DEBUG "-g")
+set(CMAKE_C_FLAGS_RELEASE "-O3")
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
@@ -15,4 +21,4 @@ IF(USE_OpenMP)
   ENDIF()
 ENDIF()
 
-add_executable(graph main.c graph.c graphalgorithms.c priority_queue.c queue.c)
+add_executable(cgmetrics main.c graph.c graphalgorithms.c priority_queue.c queue.c)

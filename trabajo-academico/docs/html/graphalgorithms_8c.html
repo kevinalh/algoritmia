@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CGMetrics: Referencia del Archivo graphalgorithms.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGMetrics
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Medidas de centralidad para grafos no dirigidos</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo graphalgorithms.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;float.h&gt;</code><br />
+<code>#include &lt;limits.h&gt;</code><br />
+<code>#include &lt;omp.h&gt;</code><br />
+<code>#include &quot;graph.h&quot;</code><br />
+<code>#include &quot;graphalgorithms.h&quot;</code><br />
+<code>#include &quot;queue.h&quot;</code><br />
+<code>#include &quot;priority_queue.h&quot;</code><br />
+</div>
+<p><a href="graphalgorithms_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a2a37b4217917105aac7557862ccc19c3"><td class="memItemLeft" align="right" valign="top"><a id="a2a37b4217917105aac7557862ccc19c3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAXSIZE</b>&#160;&#160;&#160;1420000</td></tr>
+<tr class="separator:a2a37b4217917105aac7557862ccc19c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7858acc99855a4aac8d78bf22f709b1f"><td class="memItemLeft" align="right" valign="top"><a id="a7858acc99855a4aac8d78bf22f709b1f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAXEDGES</b>&#160;&#160;&#160;21231801</td></tr>
+<tr class="separator:a7858acc99855a4aac8d78bf22f709b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:af2b71e81e0cc7b18eb494b9bfc3f79c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#af2b71e81e0cc7b18eb494b9bfc3f79c1">getDegreeErdos</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int *top)</td></tr>
+<tr class="separator:af2b71e81e0cc7b18eb494b9bfc3f79c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6317bae022cc2eb66e96d05b5981e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a5a6317bae022cc2eb66e96d05b5981e1">computeDegreeMetric</a> (<a class="el" href="structgraph.html">TGraph</a> *g)</td></tr>
+<tr class="separator:a5a6317bae022cc2eb66e96d05b5981e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88661d3bcfaf2251248897b52deb6478"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a88661d3bcfaf2251248897b52deb6478">getPageRankErdos</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int *top)</td></tr>
+<tr class="separator:a88661d3bcfaf2251248897b52deb6478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a322c6ba75c59c6c7e5c45c809e81bb24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a322c6ba75c59c6c7e5c45c809e81bb24">getClosenessErdos</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int *top)</td></tr>
+<tr class="separator:a322c6ba75c59c6c7e5c45c809e81bb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58dc3553c3af88c5f7e1e6879e958341"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int option)</td></tr>
+<tr class="separator:a58dc3553c3af88c5f7e1e6879e958341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7498f384b25e2fa68ca828a58427c36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#aa7498f384b25e2fa68ca828a58427c36">computePageRankMetricIterative</a> (<a class="el" href="structgraph.html">TGraph</a> *g, double alpha, int iniOption, int iterations)</td></tr>
+<tr class="separator:aa7498f384b25e2fa68ca828a58427c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0405fae235e46f2e982637e22a88d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a9a0405fae235e46f2e982637e22a88d8">computePageRankMetricEpsilon</a> (<a class="el" href="structgraph.html">TGraph</a> *g, double alpha, int iniOption, int maxIterations, double eps)</td></tr>
+<tr class="separator:a9a0405fae235e46f2e982637e22a88d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac283fa06f9ce14ebbbbdc44c6dabe38d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int uindex, double alpha)</td></tr>
+<tr class="separator:ac283fa06f9ce14ebbbbdc44c6dabe38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cbf4918872eef25466158719705a2f0"><td class="memItemLeft" align="right" valign="top"><a id="a9cbf4918872eef25466158719705a2f0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dijkstra</b> (<a class="el" href="structgraph.html">TGraph</a> *g, int root, double *dist, <a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq)</td></tr>
+<tr class="separator:a9cbf4918872eef25466158719705a2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86714914e03247237599628e08a7439"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#ab86714914e03247237599628e08a7439">computeClosenessMetric</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int type)</td></tr>
+<tr class="separator:ab86714914e03247237599628e08a7439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad015854cbdc65837f2a5422682f0d3e9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int uindex, double *dist, <a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq, int type)</td></tr>
+<tr class="separator:ad015854cbdc65837f2a5422682f0d3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a522d4e813d433f1fec5ab33a8a8913a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a522d4e813d433f1fec5ab33a8a8913a0">graphIsDisconnected</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int ref)</td></tr>
+<tr class="separator:a522d4e813d433f1fec5ab33a8a8913a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f3adaf46274b9d474329660f241f06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#ac5f3adaf46274b9d474329660f241f06">BFS</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int root, int *dist)</td></tr>
+<tr class="separator:ac5f3adaf46274b9d474329660f241f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f357c09771e6c19c0e521007dd804b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphalgorithms_8c.html#a74f357c09771e6c19c0e521007dd804b">computeClosenessMetricP</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int type, int nthreads)</td></tr>
+<tr class="separator:a74f357c09771e6c19c0e521007dd804b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a id="ac5f3adaf46274b9d474329660f241f06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5f3adaf46274b9d474329660f241f06">&#9670;&nbsp;</a></span>BFS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BFS </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>dist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recorre el grafo a partir de una raíz para encontrar las distancias. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00335">335</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                         {</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordtype">int</span> i, j;</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) dist[i] = INT_MAX;</div><div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    dist[root] = 0;</div><div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <a class="code" href="structqueue.html">TQueue</a> q;</div><div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    queueInitialize(&amp;q);</div><div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    queueInsert(&amp;q, root);</div><div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">while</span> (!queueIsEmpty(&amp;q)) {</div><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        i = queuePop(&amp;q);</div><div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <a class="code" href="structedge.html">TEdge</a>* e = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;first;</div><div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            j = e-&gt;index;</div><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">if</span> (dist[j] == INT_MAX) {</div><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                dist[j] = dist[i] + 1;</div><div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                queueInsert(&amp;q, j);</div><div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            }</div><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            e = e-&gt;next;</div><div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        }</div><div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    }</div><div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    queueClean(&amp;q);</div><div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;}</div><div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="structqueue_html"><div class="ttname"><a href="structqueue.html">queue</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00012">queue.h:12</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab86714914e03247237599628e08a7439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86714914e03247237599628e08a7439">&#9670;&nbsp;</a></span>computeClosenessMetric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void computeClosenessMetric </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa la métrica de cercanía para todos los vértices. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00251">251</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                                 {</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">double</span>* dist = malloc(g-&gt;size * <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <a class="code" href="struct_p_q.html">TPriorityQueue</a> pq;</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    pqInitialize(&amp;pq, MAXEDGES);</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        v-&gt;closeness = <a class="code" href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a>(g, i, dist, &amp;pq, type);</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="comment">/*printf(&quot;%d: %.16lf\n&quot;, i, v-&gt;closeness);*/</span></div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    free(dist);</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    pqClean(&amp;pq);</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ad015854cbdc65837f2a5422682f0d3e9"><div class="ttname"><a href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a></div><div class="ttdeci">double computeClosenessMetricVertex(TGraph *g, int uindex, double *dist, TPriorityQueue *pq, int type)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00271">graphalgorithms.c:271</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a74f357c09771e6c19c0e521007dd804b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f357c09771e6c19c0e521007dd804b">&#9670;&nbsp;</a></span>computeClosenessMetricP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void computeClosenessMetricP </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nthreads</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa la métrica de cercanía usando OpenMP (en paralelo). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00361">361</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                                                {</div><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordtype">double</span>* dist;</div><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="struct_p_q.html">TPriorityQueue</a> pq;</div><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">    #pragma omp parallel num_threads(nthreads) private(i, pq, dist, v)</span></div><div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    {</div><div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        dist = malloc(g-&gt;size * <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        pqInitialize(&amp;pq, MAXEDGES);</div><div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">        #pragma omp for schedule(static, 10)</span></div><div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">if</span> (pq.heap == NULL || dist == NULL) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Memory&quot;</span>);</div><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            v-&gt;closeness = <a class="code" href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a>(g, i, dist, &amp;pq, type);</div><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="comment">/*printf(&quot;%d: %.16lf\n&quot;, i, v-&gt;closeness);*/</span></div><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        }</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        free(dist);</div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        pqClean(&amp;pq);</div><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ad015854cbdc65837f2a5422682f0d3e9"><div class="ttname"><a href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a></div><div class="ttdeci">double computeClosenessMetricVertex(TGraph *g, int uindex, double *dist, TPriorityQueue *pq, int type)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00271">graphalgorithms.c:271</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+<div class="ttc" id="graph_8c_html_a7f5e83144dce23e0e8f1291dfc73cea0"><div class="ttname"><a href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a></div><div class="ttdeci">void reportError(char *errorMessage)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00235">graph.c:235</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad015854cbdc65837f2a5422682f0d3e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad015854cbdc65837f2a5422682f0d3e9">&#9670;&nbsp;</a></span>computeClosenessMetricVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double computeClosenessMetricVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>uindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>dist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_p_q.html">TPriorityQueue</a> *&#160;</td>
+          <td class="paramname"><em>pq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa la métrica de cercanía para un vértice, si el tipo seleccionado es 1. Si se selecciona 2, se usa la métrica harmónica alternativa. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00271">271</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                                                                                       {</div><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    pq-&gt;size = 0;</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">double</span> close = 0;</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    dijkstra(g, uindex, dist, pq);</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">if</span> (type == 1) {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="comment">/* Métrica de cercanía usual */</span></div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            close += dist[i];</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="comment">/* Métrica harmónica para grafos disconexos */</span></div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">if</span> (dist[i] &gt;= DBL_MAX || i == uindex) <span class="keywordflow">continue</span>;</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            close += 1.0 / dist[i];</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">if</span> (type == 1) close = 1.0 / close;</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span> close;</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a5a6317bae022cc2eb66e96d05b5981e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a6317bae022cc2eb66e96d05b5981e1">&#9670;&nbsp;</a></span>computeDegreeMetric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void computeDegreeMetric </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Función redundante: Usada para medir el tiempo que toma evaluar la métrica de grado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00051">51</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                    {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        v-&gt;degree = 0;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        e = v-&gt;first;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            v-&gt;degree += e-&gt;weight;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            e = e-&gt;next;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9a0405fae235e46f2e982637e22a88d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0405fae235e46f2e982637e22a88d8">&#9670;&nbsp;</a></span>computePageRankMetricEpsilon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int computePageRankMetricEpsilon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iniOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxIterations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa la métrica de PageRank para todo el grafo, empleando un epsilon que da el criterio de convergencia. Retorna la cantidad de iteraciones tomadas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00163">163</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graphalgorithms_8c_source.html#l00189">computePageRankMetricVertex()</a>, <a class="el" href="graphalgorithms_8c_source.html#l00126">graphInitializePageRank()</a> y <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                                                                        {</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a>(g, iniOption);</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">int</span> i, size = g-&gt;size;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">int</span> convergence = 1, it = 0;</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">double</span> lastPR, newPR, maxdiff, diff;</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">do</span> {</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        convergence = 1;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        maxdiff = 0;</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            lastPR = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;pagerank;</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            newPR = <a class="code" href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a>(g, i, alpha);</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="comment">/* Si la diferencia entre los PageRanks es mayor que el epsilon, no hay convergencia aún. */</span></div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            diff = fabs(newPR - lastPR);</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">if</span> (diff &gt; maxdiff) maxdiff = diff;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        ++it;</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">if</span> (maxdiff &gt; eps) convergence = 0;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">/* Para ver convergencia. */</span></div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment">/* fprintf(stdout, &quot;%d %.14lf\n&quot;, it, maxdiff); */</span></div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    } <span class="keywordflow">while</span> (!convergence &amp;&amp; it &lt; maxIterations);</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> it;</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div><div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ac283fa06f9ce14ebbbbdc44c6dabe38d"><div class="ttname"><a href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a></div><div class="ttdeci">double computePageRankMetricVertex(TGraph *g, int uindex, double alpha)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00189">graphalgorithms.c:189</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a58dc3553c3af88c5f7e1e6879e958341"><div class="ttname"><a href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a></div><div class="ttdeci">void graphInitializePageRank(TGraph *g, int option)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00126">graphalgorithms.c:126</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa7498f384b25e2fa68ca828a58427c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7498f384b25e2fa68ca828a58427c36">&#9670;&nbsp;</a></span>computePageRankMetricIterative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void computePageRankMetricIterative </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iniOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa la métrica de PageRank para todo el grafo, iterando una dada cantidad de veces. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00148">148</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graphalgorithms_8c_source.html#l00189">computePageRankMetricVertex()</a> y <a class="el" href="graphalgorithms_8c_source.html#l00126">graphInitializePageRank()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                                                                            {</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a>(g, iniOption);</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">int</span> i, size = g-&gt;size;</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">while</span> (iterations--) {</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <a class="code" href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a>(g, i, alpha);</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div><div class="ttc" id="graphalgorithms_8c_html_ac283fa06f9ce14ebbbbdc44c6dabe38d"><div class="ttname"><a href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a></div><div class="ttdeci">double computePageRankMetricVertex(TGraph *g, int uindex, double alpha)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00189">graphalgorithms.c:189</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a58dc3553c3af88c5f7e1e6879e958341"><div class="ttname"><a href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a></div><div class="ttdeci">void graphInitializePageRank(TGraph *g, int option)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00126">graphalgorithms.c:126</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac283fa06f9ce14ebbbbdc44c6dabe38d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac283fa06f9ce14ebbbbdc44c6dabe38d">&#9670;&nbsp;</a></span>computePageRankMetricVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double computePageRankMetricVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>uindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computa el nuevo PageRank para un vértice. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00189">189</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graphalgorithms_8c_source.html#l00163">computePageRankMetricEpsilon()</a> y <a class="el" href="graphalgorithms_8c_source.html#l00148">computePageRankMetricIterative()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                                                        {</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* u = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, uindex);</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e = u-&gt;first;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">double</span> pr = 0;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, e-&gt;index);</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        pr += v-&gt;pagerank * (double)e-&gt;weight / (<span class="keywordtype">double</span>)v-&gt;degree;</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        e = e-&gt;next;</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    pr *= alpha;</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    pr += (1 - alpha) / (<span class="keywordtype">double</span>)g-&gt;size;</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    u-&gt;pagerank = pr;</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">return</span> pr;</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a322c6ba75c59c6c7e5c45c809e81bb24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a322c6ba75c59c6c7e5c45c809e81bb24">&#9670;&nbsp;</a></span>getClosenessErdos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getClosenessErdos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>top</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devuelve un entero que corresponde con el elemento con mayor cercanía. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00096">96</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                            {</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> i, size = g-&gt;size;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">double</span> currpr = 0;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">/* Buscamos linealmente el índice tal que la cercanía sea mayor */</span></div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="struct_p_q.html">TPriorityQueue</a> pq;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    pqInitialize(&amp;pq, MAXEDGES);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="structpair.html">HeapNode</a> front;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        currpr = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;closeness;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        front.fst = -currpr;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        front.snd = i;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        pqPush(&amp;pq, front);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">int</span> tmp = 0;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">while</span> (!pqEmpty(&amp;pq)) {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        front = pqTop(&amp;pq);</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        top[tmp] = front.snd;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        tmp++;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    pqClean(&amp;pq);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div><div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+<div class="ttc" id="structpair_html"><div class="ttname"><a href="structpair.html">pair</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00006">priority_queue.h:6</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af2b71e81e0cc7b18eb494b9bfc3f79c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b71e81e0cc7b18eb494b9bfc3f79c1">&#9670;&nbsp;</a></span>getDegreeErdos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getDegreeErdos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>top</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devuelve un entero que corresponde con el elemento con mayor grado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00025">25</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                         {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> i, size = g-&gt;size, currdeg = 0;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">/* Buscamos linealmente el índice tal que el grado sea mayor */</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="struct_p_q.html">TPriorityQueue</a> pq;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    pqInitialize(&amp;pq, MAXSIZE);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="structpair.html">HeapNode</a> front;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        currdeg = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;degree;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        front.fst = -currdeg;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        front.snd = i;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        pqPush(&amp;pq, front);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> tmp = 0;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">while</span> (!pqEmpty(&amp;pq)) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        front = pqTop(&amp;pq);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        top[tmp] = front.snd;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        tmp++;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    pqClean(&amp;pq);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+<div class="ttc" id="structpair_html"><div class="ttname"><a href="structpair.html">pair</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00006">priority_queue.h:6</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a88661d3bcfaf2251248897b52deb6478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88661d3bcfaf2251248897b52deb6478">&#9670;&nbsp;</a></span>getPageRankErdos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getPageRankErdos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>top</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devuelve un entero que corresponde con el elemento con mayor PageRank. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00070">70</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                           {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> i, size = g-&gt;size;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">double</span> currpr = 0;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* Buscamos linealmente el índice tal que el PageRank sea mayor */</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="struct_p_q.html">TPriorityQueue</a> pq;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    pqInitialize(&amp;pq, MAXSIZE);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="structpair.html">HeapNode</a> front;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        currpr = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;pagerank;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        front.fst = -currpr;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        front.snd = i;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        pqPush(&amp;pq, front);</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">int</span> tmp = 0;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">while</span> (!pqEmpty(&amp;pq)) {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        front = pqTop(&amp;pq);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        top[tmp] = front.snd;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        tmp++;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    pqClean(&amp;pq);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div><div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+<div class="ttc" id="structpair_html"><div class="ttname"><a href="structpair.html">pair</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00006">priority_queue.h:6</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a58dc3553c3af88c5f7e1e6879e958341"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58dc3553c3af88c5f7e1e6879e958341">&#9670;&nbsp;</a></span>graphInitializePageRank()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInitializePageRank </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>option</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa todos los vértices a un PageRank por defecto, de acuerdo con la opción seleccionada.</p><ul>
+<li>1: Usando el degree.</li>
+<li>2: Usando closeness.</li>
+<li>default: Usando la inversa de la cantidad de vértices. </li>
+</ul>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00126">126</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graphalgorithms_8c_source.html#l00163">computePageRankMetricEpsilon()</a> y <a class="el" href="graphalgorithms_8c_source.html#l00148">computePageRankMetricIterative()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                    {</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">int</span> size = g-&gt;size;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; size; ++i) {</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">switch</span> (option) {</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">case</span> 1:</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            v-&gt;pagerank = (double)v-&gt;degree / g-&gt;nEdges;</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">case</span> 2:</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            v-&gt;pagerank = (<span class="keywordtype">double</span>)v-&gt;closeness;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">default</span>:</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            v-&gt;pagerank = 1 / g-&gt;size;</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a522d4e813d433f1fec5ab33a8a8913a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a522d4e813d433f1fec5ab33a8a8913a0">&#9670;&nbsp;</a></span>graphIsDisconnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int graphIsDisconnected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ref</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Revisa si el grafo es disconexo. Devuelve 0 si es conexo, y n &gt; 0 si no lo es, donde n es la cantidad de vértices que no se pueden conectar con la referencia. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graphalgorithms_8c_source.html#l00297">297</a> del archivo <a class="el" href="graphalgorithms_8c_source.html">graphalgorithms.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                            {</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <a class="code" href="structqueue.html">TQueue</a> q;</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    queueInitialize(&amp;q);</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordtype">int</span>* visited = malloc(g-&gt;size * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">int</span> i, j;</div><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    visited[ref] = 1;</div><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">if</span> (i == ref) <span class="keywordflow">continue</span>;</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        visited[i] = 0;</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    queueInsert(&amp;q, ref);</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">while</span> (!queueIsEmpty(&amp;q)) {</div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        i = queuePop(&amp;q);</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="structedge.html">TEdge</a>* e = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i)-&gt;first;</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            j = e-&gt;index;</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (visited[j] == 0) {</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                visited[j] = 1;</div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                queueInsert(&amp;q, j);</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            }</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            e = e-&gt;next;</div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    queueClean(&amp;q);</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">int</span> counter = 0;</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordflow">if</span> (visited[i] == 0) {</div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            counter++;</div><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    free(visited);</div><div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">return</span> counter;</div><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div><div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+<div class="ttc" id="structqueue_html"><div class="ttname"><a href="structqueue.html">queue</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00012">queue.h:12</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

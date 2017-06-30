@@ -1,3 +1,4 @@
+/*! \file */
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -308,11 +309,16 @@ void graphCleanTree(TBstNode* node) {
 void graphCleanAll(TGraph* g) {
 	/* Liberamos la memoria de vértices y aristas */
 	int i;
-	TEdge* e;
+	TEdge* e, *tmp;
 	TVertex* v;
 	for (i = 0; i < g->size; ++i) {
 		v = graphVertexPointer(g, i);
 		e = v->first;
+		while (e != NULL) {
+			tmp = e;
+			e = e->next;
+			free(tmp);
+		}
 	}
 	return;
 }

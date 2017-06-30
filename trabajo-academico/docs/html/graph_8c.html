@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CGMetrics: Referencia del Archivo graph.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGMetrics
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Medidas de centralidad para grafos no dirigidos</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo graph.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;limits.h&gt;</code><br />
+<code>#include &quot;graph.h&quot;</code><br />
+</div>
+<p><a href="graph_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a5f9296289d0ec83b813b931550507a92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a5f9296289d0ec83b813b931550507a92">graphInitialize</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int size)</td></tr>
+<tr class="separator:a5f9296289d0ec83b813b931550507a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ec142318ef8303601ef24dd131410d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a35ec142318ef8303601ef24dd131410d">graphInsertEdge</a> (<a class="el" href="structgraph.html">TGraph</a> *g, TElement s, TElement t)</td></tr>
+<tr class="separator:a35ec142318ef8303601ef24dd131410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d3a51ef0a5aba2b7c4bbef9156c2a34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structedge.html">TEdge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a9d3a51ef0a5aba2b7c4bbef9156c2a34">graphSearchEdgeAroundVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int vindex, int a)</td></tr>
+<tr class="separator:a9d3a51ef0a5aba2b7c4bbef9156c2a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef39fc9ae2dee6d5e9bc82e3fbd7c4e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#aef39fc9ae2dee6d5e9bc82e3fbd7c4e7">graphInitializeEdge</a> (<a class="el" href="structedge.html">TEdge</a> *e, int vindex)</td></tr>
+<tr class="separator:aef39fc9ae2dee6d5e9bc82e3fbd7c4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d5fa185d48c9a6fa1b6784297141ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#af2d5fa185d48c9a6fa1b6784297141ef">graphInsertEdgeToVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int vindex, <a class="el" href="structedge.html">TEdge</a> *e)</td></tr>
+<tr class="separator:af2d5fa185d48c9a6fa1b6784297141ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee07cf44da1594e85f8d49ab54240eff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#aee07cf44da1594e85f8d49ab54240eff">graphInsertVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, TElement s)</td></tr>
+<tr class="separator:aee07cf44da1594e85f8d49ab54240eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df59dd1336960bc665e58b6f43afa43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a3df59dd1336960bc665e58b6f43afa43">graphPutVertexInTree</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int pos)</td></tr>
+<tr class="separator:a3df59dd1336960bc665e58b6f43afa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2bb2ab836b0b812659b7261c0d50b57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#ab2bb2ab836b0b812659b7261c0d50b57">graphInitializeVertex</a> (<a class="el" href="structvertex.html">TVertex</a> *v, TElement s)</td></tr>
+<tr class="separator:ab2bb2ab836b0b812659b7261c0d50b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a943683e1ead8b45d8079a57be1918a6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a943683e1ead8b45d8079a57be1918a6b">graphVertexIndex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, TElement s)</td></tr>
+<tr class="separator:a943683e1ead8b45d8079a57be1918a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898e887dd5651eeeb7c649e6af25431b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a898e887dd5651eeeb7c649e6af25431b">graphVertexExists</a> (<a class="el" href="structgraph.html">TGraph</a> *g, TElement s)</td></tr>
+<tr class="separator:a898e887dd5651eeeb7c649e6af25431b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105b95cccbdf251ec518a845f9ed9e30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvertex.html">TVertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int vindex)</td></tr>
+<tr class="separator:a105b95cccbdf251ec518a845f9ed9e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af17fbe1de2a40151e3183f6ec6b6db02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#af17fbe1de2a40151e3183f6ec6b6db02">cmp</a> (TElement x, TElement y)</td></tr>
+<tr class="separator:af17fbe1de2a40151e3183f6ec6b6db02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5e83144dce23e0e8f1291dfc73cea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a> (char *errorMessage)</td></tr>
+<tr class="separator:a7f5e83144dce23e0e8f1291dfc73cea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa541e3347bd7613c826ca440b6b1457f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#aa541e3347bd7613c826ca440b6b1457f">graphPrint</a> (<a class="el" href="structgraph.html">TGraph</a> *g, FILE *fp)</td></tr>
+<tr class="separator:aa541e3347bd7613c826ca440b6b1457f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3999b7e5e60f358e29813ab95bfebba8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a3999b7e5e60f358e29813ab95bfebba8">graphVertexPrint</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int vindex, FILE *fp)</td></tr>
+<tr class="separator:a3999b7e5e60f358e29813ab95bfebba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7995b580f10eb889090ea106582acd1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a7995b580f10eb889090ea106582acd1d">graphPrintExtra</a> (<a class="el" href="structgraph.html">TGraph</a> *g, FILE *fp)</td></tr>
+<tr class="separator:a7995b580f10eb889090ea106582acd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf66c54cd5f7cebf0c715e729534a8c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a1bf66c54cd5f7cebf0c715e729534a8c">graphStringFromVertex</a> (<a class="el" href="structgraph.html">TGraph</a> *g, int vindex)</td></tr>
+<tr class="separator:a1bf66c54cd5f7cebf0c715e729534a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945c4abb16e8385ac08960f20b45916f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#a945c4abb16e8385ac08960f20b45916f">graphCleanTree</a> (<a class="el" href="structbinary_search_tree_node.html">TBstNode</a> *node)</td></tr>
+<tr class="separator:a945c4abb16e8385ac08960f20b45916f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacefec921513d77172a4c90c01081aa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graph_8c.html#aacefec921513d77172a4c90c01081aa9">graphCleanAll</a> (<a class="el" href="structgraph.html">TGraph</a> *g)</td></tr>
+<tr class="separator:aacefec921513d77172a4c90c01081aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a id="af17fbe1de2a40151e3183f6ec6b6db02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af17fbe1de2a40151e3183f6ec6b6db02">&#9670;&nbsp;</a></span>cmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cmp </td>
+          <td>(</td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Función de comparación. Devuelve 0 si x = y, un entero negativo si x &lt; y, y un entero positivo si x &gt; y. Con fines de abstracción de código. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00227">227</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00124">graphPutVertexInTree()</a> y <a class="el" href="graph_8c_source.html#l00191">graphVertexIndex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                {</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> strcmp(x, y);</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="aacefec921513d77172a4c90c01081aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacefec921513d77172a4c90c01081aa9">&#9670;&nbsp;</a></span>graphCleanAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphCleanAll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libera toda la memoria. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00309">309</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                              {</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">/* Liberamos la memoria de vértices y aristas */</span></div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e, *tmp;</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v;</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        e = v-&gt;first;</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            tmp = e;</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            e = e-&gt;next;</div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            free(tmp);</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    }</div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a945c4abb16e8385ac08960f20b45916f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945c4abb16e8385ac08960f20b45916f">&#9670;&nbsp;</a></span>graphCleanTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphCleanTree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbinary_search_tree_node.html">TBstNode</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Libera la memoria reservada para el árbol </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00299">299</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                    {</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">if</span> (node-&gt;left != NULL) <a class="code" href="graph_8c.html#a945c4abb16e8385ac08960f20b45916f">graphCleanTree</a>(node-&gt;left);</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">if</span> (node-&gt;right != NULL) <a class="code" href="graph_8c.html#a945c4abb16e8385ac08960f20b45916f">graphCleanTree</a>(node-&gt;right);</div><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    free(node);</div><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div><div class="ttc" id="graph_8c_html_a945c4abb16e8385ac08960f20b45916f"><div class="ttname"><a href="graph_8c.html#a945c4abb16e8385ac08960f20b45916f">graphCleanTree</a></div><div class="ttdeci">void graphCleanTree(TBstNode *node)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00299">graph.c:299</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5f9296289d0ec83b813b931550507a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9296289d0ec83b813b931550507a92">&#9670;&nbsp;</a></span>graphInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInitialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa el grafo, reservando memoria para una cantidad dada de vértices. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00013">13</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00235">reportError()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00036">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                          {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    g-&gt;size = 0;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    g-&gt;maxsize = size - 1;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    g-&gt;nEdges = 0;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    g-&gt;nodes = malloc(size * <span class="keyword">sizeof</span>(<a class="code" href="structvertex.html">TVertex</a>));</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (g-&gt;nodes == NULL) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Memory&quot;</span>);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    g-&gt;tree.root = NULL;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    g-&gt;tree.depth = 0;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_a7f5e83144dce23e0e8f1291dfc73cea0"><div class="ttname"><a href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a></div><div class="ttdeci">void reportError(char *errorMessage)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00235">graph.c:235</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aef39fc9ae2dee6d5e9bc82e3fbd7c4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef39fc9ae2dee6d5e9bc82e3fbd7c4e7">&#9670;&nbsp;</a></span>graphInitializeEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInitializeEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structedge.html">TEdge</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa una arista. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00076">76</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00027">graphInsertEdge()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                               {</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    e-&gt;index = vindex;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    e-&gt;weight = 1;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    e-&gt;next = NULL;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="ab2bb2ab836b0b812659b7261c0d50b57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2bb2ab836b0b812659b7261c0d50b57">&#9670;&nbsp;</a></span>graphInitializeVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInitializeVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvertex.html">TVertex</a> *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa un vértice de acuerdo al valor dado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00176">176</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00105">graphInsertVertex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                                   {</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    v-&gt;value = s;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    v-&gt;first = NULL;</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    v-&gt;last = NULL;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    v-&gt;degree = 0;</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    v-&gt;pagerank = 0;</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    v-&gt;closeness = 0;</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a35ec142318ef8303601ef24dd131410d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ec142318ef8303601ef24dd131410d">&#9670;&nbsp;</a></span>graphInsertEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInsertEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inserta una arista al grafo no dirigido. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00027">27</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00076">graphInitializeEdge()</a>, <a class="el" href="graph_8c_source.html#l00088">graphInsertEdgeToVertex()</a>, <a class="el" href="graph_8c_source.html#l00105">graphInsertVertex()</a>, <a class="el" href="graph_8c_source.html#l00063">graphSearchEdgeAroundVertex()</a> y <a class="el" href="graph_8c_source.html#l00235">reportError()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                                        {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> a = <a class="code" href="graph_8c.html#aee07cf44da1594e85f8d49ab54240eff">graphInsertVertex</a>(g, s);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> b = <a class="code" href="graph_8c.html#aee07cf44da1594e85f8d49ab54240eff">graphInsertVertex</a>(g, t);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e = <a class="code" href="graph_8c.html#a9d3a51ef0a5aba2b7c4bbef9156c2a34">graphSearchEdgeAroundVertex</a>(g, a, b);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">/* Si la arista no está en un lado, asumimos que no hay</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    desincronización y no está en ambos vértices. */</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (e == NULL) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">/* Colocamos la arista hacia b en a */</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="structedge.html">TEdge</a>* new_edge = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structedge.html">TEdge</a>));</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span> (new_edge == NULL) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Memory&quot;</span>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="graph_8c.html#aef39fc9ae2dee6d5e9bc82e3fbd7c4e7">graphInitializeEdge</a>(new_edge, b);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="graph_8c.html#af2d5fa185d48c9a6fa1b6784297141ef">graphInsertEdgeToVertex</a>(g, a, new_edge);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">/* Y luego la arista hacia a en b */</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        new_edge = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structedge.html">TEdge</a>));</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (new_edge == NULL) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Memory&quot;</span>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="graph_8c.html#aef39fc9ae2dee6d5e9bc82e3fbd7c4e7">graphInitializeEdge</a>(new_edge, a);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="graph_8c.html#af2d5fa185d48c9a6fa1b6784297141ef">graphInsertEdgeToVertex</a>(g, b, new_edge);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">/* Si la arista ya está, tenemos que sumar 1 al peso</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">        en ambos lados. */</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        e-&gt;weight++;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="structedge.html">TEdge</a>* d = <a class="code" href="graph_8c.html#a9d3a51ef0a5aba2b7c4bbef9156c2a34">graphSearchEdgeAroundVertex</a>(g, b, a);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        d-&gt;weight++;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">/* Aumentar una arista siempre aumentará el grado por 1 */</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    g-&gt;nodes[a].degree++;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    g-&gt;nodes[b].degree++;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    g-&gt;nEdges++;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="graph_8c_html_a9d3a51ef0a5aba2b7c4bbef9156c2a34"><div class="ttname"><a href="graph_8c.html#a9d3a51ef0a5aba2b7c4bbef9156c2a34">graphSearchEdgeAroundVertex</a></div><div class="ttdeci">TEdge * graphSearchEdgeAroundVertex(TGraph *g, int vindex, int a)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00063">graph.c:63</a></div></div>
+<div class="ttc" id="graph_8c_html_aef39fc9ae2dee6d5e9bc82e3fbd7c4e7"><div class="ttname"><a href="graph_8c.html#aef39fc9ae2dee6d5e9bc82e3fbd7c4e7">graphInitializeEdge</a></div><div class="ttdeci">void graphInitializeEdge(TEdge *e, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00076">graph.c:76</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_af2d5fa185d48c9a6fa1b6784297141ef"><div class="ttname"><a href="graph_8c.html#af2d5fa185d48c9a6fa1b6784297141ef">graphInsertEdgeToVertex</a></div><div class="ttdeci">void graphInsertEdgeToVertex(TGraph *g, int vindex, TEdge *e)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00088">graph.c:88</a></div></div>
+<div class="ttc" id="graph_8c_html_aee07cf44da1594e85f8d49ab54240eff"><div class="ttname"><a href="graph_8c.html#aee07cf44da1594e85f8d49ab54240eff">graphInsertVertex</a></div><div class="ttdeci">int graphInsertVertex(TGraph *g, TElement s)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00105">graph.c:105</a></div></div>
+<div class="ttc" id="graph_8c_html_a7f5e83144dce23e0e8f1291dfc73cea0"><div class="ttname"><a href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a></div><div class="ttdeci">void reportError(char *errorMessage)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00235">graph.c:235</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af2d5fa185d48c9a6fa1b6784297141ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d5fa185d48c9a6fa1b6784297141ef">&#9670;&nbsp;</a></span>graphInsertEdgeToVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphInsertEdgeToVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structedge.html">TEdge</a> *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coloca una arista a un vértice, dado el índice del vértice a donde apunta. No verifica si la arista ya existe. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00088">88</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00027">graphInsertEdge()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                              {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, vindex);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (v-&gt;first == NULL) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        v-&gt;first = e;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        v-&gt;last = e;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        v-&gt;last-&gt;next = e;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        v-&gt;last = e;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aee07cf44da1594e85f8d49ab54240eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee07cf44da1594e85f8d49ab54240eff">&#9670;&nbsp;</a></span>graphInsertVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int graphInsertVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inserta un vértice al grafo, y devuelve el índice donde se encuentra. Funciona igual si ya estaba. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00105">105</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00176">graphInitializeVertex()</a>, <a class="el" href="graph_8c_source.html#l00124">graphPutVertexInTree()</a> y <a class="el" href="graph_8c_source.html#l00191">graphVertexIndex()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00027">graphInsertEdge()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                             {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> a = <a class="code" href="graph_8c.html#a943683e1ead8b45d8079a57be1918a6b">graphVertexIndex</a>(g, s);</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (a == -1) {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">int</span> n = g-&gt;size;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="structvertex.html">TVertex</a>* v = &amp;(g-&gt;nodes[n]);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">/* Inicializamos el vértice (que ya está reservado) */</span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="graph_8c.html#ab2bb2ab836b0b812659b7261c0d50b57">graphInitializeVertex</a>(v, s);</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        g-&gt;size++;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="graph_8c.html#a3df59dd1336960bc665e58b6f43afa43">graphPutVertexInTree</a>(g, n);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> n;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> a;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="graph_8c_html_ab2bb2ab836b0b812659b7261c0d50b57"><div class="ttname"><a href="graph_8c.html#ab2bb2ab836b0b812659b7261c0d50b57">graphInitializeVertex</a></div><div class="ttdeci">void graphInitializeVertex(TVertex *v, TElement s)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00176">graph.c:176</a></div></div>
+<div class="ttc" id="graph_8c_html_a943683e1ead8b45d8079a57be1918a6b"><div class="ttname"><a href="graph_8c.html#a943683e1ead8b45d8079a57be1918a6b">graphVertexIndex</a></div><div class="ttdeci">int graphVertexIndex(TGraph *g, TElement s)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00191">graph.c:191</a></div></div>
+<div class="ttc" id="graph_8c_html_a3df59dd1336960bc665e58b6f43afa43"><div class="ttname"><a href="graph_8c.html#a3df59dd1336960bc665e58b6f43afa43">graphPutVertexInTree</a></div><div class="ttdeci">void graphPutVertexInTree(TGraph *g, int pos)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00124">graph.c:124</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa541e3347bd7613c826ca440b6b1457f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa541e3347bd7613c826ca440b6b1457f">&#9670;&nbsp;</a></span>graphPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphPrint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Imprime todo el grafo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00243">243</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                     {</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    fprintf(fp, <span class="stringliteral">&quot;Size: %d\n&quot;</span>, g-&gt;size);</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    fprintf(fp, <span class="stringliteral">&quot;Amount of edges: %d\n&quot;</span>, g-&gt;nEdges);</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    fprintf(fp, <span class="stringliteral">&quot;Binary Search Tree depth: %d\n&quot;</span>, g-&gt;tree.depth);</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a7995b580f10eb889090ea106582acd1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7995b580f10eb889090ea106582acd1d">&#9670;&nbsp;</a></span>graphPrintExtra()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphPrintExtra </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Imprime el grafo de una forma diferente. Usado para el debugging. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00273">273</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                          {</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* vert;</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* edg;</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; g-&gt;size; ++i) {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        vert = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, i);</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        edg = vert-&gt;first;</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">while</span> (edg != NULL) {</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            fprintf(fp, <span class="stringliteral">&quot;%d %d %d\n&quot;</span>, i, edg-&gt;index, edg-&gt;weight);</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            edg = edg-&gt;next;</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3df59dd1336960bc665e58b6f43afa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df59dd1336960bc665e58b6f43afa43">&#9670;&nbsp;</a></span>graphPutVertexInTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphPutVertexInTree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coloca el vértice en el árbol binario. Si el vértice ya está en el árbol, genera un error fatal que cierra el programa. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00124">124</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00227">cmp()</a> y <a class="el" href="graph_8c_source.html#l00235">reportError()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00105">graphInsertVertex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                              {</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">/* Creamos el nodo para el árbol binario */</span></div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="structbinary_search_tree_node.html">TBstNode</a>* node = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structbinary_search_tree_node.html">TBstNode</a>));</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (node == NULL) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Memory&quot;</span>);</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">char</span>* s = g-&gt;nodes[pos].value;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    node-&gt;index = pos;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    node-&gt;left = NULL;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    node-&gt;right = NULL;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="structbinary_search_tree_node.html">TBstNode</a>* curr = g-&gt;tree.root;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">/* Si el árbol está vacío, colocamos el nodo en la raíz */</span></div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span> (curr == NULL) {</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        node-&gt;depth = 1;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        g-&gt;tree.root = node;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">/* Caso contrario, buscamos el punto de inserción */</span></div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">int</span> c, i;</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">while</span> (curr != NULL) {</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        i = curr-&gt;index;</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        c = <a class="code" href="graph_8c.html#af17fbe1de2a40151e3183f6ec6b6db02">cmp</a>(g-&gt;nodes[i].value, s);</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (c == 0) <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;The vertex is already in the tree. Logic&quot;</span>);</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &lt; 0) {</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (curr-&gt;left == NULL) {</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                node-&gt;depth = curr-&gt;depth + 1;</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordflow">if</span> (node-&gt;depth &gt; g-&gt;tree.depth) {</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    g-&gt;tree.depth = node-&gt;depth;</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                }</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                curr-&gt;left = node;</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">return</span>;</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">else</span> curr = curr-&gt;left;</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">else</span> {</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> (curr-&gt;right == NULL) {</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                node-&gt;depth = curr-&gt;depth + 1;</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span> (node-&gt;depth &gt; g-&gt;tree.depth) {</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    g-&gt;tree.depth = node-&gt;depth;</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                }</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                curr-&gt;right = node;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">return</span>;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            }</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">else</span> curr = curr-&gt;right;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">/* Tiene que tenerse la inserción en este punto */</span></div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a>(<span class="stringliteral">&quot;Logic&quot;</span>);</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div><div class="ttc" id="graph_8c_html_af17fbe1de2a40151e3183f6ec6b6db02"><div class="ttname"><a href="graph_8c.html#af17fbe1de2a40151e3183f6ec6b6db02">cmp</a></div><div class="ttdeci">int cmp(TElement x, TElement y)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00227">graph.c:227</a></div></div>
+<div class="ttc" id="structbinary_search_tree_node_html"><div class="ttname"><a href="structbinary_search_tree_node.html">binarySearchTreeNode</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00023">graph.h:23</a></div></div>
+<div class="ttc" id="graph_8c_html_a7f5e83144dce23e0e8f1291dfc73cea0"><div class="ttname"><a href="graph_8c.html#a7f5e83144dce23e0e8f1291dfc73cea0">reportError</a></div><div class="ttdeci">void reportError(char *errorMessage)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00235">graph.c:235</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9d3a51ef0a5aba2b7c4bbef9156c2a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d3a51ef0a5aba2b7c4bbef9156c2a34">&#9670;&nbsp;</a></span>graphSearchEdgeAroundVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structedge.html">TEdge</a>* graphSearchEdgeAroundVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Busca arista en la lista del vértice. Da un puntero a la arista buscada, o NULL si no se encuentra. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00063">63</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00027">graphInsertEdge()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                                 {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, vindex);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e = v-&gt;first;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (e-&gt;index == a) <span class="keywordflow">return</span> e;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        e = e-&gt;next;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> e;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1bf66c54cd5f7cebf0c715e729534a8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bf66c54cd5f7cebf0c715e729534a8c">&#9670;&nbsp;</a></span>graphStringFromVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* graphStringFromVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devuelve el string que contiene un vértice, dado su índice. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00292">292</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                                   {</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, vindex)-&gt;value;</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}</div><div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a898e887dd5651eeeb7c649e6af25431b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a898e887dd5651eeeb7c649e6af25431b">&#9670;&nbsp;</a></span>graphVertexExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int graphVertexExists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Si el vértice existe en el grafo, se devuelve 1. Caso contrario, 0. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00207">207</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00191">graphVertexIndex()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                             {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="graph_8c.html#a943683e1ead8b45d8079a57be1918a6b">graphVertexIndex</a>(g, s) == -1) <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> 1;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div><div class="ttc" id="graph_8c_html_a943683e1ead8b45d8079a57be1918a6b"><div class="ttname"><a href="graph_8c.html#a943683e1ead8b45d8079a57be1918a6b">graphVertexIndex</a></div><div class="ttdeci">int graphVertexIndex(TGraph *g, TElement s)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00191">graph.c:191</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a943683e1ead8b45d8079a57be1918a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a943683e1ead8b45d8079a57be1918a6b">&#9670;&nbsp;</a></span>graphVertexIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int graphVertexIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TElement&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Consigue el índice del vértice que contiene al valor dado. De no encontrarse, se devuelve -1. Implementación: Búsqueda binaria sobre el ABB. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00191">191</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00227">cmp()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00105">graphInsertVertex()</a> y <a class="el" href="graph_8c_source.html#l00207">graphVertexExists()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                            {</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="structbinary_search_tree_node.html">TBstNode</a>* node = g-&gt;tree.root;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">int</span> c, i;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">while</span> (node != NULL) {</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        i = node-&gt;index;</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        c = <a class="code" href="graph_8c.html#af17fbe1de2a40151e3183f6ec6b6db02">cmp</a>(g-&gt;nodes[i].value, s);</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> (c == 0) <span class="keywordflow">return</span> i;</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &lt; 0) node = node-&gt;left;</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">else</span> node = node-&gt;right;</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div><div class="ttc" id="graph_8c_html_af17fbe1de2a40151e3183f6ec6b6db02"><div class="ttname"><a href="graph_8c.html#af17fbe1de2a40151e3183f6ec6b6db02">cmp</a></div><div class="ttdeci">int cmp(TElement x, TElement y)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00227">graph.c:227</a></div></div>
+<div class="ttc" id="structbinary_search_tree_node_html"><div class="ttname"><a href="structbinary_search_tree_node.html">binarySearchTreeNode</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00023">graph.h:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a105b95cccbdf251ec518a845f9ed9e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105b95cccbdf251ec518a845f9ed9e30">&#9670;&nbsp;</a></span>graphVertexPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvertex.html">TVertex</a>* graphVertexPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devuelve un puntero al vértice dado su índice, o NULL si no está. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00216">216</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graphalgorithms_8c_source.html#l00051">computeDegreeMetric()</a>, <a class="el" href="graphalgorithms_8c_source.html#l00163">computePageRankMetricEpsilon()</a>, <a class="el" href="graphalgorithms_8c_source.html#l00189">computePageRankMetricVertex()</a>, <a class="el" href="graph_8c_source.html#l00309">graphCleanAll()</a>, <a class="el" href="graphalgorithms_8c_source.html#l00126">graphInitializePageRank()</a>, <a class="el" href="graph_8c_source.html#l00088">graphInsertEdgeToVertex()</a>, <a class="el" href="graph_8c_source.html#l00273">graphPrintExtra()</a>, <a class="el" href="graph_8c_source.html#l00063">graphSearchEdgeAroundVertex()</a>, <a class="el" href="graph_8c_source.html#l00292">graphStringFromVertex()</a> y <a class="el" href="graph_8c_source.html#l00253">graphVertexPrint()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                                   {</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">if</span> (vindex &gt;= g-&gt;size) <span class="keywordflow">return</span> NULL;</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">return</span> &amp;(g-&gt;nodes[vindex]);</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a3999b7e5e60f358e29813ab95bfebba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3999b7e5e60f358e29813ab95bfebba8">&#9670;&nbsp;</a></span>graphVertexPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void graphVertexPrint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgraph.html">TGraph</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Imprime la información de un vértice dado su índice. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00253">253</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="graph_8c_source.html#l00216">graphVertexPointer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                       {</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="structvertex.html">TVertex</a>* v = <a class="code" href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a>(g, vindex);</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span> (v == NULL) {</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        fprintf(fp, <span class="stringliteral">&quot;Vertex %d doesn&#39;t exist.\n&quot;</span>, vindex);</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    fprintf(fp, <span class="stringliteral">&quot;%d %s -&gt; &quot;</span>, vindex, v-&gt;value);</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="structedge.html">TEdge</a>* e = v-&gt;first;</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">while</span> (e != NULL) {</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        fprintf(fp, <span class="stringliteral">&quot;%d (%d) &quot;</span>, e-&gt;index, e-&gt;weight);</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        e = e-&gt;next;</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    fprintf(fp, <span class="stringliteral">&quot;\n&quot;</span>);</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span>;</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div><div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00014">graph.h:14</a></div></div>
+<div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00008">graph.h:8</a></div></div>
+<div class="ttc" id="graph_8c_html_a105b95cccbdf251ec518a845f9ed9e30"><div class="ttname"><a href="graph_8c.html#a105b95cccbdf251ec518a845f9ed9e30">graphVertexPointer</a></div><div class="ttdeci">TVertex * graphVertexPointer(TGraph *g, int vindex)</div><div class="ttdef"><b>Definition:</b> <a href="graph_8c_source.html#l00216">graph.c:216</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7f5e83144dce23e0e8f1291dfc73cea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f5e83144dce23e0e8f1291dfc73cea0">&#9670;&nbsp;</a></span>reportError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reportError </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>errorMessage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Función que reporta errores que pueden suceder durante la ejecución del programa, y termina con la ejecución. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="graph_8c_source.html#l00235">235</a> del archivo <a class="el" href="graph_8c_source.html">graph.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="graph_8c_source.html#l00013">graphInitialize()</a>, <a class="el" href="graph_8c_source.html#l00027">graphInsertEdge()</a> y <a class="el" href="graph_8c_source.html#l00124">graphPutVertexInTree()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                     {</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    fprintf(stderr, <span class="stringliteral">&quot;%s error.\n&quot;</span>, errorMessage);</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    exit(EXIT_FAILURE);</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

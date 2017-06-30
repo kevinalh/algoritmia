@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CGMetrics: Referencia del Archivo priority_queue.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGMetrics
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Medidas de centralidad para grafos no dirigidos</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo priority_queue.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;priority_queue.h&quot;</code><br />
+</div>
+<p><a href="priority__queue_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a0c9dd6dbbe616981efd1a6b8233b66c8"><td class="memItemLeft" align="right" valign="top"><a id="a0c9dd6dbbe616981efd1a6b8233b66c8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pqCmp</b> (<a class="el" href="structpair.html">TPair</a> x, <a class="el" href="structpair.html">TPair</a> y)</td></tr>
+<tr class="separator:a0c9dd6dbbe616981efd1a6b8233b66c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418ab0e040b8a64cd15858ce18f100ec"><td class="memItemLeft" align="right" valign="top"><a id="a418ab0e040b8a64cd15858ce18f100ec"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pqInsert</b> (<a class="el" href="structpair.html">HeapNode</a> nodo, <a class="el" href="structpair.html">HeapNode</a> *heap, int size)</td></tr>
+<tr class="separator:a418ab0e040b8a64cd15858ce18f100ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e00cb173bcb65fa1e5fef408874fd1"><td class="memItemLeft" align="right" valign="top"><a id="a38e00cb173bcb65fa1e5fef408874fd1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pqRestore</b> (<a class="el" href="structpair.html">HeapNode</a> *heap, int size, int idx)</td></tr>
+<tr class="separator:a38e00cb173bcb65fa1e5fef408874fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c9477d82d8e6f21662d1e67e2d3a6e"><td class="memItemLeft" align="right" valign="top"><a id="a50c9477d82d8e6f21662d1e67e2d3a6e"></a>
+<a class="el" href="structpair.html">HeapNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pqRemoveRoot</b> (<a class="el" href="structpair.html">HeapNode</a> *heap, int size)</td></tr>
+<tr class="separator:a50c9477d82d8e6f21662d1e67e2d3a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a964a12efb89e9b603b585ce5373b239d"><td class="memItemLeft" align="right" valign="top"><a id="a964a12efb89e9b603b585ce5373b239d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pqInitialize</b> (<a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq, int sz)</td></tr>
+<tr class="separator:a964a12efb89e9b603b585ce5373b239d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a8c96df4fe0a32e77562e7e66f681e"><td class="memItemLeft" align="right" valign="top"><a id="ab9a8c96df4fe0a32e77562e7e66f681e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pqPush</b> (<a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq, <a class="el" href="structpair.html">HeapNode</a> node)</td></tr>
+<tr class="separator:ab9a8c96df4fe0a32e77562e7e66f681e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb09dc5cf607337f7190439ebf97f65b"><td class="memItemLeft" align="right" valign="top"><a id="abb09dc5cf607337f7190439ebf97f65b"></a>
+<a class="el" href="structpair.html">HeapNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pqTop</b> (<a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq)</td></tr>
+<tr class="separator:abb09dc5cf607337f7190439ebf97f65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8702ef4676f10500399118aa2c8c3eab"><td class="memItemLeft" align="right" valign="top"><a id="a8702ef4676f10500399118aa2c8c3eab"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pqEmpty</b> (<a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq)</td></tr>
+<tr class="separator:a8702ef4676f10500399118aa2c8c3eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85fd9ee5144b86e054a60c2f5d994531"><td class="memItemLeft" align="right" valign="top"><a id="a85fd9ee5144b86e054a60c2f5d994531"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pqClean</b> (<a class="el" href="struct_p_q.html">TPriorityQueue</a> *pq)</td></tr>
+<tr class="separator:a85fd9ee5144b86e054a60c2f5d994531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

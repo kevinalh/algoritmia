@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CGMetrics: Fichero Fuente graphalgorithms.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">CGMetrics
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Medidas de centralidad para grafos no dirigidos</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">graphalgorithms.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;graph.h&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;priority_queue.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <a class="code" href="graphalgorithms_8c.html#a522d4e813d433f1fec5ab33a8a8913a0">graphIsDisconnected</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> ref);</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> dijkstra(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> root, <span class="keywordtype">double</span>* dist, <a class="code" href="struct_p_q.html">TPriorityQueue</a>* pq);</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#ac5f3adaf46274b9d474329660f241f06">BFS</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> root, <span class="keywordtype">int</span>* dist);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/* Algoritmos para m�tricas de centralidad */</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> option);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#af2b71e81e0cc7b18eb494b9bfc3f79c1">getDegreeErdos</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span>* top);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#a88661d3bcfaf2251248897b52deb6478">getPageRankErdos</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span>* top);</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#a322c6ba75c59c6c7e5c45c809e81bb24">getClosenessErdos</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span>* top);</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#a5a6317bae022cc2eb66e96d05b5981e1">computeDegreeMetric</a>(<a class="code" href="structgraph.html">TGraph</a>* g);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#aa7498f384b25e2fa68ca828a58427c36">computePageRankMetricIterative</a>(<a class="code" href="structgraph.html">TGraph</a>*, <span class="keywordtype">double</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="graphalgorithms_8c.html#a9a0405fae235e46f2e982637e22a88d8">computePageRankMetricEpsilon</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">double</span> alpha, <span class="keywordtype">int</span> iniOption, <span class="keywordtype">int</span> maxIterations, <span class="keywordtype">double</span> eps);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">double</span> <a class="code" href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span>, <span class="keywordtype">double</span>);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#ab86714914e03247237599628e08a7439">computeClosenessMetric</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> type);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="graphalgorithms_8c.html#a74f357c09771e6c19c0e521007dd804b">computeClosenessMetricP</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> nthreads);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">double</span> <a class="code" href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a>(<a class="code" href="structgraph.html">TGraph</a>* g, <span class="keywordtype">int</span> uindex, <span class="keywordtype">double</span>* dist, <a class="code" href="struct_p_q.html">TPriorityQueue</a>* pq, <span class="keywordtype">int</span> type);</div><div class="ttc" id="graphalgorithms_8c_html_af2b71e81e0cc7b18eb494b9bfc3f79c1"><div class="ttname"><a href="graphalgorithms_8c.html#af2b71e81e0cc7b18eb494b9bfc3f79c1">getDegreeErdos</a></div><div class="ttdeci">void getDegreeErdos(TGraph *g, int *top)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00025">graphalgorithms.c:25</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a9a0405fae235e46f2e982637e22a88d8"><div class="ttname"><a href="graphalgorithms_8c.html#a9a0405fae235e46f2e982637e22a88d8">computePageRankMetricEpsilon</a></div><div class="ttdeci">int computePageRankMetricEpsilon(TGraph *g, double alpha, int iniOption, int maxIterations, double eps)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00163">graphalgorithms.c:163</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a322c6ba75c59c6c7e5c45c809e81bb24"><div class="ttname"><a href="graphalgorithms_8c.html#a322c6ba75c59c6c7e5c45c809e81bb24">getClosenessErdos</a></div><div class="ttdeci">void getClosenessErdos(TGraph *g, int *top)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00096">graphalgorithms.c:96</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ac5f3adaf46274b9d474329660f241f06"><div class="ttname"><a href="graphalgorithms_8c.html#ac5f3adaf46274b9d474329660f241f06">BFS</a></div><div class="ttdeci">void BFS(TGraph *g, int root, int *dist)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00335">graphalgorithms.c:335</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a88661d3bcfaf2251248897b52deb6478"><div class="ttname"><a href="graphalgorithms_8c.html#a88661d3bcfaf2251248897b52deb6478">getPageRankErdos</a></div><div class="ttdeci">void getPageRankErdos(TGraph *g, int *top)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00070">graphalgorithms.c:70</a></div></div>
+<div class="ttc" id="structgraph_html"><div class="ttname"><a href="structgraph.html">graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00035">graph.h:35</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ad015854cbdc65837f2a5422682f0d3e9"><div class="ttname"><a href="graphalgorithms_8c.html#ad015854cbdc65837f2a5422682f0d3e9">computeClosenessMetricVertex</a></div><div class="ttdeci">double computeClosenessMetricVertex(TGraph *g, int uindex, double *dist, TPriorityQueue *pq, int type)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00271">graphalgorithms.c:271</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_aa7498f384b25e2fa68ca828a58427c36"><div class="ttname"><a href="graphalgorithms_8c.html#aa7498f384b25e2fa68ca828a58427c36">computePageRankMetricIterative</a></div><div class="ttdeci">void computePageRankMetricIterative(TGraph *g, double alpha, int iniOption, int iterations)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00148">graphalgorithms.c:148</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a5a6317bae022cc2eb66e96d05b5981e1"><div class="ttname"><a href="graphalgorithms_8c.html#a5a6317bae022cc2eb66e96d05b5981e1">computeDegreeMetric</a></div><div class="ttdeci">void computeDegreeMetric(TGraph *g)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00051">graphalgorithms.c:51</a></div></div>
+<div class="ttc" id="struct_p_q_html"><div class="ttname"><a href="struct_p_q.html">PQ</a></div><div class="ttdef"><b>Definition:</b> <a href="priority__queue_8h_source.html#l00013">priority_queue.h:13</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ab86714914e03247237599628e08a7439"><div class="ttname"><a href="graphalgorithms_8c.html#ab86714914e03247237599628e08a7439">computeClosenessMetric</a></div><div class="ttdeci">void computeClosenessMetric(TGraph *g, int type)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00251">graphalgorithms.c:251</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a522d4e813d433f1fec5ab33a8a8913a0"><div class="ttname"><a href="graphalgorithms_8c.html#a522d4e813d433f1fec5ab33a8a8913a0">graphIsDisconnected</a></div><div class="ttdeci">int graphIsDisconnected(TGraph *g, int ref)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00297">graphalgorithms.c:297</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a74f357c09771e6c19c0e521007dd804b"><div class="ttname"><a href="graphalgorithms_8c.html#a74f357c09771e6c19c0e521007dd804b">computeClosenessMetricP</a></div><div class="ttdeci">void computeClosenessMetricP(TGraph *g, int type, int nthreads)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00361">graphalgorithms.c:361</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_ac283fa06f9ce14ebbbbdc44c6dabe38d"><div class="ttname"><a href="graphalgorithms_8c.html#ac283fa06f9ce14ebbbbdc44c6dabe38d">computePageRankMetricVertex</a></div><div class="ttdeci">double computePageRankMetricVertex(TGraph *g, int uindex, double alpha)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00189">graphalgorithms.c:189</a></div></div>
+<div class="ttc" id="graphalgorithms_8c_html_a58dc3553c3af88c5f7e1e6879e958341"><div class="ttname"><a href="graphalgorithms_8c.html#a58dc3553c3af88c5f7e1e6879e958341">graphInitializePageRank</a></div><div class="ttdeci">void graphInitializePageRank(TGraph *g, int option)</div><div class="ttdef"><b>Definition:</b> <a href="graphalgorithms_8c_source.html#l00126">graphalgorithms.c:126</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

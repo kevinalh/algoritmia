@@ -1,0 +1,35 @@
+\hypertarget{priority__queue_8c}{}\section{Referencia del Archivo priority\+\_\+queue.\+c}
+\label{priority__queue_8c}\index{priority\+\_\+queue.\+c@{priority\+\_\+queue.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}priority\+\_\+queue.\+h\char`\"{}}\newline
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a0c9dd6dbbe616981efd1a6b8233b66c8}\label{priority__queue_8c_a0c9dd6dbbe616981efd1a6b8233b66c8}} 
+int {\bfseries pq\+Cmp} (\hyperlink{structpair}{T\+Pair} x, \hyperlink{structpair}{T\+Pair} y)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a418ab0e040b8a64cd15858ce18f100ec}\label{priority__queue_8c_a418ab0e040b8a64cd15858ce18f100ec}} 
+void {\bfseries pq\+Insert} (\hyperlink{structpair}{Heap\+Node} nodo, \hyperlink{structpair}{Heap\+Node} $\ast$heap, int size)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a38e00cb173bcb65fa1e5fef408874fd1}\label{priority__queue_8c_a38e00cb173bcb65fa1e5fef408874fd1}} 
+void {\bfseries pq\+Restore} (\hyperlink{structpair}{Heap\+Node} $\ast$heap, int size, int idx)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a50c9477d82d8e6f21662d1e67e2d3a6e}\label{priority__queue_8c_a50c9477d82d8e6f21662d1e67e2d3a6e}} 
+\hyperlink{structpair}{Heap\+Node} {\bfseries pq\+Remove\+Root} (\hyperlink{structpair}{Heap\+Node} $\ast$heap, int size)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a964a12efb89e9b603b585ce5373b239d}\label{priority__queue_8c_a964a12efb89e9b603b585ce5373b239d}} 
+void {\bfseries pq\+Initialize} (\hyperlink{struct_p_q}{T\+Priority\+Queue} $\ast$pq, int sz)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_ab9a8c96df4fe0a32e77562e7e66f681e}\label{priority__queue_8c_ab9a8c96df4fe0a32e77562e7e66f681e}} 
+void {\bfseries pq\+Push} (\hyperlink{struct_p_q}{T\+Priority\+Queue} $\ast$pq, \hyperlink{structpair}{Heap\+Node} node)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_abb09dc5cf607337f7190439ebf97f65b}\label{priority__queue_8c_abb09dc5cf607337f7190439ebf97f65b}} 
+\hyperlink{structpair}{Heap\+Node} {\bfseries pq\+Top} (\hyperlink{struct_p_q}{T\+Priority\+Queue} $\ast$pq)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a8702ef4676f10500399118aa2c8c3eab}\label{priority__queue_8c_a8702ef4676f10500399118aa2c8c3eab}} 
+int {\bfseries pq\+Empty} (\hyperlink{struct_p_q}{T\+Priority\+Queue} $\ast$pq)
+\item 
+\mbox{\Hypertarget{priority__queue_8c_a85fd9ee5144b86e054a60c2f5d994531}\label{priority__queue_8c_a85fd9ee5144b86e054a60c2f5d994531}} 
+void {\bfseries pq\+Clean} (\hyperlink{struct_p_q}{T\+Priority\+Queue} $\ast$pq)
+\end{DoxyCompactItemize}
