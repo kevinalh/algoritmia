@@ -134,7 +134,7 @@ Algo que se debe tomar en cuenta es que, si no se tiene conexidad del grafo, la 
 \begin{equation}
 C_H (u) = \sum_{v \in V \setminus \{u\}} \frac{1}{d(u, v)}
 \end{equation}
-Esta medida es algunas veces llamada la métrica \textbf{harmónica} de centralidad\cite{rochat}. Asumimos que \(1/\infty = 0\).
+Esta medida es algunas veces llamada la métrica \textbf{armónica} de centralidad\cite{rochat}. Asumimos que \(1/\infty = 0\).
 \subsection{PageRank}
 Sea \(\alpha\) un número en \([0, 1]\), llamado el \textbf{factor amortiguador}.
 
@@ -345,7 +345,7 @@ La lectura de los grafos involucró leer pares de nombres, representando aristas
 	\end{tabular}
 \end{table}
 
-Los Grafos 1 y 2 son conexos, así que no hay problema aplicando la métrica de cercanía en estos casos. El Grafo 3, por otro lado, es disconexo, así que tendremos que usar la métrica harmónica para tener resultados útiles.
+Los Grafos 1 y 2 son conexos, así que no hay problema aplicando la métrica de cercanía en estos casos. El Grafo 3, por otro lado, es disconexo, así que tendremos que usar la métrica armónica para tener resultados útiles.
 
 Para los siguientes experimentos, se ha usado una computadora con procesador Intel i7-3770k, \SI{16}{\giga\byte} de memoria RAM y Windows 10. Todas las estructuras de datos y los algoritmos fueron implementados en C. Para la compilación, se usó \pkg{GNU Compiler Collection (GCC)} (versión 6.3.0) con nivel de optimización \texttt{-O3}.
 
