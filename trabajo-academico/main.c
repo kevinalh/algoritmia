@@ -1,4 +1,8 @@
-/*! \file */
+/*! \file
+* Este programa es una versión alternativa de main.c para Linux, 
+* donde se evita el uso de la librería <windows.h> para calcular
+* los tiempos.
+*/
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdlib.h>
@@ -20,11 +24,11 @@ char strings[MAXSIZE][MAXSTRING];
 int ans1[MAXSIZE], ans2[MAXSIZE], ans3[MAXSIZE];
 int erdos1[MAXSIZE], erdos2[MAXSIZE], erdos3[MAXSIZE];
 
-void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, int nrep, int proption, int exp);
+void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, int nrep, int proption, int exp, double alpha);
 
 /**
 * Uso:
-* ./cgmetrics nthreads type nerdos proption nrep < autoria.txt > graphoutput.txt
+* ./cgmetrics.exe nthreads type nerdos proption nrep < autoria.txt > graphoutput.txt
 *
 * nthreads: Cantidad de threads en paralelo a ejecutar (default = 1).
 * type: 1: Calcula la métrica de cercanía usual. 2: La harmónica. 0: No calcula closeness (default = 1).
@@ -32,25 +36,28 @@ void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, 
 * nrep: Cantidad de repeticiones de cada algoritmo, con fines de usar un tiempo promedio (default = 1).
 * proption: Opción de inicialización de vértices en PageRank.
 *	0: Inversa de |V|, 1: Degree, 2: Closeness (default = 0).
-* exp: Exponente de epsilon = 10^-exp, usado para PageRank (default = 8).
+* exp: Exponente de epsilon = 10^-exp, usado para PageRank (default = 10).
+* alpha: Factor amortiguador para PageRank, en formato dd -> 0.dd (default = 85).
 */
 int main(int argc, char **argv) {
 	TGraph g;
 	int type = 1;
-	int nthreads = 8;
+	int nthreads = 1;
 	int nerdos = 10;
 	int nrep = 1;
 	int proption = 0;
-	int exp = 14;
-	if (argc == 0 || (argc == 2 && (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h")==0))) {
-		printf("uso: cgmetrics nthreads [type] [nerdos] [proption] [nrep] [exp]\n\n");
+	int exp = 10;
+	double alpha = 0.85;
+	if (argc == 1 || (argc == 2 && (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h")==0))) {
+		printf("uso: cgmetrics nthreads [type] [nerdos] [proption] [nrep] [exp] [alpha]\n\n");
 		printf(" nthreads\tCantidad de threads en paralelo a ejecutar (default = 1).\n\n");
 		printf(" type    \t1: Calcula la métrica de cercanía usual. 2: La harmónica. 0: No calcula closeness (default = 1).\n\n");
 		printf(" nerdos  \tCantidad de autores con mayor métrica a hallar (default = 10).\n\n");
 		printf(" nrep    \tCantidad de repeticiones de cada algoritmo (default = 1).\n\n");
 		printf(" proption\tOpción de inicialización de vértices en PageRank (default = 0).\n\n");
 		printf(" \t\t0 : Inversa de | V |\n \t\t1 : Degree\n \t\t2 : Closeness\n\n");
-		printf(" exp     \tExponente de epsilon = 10^-exp, usado para PageRank (default = 8).\n\n");
+		printf(" exp     \tExponente de epsilon = 10^-exp, usado para PageRank (default = 10).\n\n");
+		printf(" alpha   \tFactor amortiguador para PageRank, en formato dd -> 0.dd (default = 85)\n\n");
 		return 0;
 	}
 	if (argc > 1) nthreads = strtol(argv[1], NULL, 10);
@@ -58,21 +65,21 @@ int main(int argc, char **argv) {
 	if (argc > 3) nerdos = strtol(argv[3], NULL, 10);
 	if (argc > 4) nrep = strtol(argv[4], NULL, 10);
 	if (argc > 5) proption = strtol(argv[5], NULL, 10);
-	if (argc > 5) exp = strtol(argv[6], NULL, 10);
+	if (argc > 6) exp = strtol(argv[6], NULL, 10);
+	if (argc > 7) alpha = (double) strtol(argv[7], NULL, 10) / 100;
 	int cs, curr = 0;
 	graphInitialize(&g, MAXSIZE);
 	char *s, *t;
 	char tmp1[MAXSTRING];
 	char tmp2[MAXSTRING];
-	/* Se puede descomentar esto para establecer una ubicación fija
+	/* Se pueden cambiar los valores fp y fp2 para tener una ubicación fija
 	de los archivos */
-	
-	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria_10000.txt", "r");
-	FILE* fp2 = fopen("L:/workspace/algoritmia/trabajo-academico/data/graphoutput.txt", "w");
 	/*
+	FILE* fp = fopen("L:/workspace/algoritmia/trabajo-academico/data/autoria.txt", "r");
+	FILE* fp2 = fopen("L:/workspace/algoritmia/trabajo-academico/data/graphoutput.txt", "w");
+	*/
 	FILE* fp = stdin;
 	FILE* fp2 = stdout;
-	*/
 	if (fp == NULL) reportError("File");
 	fscanf(fp, "%d ", &cs);
 	while (cs--) {
@@ -107,12 +114,12 @@ int main(int argc, char **argv) {
 	else {
 		fprintf(fp2, "Disconnected graph\n");
 	}
-	graphPrintMetrics(&g, fp2, type, nthreads, nerdos, nrep, proption, exp);
+	graphPrintMetrics(&g, fp2, type, nthreads, nerdos, nrep, proption, exp, alpha);
 	graphCleanAll(&g);
 	return 0;
 }
 
-void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, int nrep, int proption, int exp) {
+void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, int nrep, int proption, int exp, double alpha) {
 	int size = g->size;
 	int i;
 	double factor = (double) g->size - 1.0;
@@ -179,7 +186,7 @@ void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, 
 		getClosenessErdos(g, erdos2);
 		fprintf(fp, "Closeness Erdos:\n> ");
 		for (i = 0; i < nerdos; ++i) {
-			fprintf(fp, "%d | %.18lf %s", erdos2[i],
+			fprintf(fp, "%d | %.10lf %s", erdos2[i],
 				graphVertexPointer(g, erdos2[i])->closeness * (g->size - 1),
 				graphStringFromVertex(g, erdos2[i]));
 		}
@@ -194,7 +201,7 @@ void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, 
 		start = clock();
 		QueryPerformanceCounter(&wstart);
 
-		it += computePageRankMetricEpsilon(g, 0.85, proption, 1000, epsilon);
+		it += computePageRankMetricEpsilon(g, alpha, proption, 1000, epsilon);
 
 		end = clock();
 		QueryPerformanceCounter(&wend);
@@ -208,7 +215,7 @@ void graphPrintMetrics(TGraph* g, FILE* fp, int type, int nthreads, int nerdos, 
 	getPageRankErdos(g, erdos3);
 	fprintf(fp, "PageRank Erdos:\n> ");
 	for (i = 0; i < nerdos; ++i) {
-		fprintf(fp, "%d | %.18lf %s\n", erdos3[i],
+		fprintf(fp, "%d | %.10lf %s", erdos3[i],
 			graphVertexPointer(g, erdos3[i])->pagerank * (g->size),
 			graphStringFromVertex(g, erdos3[i]));
 	}

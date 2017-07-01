@@ -7,6 +7,9 @@
 \usepackage{comment}
 \usepackage[english, spanish, es-lcroman]{babel}
 
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}  
+
 \usepackage{cite}
 \usepackage[pdftex]{graphicx}
 \usepackage{amsmath}
@@ -19,6 +22,9 @@
 \usepackage{mathtools}
 \usepackage{bm}
 \usepackage{microtype}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows,positioning,automata}
 \usepackage{pgfplots,pgfplotstable}
 
 \ifCLASSOPTIONcompsoc
@@ -55,6 +61,8 @@
 \renewcommand{\algorithmicrepeat}{\textbf{repetir}}
 \renewcommand{\algorithmicdo}{\textbf{hacer}}
 \renewcommand{\algorithmicfor}{\textbf{para}}
+\renewcommand{\algorithmicreturn}{\textbf{devolver}}
+\renewcommand{\algorithmicelse}{\textbf{caso contrario}}
 
 \newcommand{\Continue}{\State \textbf{continuar} }
 \algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
@@ -77,7 +85,7 @@
 \begin{abstract}
 Presentamos las métricas de centralidad Degree, Closeness y PageRank para grafos no dirigidos con pesos, y los algoritmos para calcularlos. En particular, se estudia el algoritmo de Dijkstra para hallar distancias más cortas.
 
-Como aplicación, se consideran tres redes de coautoría del DBLP\@. A través de una implementación en C, se calculan los tiempos de ejecución de cada algoritmo, y se hace una comparación. Consideramos también la distancia de colaboración con respecto al nodo más importante según cada métrica, y el método para hallarlo.
+Como aplicación, se consideran tres redes de coautoría del DBLP\@. A través de una implementación en C, se calculan los tiempos de ejecución de cada algoritmo, y se hace una comparación. Consideramos también la distancia de colaboración con respecto al nodo más importante según cada métrica, y el método para hallarlo. Para el algoritmo de PageRank, se deduce experimentalmente la influencia de dos parámetros en la cantidad de iteraciones: el factor de amortiguamiento y la precisión; y se conjetura un modelo log-lineal para el último.
 \end{abstract}
 \begin{IEEEkeywords}
 PageRank, grafos, centralidad, coautoría
@@ -98,23 +106,17 @@ En este artículo, describimos tres métricas de centralidad: \textit{Closeness}
 Definimos, como es usual, un \textbf{grafo} como un par \(G = (V, E)\), donde \(V\) es el conjunto de vértices o nodos, y \(E \subset [V]^2 \) el de aristas, con \([V]^2 = \{ X \subset V : |X| = 2 \}\). Una consecuencia de esta definición es que el grafo debe ser no dirigido y las aristas están completamente determinadas por los nodos que unen \cite{diestel}. Escribimos \(uv\) en lugar de \(\{u, v\}\) por facilidad notacional (nótese que \(uv = vu\)).
 
 Consideramos una función \(w: E \rightarrow \mathbb{N} \) que asigna a cada arista un \textbf{peso}. Esto nos permite hablar de una relación múltiple entre dos nodos (e.g.\ múltiples colaboraciones entre dos autores)\footnote{La descripción usual para trabajar con aristas múltiples es la de multigrafo \cite{diestel}, pero preferimos emplear una función auxiliar para tener una representación más sencilla de implementar. }.
-
 \subsection{Degree}
-
 Para cada vértice \(v\), sea \(\Gamma(v) = \{u \in V : uv \in E \}\) la \textbf{vecindad} de \(v\). Decimos que \(u\) es \textbf{adyacente} a \(v\) si \(u \in \Gamma(v)\). Claramente esta relación es simétrica.
 
 Sea \(E(v) = \{uv \in E : u \in \Gamma(v) \}\). Si \(e \in E(v)\), decimos que el vértice \(v\) es \textbf{incidente} a la arista \(e\).
 
 El \textbf{grado} de \(v\) es la cantidad de aristas incidentes con él. En nuestro caso, consideramos múltiples aristas para un par de nodos a través de la función \(w\), por lo que escribimos \cite{bollobas}
-
 \begin{equation}
 	deg(v) = \sum_{e \in E(v)} w(e)
 \end{equation}
-
 La \textbf{centralidad de grado} para un vértice es simplemente \(C_D (v) = deg(v)\).
-
 \subsection{Closeness}
-
 Un \textbf{camino} en un grafo es una secuencia \(p = (x_1, x_2, \ldots x_n)\) de vértices tales que \(x_{i}x_{i+1} \in E\) para \(1 \leq i < n\), y su longitud es \(|p| = n\). Decimos que un camino une dos vértices \(u, v\) si \(x_1 = u\) y \(x_n = v\). Denotamos por \(P(u, v)\) al conjunto de todos los caminos que unen a \(u\) con \(v\). Sea \(c(uv) = w(uv)^{-1}\) el \textbf{costo} de la arista \(uv\). La \textbf{distancia} entre dos vértices es el resultado del siguiente problema de optimización:
 \begin{equation} \label{eq:distance}
 d(u, v) = \min \left(\sum_{i=1}^{n-1} c(x_{i}x_{i+1}) : (x_1, \mydots x_n) \in P(u, v)\right)
@@ -133,9 +135,7 @@ Algo que se debe tomar en cuenta es que, si no se tiene conexidad del grafo, la 
 C_H (u) = \sum_{v \in V \setminus \{u\}} \frac{1}{d(u, v)}
 \end{equation}
 Esta medida es algunas veces llamada la métrica \textbf{harmónica} de centralidad\cite{rochat}. Asumimos que \(1/\infty = 0\).
-
 \subsection{PageRank}
-
 Sea \(\alpha\) un número en \([0, 1]\), llamado el \textbf{factor amortiguador}.
 
 Definimos el \textbf{PageRank} de un vértice de manera recursiva:
@@ -150,7 +150,7 @@ PageRank fue originalmente diseñado para cuantificar la importancia de un sitio
 
 La definición original se aplica a grafos dirigidos sin aristas múltiples. En nuestro caso, no hace falta distinguir entre hipervínculos que salen del sitio web, y los que van hacia él. Sin embargo, sí es importante tomar en cuenta los pesos asignados a cada arista. Si un autor colabora más de una vez con una persona importante, esto debe reflejarse en el PageRank asignado. Por eso, el aporte ya no es equitativo entre los vecinos de un nodo, pero sí entre sus aristas. Para considerar este efecto, se pone el factor del peso en el aporte.
 
-El factor de amortiguamiento es importante para grafos disconexos, pues tomando \(\alpha = 1\), si se empieza en un vértice cualquiera, la probabilidad de llegar a los de una componente conexa diferente va a ser nula. Por otro lado, si \(\alpha = 0\), el viaje será completamente aleatorio. La calibración de este parámetro determina, entonces, en qué medida la estructura propia del grafo influencia en la asignación de importancia. En la literatura original se trabajó con \(\alpha = 0.85\) \cite{google}, y este es el valor que consideraremos para los experimentos.
+El factor de amortiguamiento es importante para grafos disconexos, pues tomando \(\alpha = 1\), si se empieza en un vértice cualquiera, la probabilidad de llegar a los de una componente conexa diferente va a ser nula. Por otro lado, si \(\alpha = 0\), el viaje será completamente aleatorio. La calibración de este parámetro determina, entonces, en qué medida la estructura propia del grafo influencia en la asignación de importancia. En la literatura original se trabajó con \(\alpha = 0.85\) \cite{google}, pero resulta interesante variar este parámetro por su efecto en la tasa de convergencia\cite{stanford}.
 
 Cada métrica determina un orden de vértices según el valor asignado. El vértice que maximiza el valor de una métrica \(C\) es llamado el \textbf{Ërdos} de \(G\) según \(C\). Si \(v_e\) es el Ërdos de \(G\), el \textbf{número de Ërdos} para cualquier \(v \in V\) se define como la distancia entre \(v_e\) y \(v\) considerando \(w(e) = 1\) para todo \(e \in E\).
 
@@ -171,7 +171,7 @@ La implementación que usamos es la de \textbf{montículo binario}. Un montícul
 
 Sea \(H = [(x_1, k_1),\ldots,(x_n, k_n)]\) el arreglo de pares que representa a la cola de prioridad \(P\). Para todo elemento de \(P\), al cual le corresponde un índice \(i\) de \(H\), se tendrá que el hijo izquierdo, de existir, estará indexado por \(2i\), y el hijo derecho por \(2i + 1\). El padre estará en la posición \( \lfloor i/2 \rfloor \). El problema de encontrar el mínimo de \(P\) se reduce entonces a sacar el elemento \(H[0]\) del arreglo, y la posición de inserción de un nuevo elemento siempre será \(H[n+1]\), al final del arreglo. Sin embargo, debemos mantener la condición de montículo para que el mínimo siempre esté en la raíz. Con este fin, en cada inserción y extracción del mínimo se debe emplear un algoritmo restaurador, como el mostrado en la función \textproc{Heapify}. Como consecuencia, las operaciones antes mencionadas son de complejidad \( \mathcal{O}(\log n) \) \cite{clrs}.
 
-\begin{algorithm}[H]
+\begin{algorithm}
 	\caption{Restauración de condición de montículo} \label{alg:heapify}
 	\begin{algorithmic}
 		\Function{Heapify}{$H$, $i$}
@@ -193,6 +193,33 @@ Sea \(H = [(x_1, k_1),\ldots,(x_n, k_n)]\) el arreglo de pares que representa a 
 	\end{algorithmic}
 \end{algorithm}
 
+Para verificar si un grafo es conexo, se puede hacer una \textbf{búsqueda en anchura}, marcando como visitados todos los nodos por los que se va pasando, y agregando los adyacentes aún no visitados a una cola. Al final del recorrido, se debe haber visitado el grafo completo. Caso contrario, el grafo es disconexo. También es posible usar una búsqueda en profundidad, pues la idea es similar.
+
+\begin{algorithm}[t]
+	\caption{Búsqueda en anchura para probar conexidad} \label{alg:connected}
+	\begin{algorithmic}
+		\Function{EsConexo}{$Grafo$, $inicio$}
+		\State Sea $A$ un arreglo de ceros (no visitados aún).
+		\State Sea $Q$ una cola.
+		\State $A[inicio] \gets 1$
+		\State $Q.agregar(inicio)$
+		\While{$Q$ no esté vacío}
+		\State $u \gets Q.descolar()$
+		\For{$v \in \Gamma(u) : A[v] = 0$}
+		\State $A[v] \gets 1$
+		\State $Q.insertar(v)$
+		\EndFor
+		\EndWhile
+		\If{$\sum_{v \in V} A[v] = |V|$}
+		\Comment Se han visitado todos los nodos.
+		\State \Return Verdadero
+		\Else
+		\State \Return Falso
+		\EndIf
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
 En lo que resta del capítulo veremos algoritmos para calcular las métricas ya descritas.
 
 La métrica del grado se calcula de manera directa: Para cada nodo, sumamos los pesos de todas las aristas incidentes a él.
@@ -202,7 +229,7 @@ La medida de cercanía involucra resolver el problema de minimización planteado
 Ya que se necesita calcular el camino más corto entre todo par de nodos en el grafo, se puede aplicar el algoritmo de Floyd-Warshall, con complejidad \(\Theta(|V|^3)\) \cite{clrs}. Sin embargo, si el grafo es esparso\footnote{Se considera esparso cuando \(|E| = o(|V|^2 / \log(|V|))\)\cite{clrs}}, se puede considerar aplicar el algoritmo de Dijkstra para todo vértice, con complejidad \(\mathcal{O}(|V||E|\ln |V|)\) usando colas de prioridad (para evitar hacer una búsqueda lineal del mínimo en cada paso). Esta alternativa es la que se usó en la presente investigación, al ser relativamente de baja complejidad y más eficiente para el caso particular de interés.
 
 La función \textproc{Dijkstra} usa un arreglo de distancias mínimas, donde todas están inicializadas a \(\infty\), con excepción del nodo raíz, que tiene distancia \(0\) hacia sí mismo. La cola de prioridad usada \(P\) está compuesta por 2-tuplas \((d, u)\), donde \(d\) es la distancia desde el nodo raíz hasta \(u\). Cada vez que saquemos el nodo con mínima distancia \(u\) de \(P\), se compara, para cada vértice adyacente \(v\), la distancia si se sigue por \(u\) hasta \(v\), y la hipotética distancia mínima actual para \(v\). Si la distancia efectivamente disminuye, actualizamos el arreglo de distancias mínimas. En este punto, una técnica usual es disminuir la prioridad de \(v\) en \(P\)\cite{heap}, pero esto implicaría reordenar la estructura. Optamos por agregar \((nuevo, v)\) a \(P\), donde \(nuevo\) es la nueva distancia mínima hallada. Nótese entonces que cada nodo \(u\) puede aparecer más de una vez, pero en este caso sólo sale de la cola, sin hacer más computación. Para hallar la métrica de cercanía, se aplica la Ecuación~\ref{eq:close} sobre el arreglo \(dist\) resultante.
-\begin{algorithm}[H]
+\begin{algorithm}[t]
 	\caption{Algoritmo de Dijkstra} \label{alg:dijkstra}
 \begin{algorithmic}
 	\Function{Dijkstra}{$Grafo$, $fuente$}
@@ -252,11 +279,11 @@ En otras palabras, nos interesa encontrar un eigenvector asociado al eigenvalor 
 
 El método para resolver este problema, conocido como el \textbf{método de potencias}, consiste en aplicaciones iteradas de la matriz \(\matr{G}\) a un vector \(\bm{\pi}_0\) inicial. La demostración de convergencia consiste en descomponer \(\matr{G}\) en bloques de Jordan y aplicar el resultado mencionado en el párrafo anterior\cite{langville}.
 
-La elección del vector inicial \(\bm{\pi}_0\) influye en la velocidad de convergencia del algoritmo. Es usual tomar \(\bm{\pi}_0 = \frac{1}{|V|} \bm{1} \), donde \(\bm{1}\) tiene cada componente igual a \(1\). Otra alternativa es inicializar el vector con los valores de las dos métricas anteriores, esperando que se esté más cerca al eigenvector deseado.
+La elección del vector inicial \(\bm{\pi}_0\) influye en la velocidad de convergencia del algoritmo. Es usual tomar \(\bm{\pi}_0 = \frac{1}{|V|} \bm{1} \), donde \(\bm{1}\) tiene cada componente igual a \(1\). Otra alternativa es inicializar el vector con los valores normalizados de las dos métricas anteriores, esperando que se esté más cerca al eigenvector deseado.
 
 La función \textproc{PageRank} aplica el método de potencias hasta que la diferencia máxima entre los valores antes y después de la iteración sea menor que \(\epsilon\). Naturalmente, la cantidad de iteraciones necesarias para que se cumpla la condición de convergencia crecerá al disminuir \(\epsilon\).
 
-\begin{algorithm}[H]
+\begin{algorithm}
 	\caption{PageRank} \label{alg:pagerank}
 	\begin{algorithmic}
 		\Function{PageRank}{$Grafo$, $\epsilon$, $\alpha$}
@@ -282,19 +309,11 @@ La función \textproc{PageRank} aplica el método de potencias hasta que la dife
 \section{Experimentos y resultados}
 Se tienen tres conjuntos de datos sobre los cuales se trabajó. Los tres son parte de una red de coautoría obtenida del DBLP, cuyo grafo resultante contiene un total de \num{1411345} vértices y \num{5946615} aristas, sin contar sus pesos (contándolos, hay \num{10615809}). Este grafo será etiquetado Grafo 3. Los otros dos grupos de datos se etiquetarán Grafo 1 (con \num{1650} vértices y \num{31075} aristas) y Grafo 2 (\num{11454} vértices, \num{231482} aristas).
 
-Los Grafos 1 y 2 son conexos, así que no hay problema aplicando la métrica de cercanía en estos casos. El Grafo 3, por otro lado, es disconexo, así que tendremos que usar la métrica harmónica para tener resultados útiles.
+Los grafos fueron representados como \textbf{listas de adyacencia}: Para cada vértice, se tiene una lista simple de aristas, cada una conteniendo el nodo al cual se dirige y su peso. Los vértices están indexados en un arreglo para poder acceder rápidamente a ellos. Ya que los grafos dados son no dirigidos, se agregó una arista para ambos vértices incidentes a la arista teórica.
 
-Para los siguientes experimentos, se ha usado una computadora con procesador Intel i7-3770k, \SI{16}{\giga\byte} de memoria RAM y Windows 10. Todas las estructuras de datos y los algoritmos fueron implementados en C. Para la compilación, se usó \pkg{GNU Compiler Collection (GCC)} (versión 6.3.0) con nivel de optimización \texttt{-O3}.
+La lectura de los grafos involucró leer pares de nombres, representando aristas entre dos nodos. Agregar cada arista involucra comparar los nombres con cada uno de los ya colocados en el grafo. Esto puede demorar bastante para grafos grandes, por lo que se creó un Árbol Binario de Búsqueda auxiliar de manera que conseguir el índice del vértice correspondiente a cada nombre sea de complejidad \(\mathcal{O}(\log(|V|))\)\footnote{Esta complejidad se consigue balanceando los árboles, lo cual no se hizo en este caso. Sin embargo, la profundidad del árbol no balanceado creado para el Grafo 3 fue 55, un número bastante razonable.}.
 
-En lo que sigue, diferenciaremos entre \textit{tiempo de CPU}, que es el tiempo que el CPU dedica al proceso, sin considerar lo que se dedica a los demás procesos; y el \textit{tiempo real} (también conocido como \textit{wallclock time}), que es lo que demoró el proceso en ejecutar, como se entiende de manera cotidiana. Por claridad, escribiremos el tiempo real entre paréntesis luego de escribir el tiempo de CPU.
-
-La aplicación de \textproc{Dijkstra} a un nodo es independiente de su aplicación al resto. Es por ello que se puede hacer una paralelización de manera trivial, y obtener resultados más rápidamente. Con este fin, empleamos \pkg{OpenMP}, una API que extiende C a través de directivas al compilador, permitiendo insertar secciones de código a ser ejecutadas en paralelo \cite{openmp}. El compilador escogido, \pkg{GCC}, da soporte a \pkg{OpenMP} de manera nativa. Todos los tiempos para la métrica de cercanía fueron obtenidos usando 8 hilos de ejecución.
-
-En el Cuadro~\ref{tab:tejecucion} se aprecian los tiempos (de CPU y reales) para los algoritmos que evalúan las métricas Degree y Closeness. Nos interesa evaluar el algoritmo de PageRank bajo diferentes parámetros, por lo que su análisis se realiza por separado. Los tiempos presentados son un promedio de diez repeticiones.
-
-No presentamos los tiempos para el cálculo de la cercanía del Grafo 3 porque tomaría días. Para los mil primeros nodos, se obtuvo un tiempo de ejecución de \num{261.9417} segundos. De aquí, se deduce que la evaluación total demoraría por lo menos cuatro días.
-
-\begin{table}
+\begin{table}[t]
 	\renewcommand{\arraystretch}{1.3}
 	\caption{Tiempos de ejecución: Degree y Closeness}
 	\label{tab:tejecucion}
@@ -310,11 +329,39 @@ No presentamos los tiempos para el cálculo de la cercanía del Grafo 3 porque t
 	\end{tabular}
 \end{table}
 
-Para estudiar PageRank, usamos el algoritmo en los tres grafos bajo diferentes precisiones \(\epsilon\). En la Figura~\ref{fig:itpr} se tiene la cantidad de iteraciones requeridas en cada caso. Se hacen dos observaciones. A simple vista, se ve que en los dos primeros casos se sigue un modelo log-lineal, y que esto no ocurre en el Grafo 3. En segundo lugar, nótese que la cantidad de iteraciones en el Grafo 1 siempre es mayor a lo requerido en el Grafo 2, a pesar de tener menos vértices. Al hacerse una regresión, se tendrían dos líneas paralelas. Sin embargo, las iteraciones requeridas en el Grafo 3 son mayores para precisiones muy elevadas (\(\epsilon \leq 10^{-12} \)), y menores en el otro extremo.
+\begin{table}[t]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Tiempos de ejecución: PageRank}
+	\label{tab:tpagerank}
+	\centering
+	\begin{tabular}{c|c|c}
+		\hline
+		Grafo & Por Iteración (s) & Total (\( \epsilon = 10^{-13}, \alpha = 0.85 \)) (s) \\
+		\hline\hline
+		1 & 0.0002 (0.000173) & 0.01389 (0.013492) \\
+		2 & 0.0021 (0.002064) & 0.15160 (0.150690) \\
+		3 & 0.6490 (0.649002) & 56.4630 (56.46315) \\
+		\hline
+	\end{tabular}
+\end{table}
 
-Una manera de ver si los resultados de \textproc{PageRank} tienen sentido es calculando la suma de los valores para todos los vértices. Dada la interpretación probabilística de esta métrica, el resultado debe ser 1. En efecto, esto se cumple con cada vez más precisión a medida que \(\epsilon\) se hace más pequeño.
+Los Grafos 1 y 2 son conexos, así que no hay problema aplicando la métrica de cercanía en estos casos. El Grafo 3, por otro lado, es disconexo, así que tendremos que usar la métrica harmónica para tener resultados útiles.
 
-\begin{figure}[!t]
+Para los siguientes experimentos, se ha usado una computadora con procesador Intel i7-3770k, \SI{16}{\giga\byte} de memoria RAM y Windows 10. Todas las estructuras de datos y los algoritmos fueron implementados en C. Para la compilación, se usó \pkg{GNU Compiler Collection (GCC)} (versión 6.3.0) con nivel de optimización \texttt{-O3}.
+
+En lo que sigue, diferenciaremos entre \textit{tiempo de CPU}, que es el tiempo que el CPU dedica al proceso, sin considerar lo que se dedica a los demás procesos; y el \textit{tiempo real} (también conocido como \textit{wallclock time}), que es lo que demoró el proceso en ejecutar, como se entiende de manera cotidiana. Por claridad, escribiremos el tiempo real entre paréntesis luego de escribir el tiempo de CPU.
+
+La aplicación de \textproc{Dijkstra} a un nodo es independiente de su aplicación al resto. Es por ello que se puede hacer una paralelización de manera trivial, y obtener resultados más rápidamente. Con este fin, empleamos \pkg{OpenMP}, una API que extiende C a través de directivas al compilador, permitiendo insertar secciones de código a ser ejecutadas en paralelo \cite{openmp}. El compilador escogido, \pkg{GCC}, da soporte a \pkg{OpenMP} de manera nativa. Todos los tiempos para la métrica de cercanía fueron obtenidos usando 8 hilos de ejecución.
+
+En el Cuadro~\ref{tab:tejecucion} se aprecian los tiempos (de CPU y reales) para los algoritmos que evalúan las métricas Degree y Closeness, y en el Cuadro~\ref{tab:tpagerank} mostramos el tiempo que tarda una iteración del algoritmo de PageRank, junto a lo que se tomó en ejecutar en total para \( \epsilon = 10^{-13}\). Los tiempos presentados son un promedio de diez repeticiones.
+
+No presentamos los tiempos para el cálculo de la cercanía del Grafo 3 porque tomaría días. Para los mil primeros nodos, se obtuvo un tiempo de ejecución de \num{261.9417} segundos. De aquí, se deduce que la evaluación total demoraría por lo menos cuatro días.
+
+Para estudiar PageRank, usamos el algoritmo en los tres grafos bajo diferentes precisiones \(\epsilon\). En la Figura~\ref{fig:itpr} se tiene la cantidad de iteraciones requeridas en cada caso, con \(\alpha = 0.85\). Se hacen dos observaciones. A simple vista, se ve que en los dos primeros casos se sigue un modelo log-lineal, y que esto no ocurre en el Grafo 3. En segundo lugar, nótese que la cantidad de iteraciones en el Grafo 1 siempre es mayor a lo requerido en el Grafo 2, a pesar de tener menos vértices. Al hacerse una regresión, se tendrían dos líneas paralelas. Sin embargo, las iteraciones requeridas en el Grafo 3 son mayores para precisiones muy elevadas (\(\epsilon \leq 10^{-12} \)), y menores en el otro extremo.
+
+Una manera de ver si los resultados de \textproc{PageRank} tienen sentido es calculando la suma de los valores para todos los vértices. Dada la interpretación probabilística de esta métrica, el resultado debe ser 1. En efecto, esto se cumple con cada vez más precisión a medida que \(\epsilon\) se hace más pequeño. Para \(\epsilon\) relativamente grande, se puede observar en la Figura~\ref{fig:itpr} que se detecta convergencia en la primera iteración, sin embargo, en estos casos se consiguieron sumas mucho menores que 1.
+
+\begin{figure}
 \centering
 \begin{tikzpicture}% table
 \begin{semilogxaxis} [
@@ -350,6 +397,26 @@ color=red,
 \label{fig:itpr}
 \end{figure}
 
+Al ver esta gráfica, es natural preguntarse qué pasaría si se hace variar \(\alpha\). Esto es lo que se muestra en la Figura~\ref{fig:3dpr}.
+
+En el Cuadro~\ref{tab:erdos}, se colocan los diez autores más importantes según cada métrica. Los valores de \(C_C\) y \(C_{PR}\) han sido normalizados de las maneras mostradas en la primera fila. Se han resaltado los nombres de las personas que aparecen en más de una lista.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis} [
+xlabel=Precisión \(\epsilon\),
+ylabel=\(\alpha\),
+zlabel=Iteraciones,
+cycle list name=color,
+]
+\addplot3[surf] table {3dplot2.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{Superficie de las iteraciones al variar la precisión \(\epsilon\) y el factor de amortiguamiento \(\alpha\) para el Grafo 2. El Grafo 1 muestra un comportamiento similar.}
+\label{fig:3dpr}
+\end{figure}
+
 \begin{table*}
 	\renewcommand{\arraystretch}{1.3}
 	\caption{Los 10 autores más importantes según cada métrica}
@@ -357,34 +424,54 @@ color=red,
 	\centering
 	\begin{tabular}{c|c|c|c}
 		\hline
-		Grafo & \(C_D\) & \(C_C\) & \(C_{PR}\)\\
+		Grafo & \(C_D\) & \(C_C (|V| - 1)\) & \(C_{PR} (|V|)\)\\
 		\hline\hline
-		1 & David Maier (592)& David Maier & David Maier\\
-		  &	Divesh Srivastava (487)& Dan Suciu & Lucila Ohno-Machado \\
-		  &	Paola Mello (450)& Jeffrey D. Ullman & Divesh Srivastava\\
-		  &	Giuseppe De Giacomo & Alon Y. Halevy & Richard Hull\\
-		  &	Serge Abiteboul & Joseph M. Hellerstein & Bertram Ludascher\\
-		  & Bertram Ludascher & Michael J. Franklin & Serge Abiteboul\\
-		  & Diego Calvanese & Magdalena Balazinska & George Varghese\\
-		  & Evelina Lamma & Mary F. Fernandez & K. K. Ramakrishnan\\
-		  & Dan Suciu & Raghu Ramakrishnan & Dan Suciu\\
-		  &	Raghu Ramakrishnan & Lois M. L. Delcambre & Wenfei Fan\\
+		1 & \textbf{David Maier} (592)& \textbf{David Maier} (1.3140)& \textbf{David Maier} (16.4470)\\
+		  &	\textbf{Divesh Srivastava} (487)& \textbf{Dan Suciu} (1.3137)& Lucila Ohno-Machado (11.5580)\\
+		  &	Paola Mello (450)& Jeffrey D. Ullman (1.3070)& \textbf{Divesh Srivastava} (10.4953)\\
+		  &	Giuseppe De Giacomo (408)& Alon Y. Halevy (1.3012)& Richard Hull (9.1032)\\
+		  &	\textbf{Serge Abiteboul} (402)& Joseph M. Hellerstein (1.2974)& \textbf{Bertram Ludascher} (8.8004)\\
+		  & \textbf{Bertram Ludascher} (387)& Michael J. Franklin (1.2959)& \textbf{Serge Abiteboul} (8.099)\\
+		  & Diego Calvanese (382)& Magdalena Balazinska (1.2946)& George Varghese (7.4728)\\
+		  & Evelina Lamma (342)& Mary F. Fernandez (1.2832)& K. K. Ramakrishnan (7.3172)\\
+		  & \textbf{Dan Suciu} (334)& \textbf{Raghu Ramakrishnan} (1.2770)& \textbf{Dan Suciu} (7.1371)\\
+		  &	\textbf{Raghu Ramakrishnan} (326)& Lois M. L. Delcambre (1.2765)& Wenfei Fan (6.6365)\\
+		\hline
+		2 & \textbf{Xiang Li} (1054)& \textbf{Jiawei Han} (1.2943)& \textbf{Xiang Li} (35.1669)\\
+		  &	\textbf{Carole A. Goble} (968)& \textbf{Philip S. Yu} (1.2858)& Liang Chen (20.7484)\\
+		  & \textbf{John Mylopoulos} (847)& Xifeng Yan (1.2712)& Lei Shi (19.9949)\\
+		  & \textbf{Jiawei Han} (801)& Kun-Lung Wu (1.2692)& Lin Li (19.1619)\\
+		  &	\textbf{Philip S. Yu} (786)& Charu C. Aggarwal (1.2686)& Ping Li (18.4318)\\
+		  & \textbf{Hector Garcia-Molina} (781)& Jian Pei (1.2651)& \textbf{John Mylopoulos} (18.3041)\\
+		  & Gerhard Weikum (733)& Haixun Wang (1.2572)& \textbf{Hector Garcia-Molina} (18.0143)\\
+		  & Yuan Chen (728)& Laks V. S. Lakshmanan (1.2537)& \textbf{Carole A. Goble} (17.7333)\\
+		  & Ewan Birney (701)& Divesh Srivastava (1.2520)& \textbf{David Maier} (17.4873)\\
+		  & \textbf{David Maier} (690)& Tarek F. Abdelzaher (1.2504)& Fei Wang (17.3025)\\
+		\hline
+		3 & \textbf{Wen Gao} (2928)& & \textbf{Wei Wang} (120.0663)\\
+		  &	\textbf{Wei Wang} (2549)& & \textbf{Wei Liu} (107.5916)\\
+		  &	\textbf{Wei Liu} (2529)& & \textbf{Yan Zhang} (103.8319)\\
+		  & \textbf{Yan Zhang} (2429)& & \textbf{Wen Gao} (94.8491)\\
+		  &	H. Vincent Poor (2356)& & Lei Wang (94.6526)\\
+		  & \textbf{Xin Li} (2221)& & \textbf{Xin Li} (93.3889)\\
+		  & Philip S. Yu (2094)& & \textbf{Jing Li} (89.8887)\\
+		  & Jiawei Han (2069)& & Wei Li (89.8564)\\
+		  & Thomas S. Huang (2037)& & Wei Zhang (87.2491)\\
+		  &	\textbf{Jing Li} (2027)& & Li Zhang (86.1994)\\
+		  
 		\hline
 	\end{tabular}
 \end{table*}
-
 \section{Discusión}
+La métrica del grado mide localmente la importancia de un nodo. Es bastante fácil y rápida de calcular, pero no permite capturar la influencia a más de un nivel, siendo susceptible a sobreestimar el valor de nodos en conglomerados. Sin embargo, puede ser una buena aproximación. Como se ve en el Cuadro~\ref{tab:erdos}, en promedio cinco autores aparecen tanto en la lista de \(C_D\) como en la de \(C_{PR}\), siendo el número exacto mayor al aumentar el tamaño del grafo.
 
-Dada la facilidad de paralelizar el algoritmo de Dijkstra para todos los nodos, se tiene la ventaja de que el algoritmo es
+La métrica de cercanía permite capturar de manera más global la estructura del grafo. De los autores más imporantes, son relativamente pocos los que coinciden con las otras dos métricas, demostrando que es un criterio substancialmente diferente. El problema con esta métrica es que el cálculo es bastante lento. Sin embargo, a diferencia de PageRank, es paralelizable al ser cada nodo independiente del resto. El método de hacer el cálculo de forma paralela es escalable. Así, es posible emplear procesadores con más núcleos para hacer el mismo trabajo en fracciones de los tiempos originales.
 
+Hay otras alternativas para este procedimiento. Se puede emplear una GPU para tener acceso a más núcleos. La desventaja de este método es que la programación es más complicada, pues requiere manejar memoria adicionalmente en el GPU. Es posible, también, que el tiempo requerido para este manejo de memoria adicional contrarreste los beneficios de la mayor cantidad de núcleos. Otra alternativa es emplear un grid de computadoras, a través algún sistema de pase de mensajes como \pkg{Message Passing Interface} (\pkg{MPI}). Si los procesadores poseen más de un núcleo, es posible usar este sistema en conjunto con \pkg{OpenMP}. El costo de acceso a varias computadoras, sin embargo, puede resultar ser un inconveniente.
+
+La métrica de PageRank presenta las ventajas de tener una interpretación intuitiva, y de no capturar sólo la estructura local del grafo, además de ser rápidamente calculable bajo los parámetros usuales. A través de la Figura~\ref{fig:3dpr}, se puede concluir experimentalmente que tanto el aumento de precisión, como el acercamiento de \(\alpha\) a 1, aumenta la cantidad de iteraciones necesarias para PageRank. Este resultado es una consecuencia de resultados teóricos encontrados en la literatura de análisis de sensibilidad de este algoritmo\cite{stanford}.
 \section{Conclusiones}
-
-Debido a su naturaleza y habilidad de representar grandes cantidades de información de forma estructurada los grafos están siendo ampliamente utilizados en diferentes campos; tal es así, que permitió modelar la red de coautoría de esta investigación. En este artículo no solo se describió, sino que también se analizó tres algoritmos de métricas de centralidad tales como Degree, Closeness y una versión modificada del algoritmo de Pagerank con pesos incluido los cuales representan el número de publicaciones entre dos autores.
-
-A través de la investigación y los experimentos llevados a cabo y debido a que cada métrica de centralidad explora el grafo con un criterio diferente se pudo observar que la métrica de centralidad Degree toma en cuenta los vínculos inmediatos y sus pesos siendo este análisis a un nivel local; ya que no se toma en cuenta la estructura global de la red, midiendo así la importancia de un autor con respecto a sus vecinos. Por otro lado, la métrica de centralidad Closeness a diferencia de la métrica Degree tiene como base el hecho de que no es tan importante tener coautorías con todos en la red, si no enfatiza en no estar demasiado lejos del centro dándole importancia a la distancia de un autor de la red con respecto a todos los demás, obteniéndose así el autor más influyente sobre toda la red. Finalmente se tiene la métrica de centralidad Pagerank la cual asume que no todas las relaciones de un autor con los demás tienen la misma importancia dependiendo así de que tan influyentes son sus vecinos sobre la red.
-
-A causa de estos distintos enfoques se obtuvieron resultados diferentes para cada métrica; sin embargo este estudio mostro que las métricas de centralidad son herramientas muy útiles no solo para identificar al autor más importante a partir de una red de coautoría, sino que también nos permite visualizar y analizar los patrones de colaboración científica en la red, lo cual a futuro puede ayudar a que se realicen más investigaciones entre personas que no han colaborado antes; así como también fortalecer los vínculos ya existentes entre coautores.
-
+En este artículo se describieron y analizaron tres métricas de centralidad para grafos no dirigidos con pesos, con sus respectivos algoritmos, aplicados en particular a una red de coautoría. Se compararon los tiempos de ejecución para todos los algoritmos. También se tomaron en cuenta los diez autores más importantes identificados por cada uno. La cantidad de iteraciones para PageRank fue estudiada bajo diferentes precisiones y factores de amortiguamiento, llegando a un modelo log-lineal para el primer parámetro. Se hizo énfasis en la escalabilidad de la paralelización para la métrica de cercanía.
 \ifCLASSOPTIONcaptionsoff
   \newpage
 \fi
@@ -435,101 +522,9 @@ C.~Meyer. \emph{Matrix analysis and applied linear algebra}. Philadelphia, PA: S
 \bibitem{openmp}
 OpenMP Architecture Review Board. \emph{OpenMP Application Program Interface}, versión 4.0. Julio 2013.
 
+\bibitem{stanford}
+D.~Gleich, ``Models and Algorithms for PageRank Sensitivity'', Tesis de Doctorado, Institute of Computational and Mathematical Engineering, Stanford Univ., San Francisco, CA, 2009.
+
 \end{thebibliography}
 
 \end{document}
-
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex,
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
-
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively.
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
-

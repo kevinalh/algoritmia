@@ -12,6 +12,7 @@
 #include <float.h>
 #include <limits.h>
 
+/* OpenMP */
 #include <omp.h>
 
 #include "graph.h"
